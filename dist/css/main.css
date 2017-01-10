@@ -35,3 +35,16 @@ h2 a {
 .container-fluid {
   padding: 0px;
 }
+
+.HeadLine {
+  text-align: center;
+  font-size: 80px;
+}
+
+.col-md-4 p {
+  font-size: 20px;
+}
+
+iframe {
+  border: none;
+}

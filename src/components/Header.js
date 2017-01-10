@@ -6,7 +6,7 @@ function Header() {
     React.createElement('div', {},
       React.createElement('header', {},
         React.createElement('h1', {},
-          React.createElement(Link, { to: '/' }, 'campfire')
+          React.createElement(Link, { to: '/' }, 'campfire news')
         )
       )
     )
