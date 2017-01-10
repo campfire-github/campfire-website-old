@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm run build",
     "build": "npm run build:bundle",
     "build:bundle": "browserify ./src/index.js --outfile ./dist/bundle.js --debug",
     "build:clean": "rimraf ./dist/bundle.js",
