@@ -4,7 +4,6 @@ var Link = require('react-router')
 function Contact() {
   return (
     React.createElement('div', {}
-
     )
   )
 }

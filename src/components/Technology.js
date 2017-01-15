@@ -5,7 +5,7 @@ function HeadLine() {
   return (
     React.createElement('div', {},
       React.createElement('h1', { className: 'HeadLine' },
-        React.createElement(Link, { to: '/secretlink1' }, 'SpaceX Launches Rocket, Its First Since Explosion on Launchpad')
+        React.createElement(Link, { to: '/launcher' }, 'SpaceX Launches Rocket, Its First Since Explosion on Launchpad')
       )
     )
   )

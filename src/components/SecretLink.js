@@ -4,15 +4,14 @@ var Header = require('./Header.js')
 
 var w = window.innerWidth
 var h = window.innerHeight
-var url = 'http://www.drudgereport.com/'
 
-function Launcher() {
+function SecretLink(props) {
   return (
     React.createElement('div', {},
       React.createElement(Header, {}),
-      React.createElement('iframe', { src: url, height: h, width: w })
+      React.createElement('iframe', { src: props.url, width: w, height: h })
     )
   )
 }
 
-module.exports = Launcher
+module.exports = SecretLink

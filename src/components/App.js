@@ -9,8 +9,10 @@ function App() {
   return (
     React.createElement('div', { className: 'container-fluid' },
       React.createElement(Header, {}),
-      React.createElement(Contact, {}),
-      React.createElement(NewsFeed, {}),
+      React.createElement('div', { className: 'container' },
+        React.createElement(Contact, {}),
+        React.createElement(NewsFeed, {})
+      ),
       React.createElement(Footer, {})
     )
   )
