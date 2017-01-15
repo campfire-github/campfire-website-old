@@ -11,7 +11,7 @@ function World() {
   return (
     React.createElement('div', { className: 'col-md-4' },
       React.createElement('article', {},
-        React.createElement('h2', {}, 'World | New Yorker'),
+        React.createElement('h2', { className: 'world' }, 'World | New Yorker'),
         React.createElement('a', { href: url.link[0], target: '_blank' }, 'President Obama’s Memorable Parting Words.')
       )
     )

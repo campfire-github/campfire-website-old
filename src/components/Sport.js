@@ -18,7 +18,7 @@ function Sport() {
   return (
     React.createElement('div', { className: 'col-md-4' },
       React.createElement('article', {},
-        React.createElement('h2', {}, 'Sport | Fox Sports'),
+        React.createElement('h2', { className: 'sport' }, 'Sport | Fox Sports'),
         React.createElement('a', { href: url.link[0], target: '_blank' }, 'Dana White fires back at Floyd Mayweather after he mocked Conor McGregor fight offer.'),
         React.createElement('hr', {}),
         React.createElement('img', { src: url_photo.link[0], className: 'img-responsive' }),
