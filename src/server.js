@@ -1,9 +1,9 @@
 require('dotenv').config()
 
-import express from 'express'
-import path from 'path'
-import request from 'request'
-import morgan from 'morgan'
+const express = require('express')
+const path = require('path')
+const request = require('request')
+const morgan = require('morgan')
 
 const PORT = process.env.PORT || 8080
 const app = express()
@@ -16,7 +16,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'dist')))
 
 // always return the main index.html, so react-router render the route in the client
 app.get('*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+  response.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'))
 })
 
 app.listen(PORT)

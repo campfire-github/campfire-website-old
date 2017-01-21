@@ -2,15 +2,14 @@
   "name": "campfire-website",
   "version": "1.0.0",
   "description": "",
-  "main": "./server.js",
+  "main": "./src/server.js",
   "scripts": {
     "postinstall": "npm run build",
-    "build": "npm run build:bundle && npm run build:server",
+    "build": "npm run build:bundle",
     "build:bundle": "browserify ./src/client.jsx --outfile ./dist/bundle.js --transform [babelify] --debug",
-    "build:server": "browserify ./src/server.js --outfile ./server.js --transform [babelify] --debug --node",
-    "build:clean": "rimraf ./dist/bundle.js && rimraf ./server.js",
+    "build:clean": "rimraf ./dist/bundle.js",
     "prebuild": "npm run build:clean",
-    "start": "node ./server.js",
+    "start": "node ./src/server.js",
     "test": ""
   },
   "babel": {
