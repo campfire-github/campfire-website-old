@@ -67,26 +67,32 @@ section a {
   font-size: 25px;
 }
 
-.business {
-  background-color: #DBAC51;
+/*.business {
+  border-color: #DBAC51;
+  border-style: solid;
 }
 
 .entertainment {
-  background-color: #7030A0;
+  border-color: #7030A0;
+  border-style: solid;
 }
 
 .national {
-  background-color: #124A7F;
+  border-color: #124A7F;
+  border-style: solid;
 }
 
-.sport {
-  background-color: #D85151;
+.sports {
+  border-color: #D85151;
+  border-style: solid;
 }
 
 .technology {
-  background-color: #4CAE4C;
+  border-color: #4CAE4C;
+  border-style: solid;
 }
 
 .world {
-  background-color: #01B7F2;
-}
+  border-color: #01B7F2;
+  border-style: solid;
+}*/
