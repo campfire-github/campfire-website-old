@@ -2,19 +2,30 @@
   "name": "campfire-website",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./server.js",
   "scripts": {
     "postinstall": "npm run build",
     "build": "npm run build:bundle",
-    "build:bundle": "browserify ./src/index.js --outfile ./dist/bundle.js --debug",
+    "build:bundle": "browserify ./src/index.jsx --outfile ./dist/bundle.js --transform [babelify] --debug",
     "build:clean": "rimraf ./dist/bundle.js",
     "prebuild": "npm run build:clean",
-    "start": "node index.js",
+    "start": "node ./server.js",
     "test": ""
   },
+  "babel": {
+    "presets": [
+      "latest",
+      "react"
+    ]
+  },
   "author": "Jason Veng <jasonveng@outlook.com>",
-  "license": "BSD-3-Clause",
+  "license": "ISC",
   "dependencies": {
+    "ava": "^0.17.0",
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
@@ -24,8 +35,6 @@
     "ramda": "^0.22.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "react-router": "^3.0.0",
-    "redux": "^3.6.0",
     "rimraf": "^2.5.4"
   }
 }
