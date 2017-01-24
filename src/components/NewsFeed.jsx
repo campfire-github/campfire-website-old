@@ -6,10 +6,6 @@ export default function NewsFeed() {
     <div>
       <HeadLine />
       <section className="row">
-
-      </section>
-      <section className="row">
-
       </section>
     </div>
   )

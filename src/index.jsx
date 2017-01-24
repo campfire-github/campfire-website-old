@@ -1,5 +1,14 @@
 import React from 'react'
-import { render } from 'react-dom'
-import App from './components/App.jsx'
+import ReactDOM from 'react-dom'
+import { Router, Route, browserHistory } from 'react-router'
 
-render(<App />, document.getElementById('app'))
+//components
+import App from './components/App.jsx'
+import NotFound from './components/NotFound.jsx'
+
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App} />
+    <Route path="/*" component={NotFound} />
+  </Router>
+), document.getElementById('app'))
