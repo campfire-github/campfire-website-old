@@ -66,27 +66,3 @@ section a {
   font-family: 'Roboto', sans-serif;
   font-size: 25px;
 }
-
-.business {
-  background-color: #DBAC51;
-}
-
-.entertainment {
-  background-color: #7030A0;
-}
-
-.national {
-  background-color: #124A7F;
-}
-
-.sport {
-  background-color: #D85151;
-}
-
-.technology {
-  background-color: #4CAE4C;
-}
-
-.world {
-  background-color: #01B7F2;
-}
