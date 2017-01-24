@@ -2,33 +2,20 @@
   "name": "campfire-website",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/server.js",
+  "main": "index.js",
   "scripts": {
     "postinstall": "npm run build",
     "build": "npm run build:bundle",
-    "build:bundle": "browserify ./src/client.jsx --outfile ./dist/bundle.js --transform [babelify] --debug",
+    "build:bundle": "browserify ./src/index.js --outfile ./dist/bundle.js --debug",
     "build:clean": "rimraf ./dist/bundle.js",
     "prebuild": "npm run build:clean",
-    "start": "node ./src/server.js",
+    "start": "node index.js",
     "test": ""
-  },
-  "babel": {
-    "presets": [
-      "latest",
-      "react"
-    ]
   },
   "author": "Jason Veng <jasonveng@outlook.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "ava": "^0.17.0",
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.22.1",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
-    "babelify": "^7.3.0",
     "browserify": "^13.1.0",
-    "cors": "^2.8.1",
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
     "immutable": "^3.8.1",
@@ -38,8 +25,7 @@
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router": "^3.0.0",
-    "request": "^2.79.0",
-    "rimraf": "^2.5.4",
-    "superagent": "^3.3.2"
+    "redux": "^3.6.0",
+    "rimraf": "^2.5.4"
   }
 }
