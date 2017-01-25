@@ -10,7 +10,7 @@ import jQuery from '../../dist/js/jquery-3.1.1.js'
       all: []
     };
   }
-
+//sdfsdf
   _fetchNews() {
     console.log('fetching news')
     var urllink = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
