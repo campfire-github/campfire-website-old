@@ -1,9 +1,9 @@
 import React from 'react'
 import HeadLine from './HeadLine.jsx'
-import jQuery from 'jquery'
+//import jQuery from 'jquery'
 
   class NewsFeed extends React.Component {
-
+/*
   constructor()  {
     super() ;
     this.state = {
@@ -36,7 +36,7 @@ import jQuery from 'jquery'
     this._fetchNews();
   }
 
-
+*/
   render() {
     return (
       <div>
