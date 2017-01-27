@@ -1,8 +1,9 @@
 import React from 'react'
 import HeadLine from './HeadLine.jsx'
+import Grid from './Grid.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 
-  class NewsFeed extends React.Component {
+class NewsFeed extends React.Component {
 ///*
   constructor()  {
     super() ;
@@ -10,7 +11,7 @@ import jQuery from '../../dist/js/jquery-3.1.1.js'
       all: []
     };
   }
-//sdfsdf
+
   _fetchNews() {
     console.log('fetching news')
     var urllink = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
@@ -22,8 +23,24 @@ import jQuery from '../../dist/js/jquery-3.1.1.js'
       },
       data:"{body}",
       success :(result)=>{
-
-
+        var array = [] ;
+        console.log ( result.length + "size ");
+        for (var i = 0; i<result.articles.length; i++){
+          console.log ( "rank "+i);
+        //  console.log( result.value[i] + "ppp");
+            var each = {
+              id : i ,
+              author : result.articles[i].author,
+              title : result.articles[i].title,
+              description : result.articles[i].description,
+              url : result.articles[i].url,
+              urlToImage : result.articles[i].urlToImage,
+              publishedAt: result.articles[i].publishedAt
+            };
+            array.push(each);
+        }
+        console.log ( "this array "+ array.length);
+        this.setState({all:array});
         console.log(result) ;
       }
 
@@ -36,12 +53,39 @@ import jQuery from '../../dist/js/jquery-3.1.1.js'
     this._fetchNews();
   }
 
+  /*
+  componentDidMount(){
+
+    this._timer = setInterval(
+                  ()=>this._getAllNews(),
+                  500000);
+
+    }
+*/
+    componentWillUnmount(){ // memory leak solving
+      clearInterval(this._timer);
+    }
+
+  _getAllNews() {
+    console.log("get all ");
+    return this.state.all.map((each)=>{
+
+      return(
+        <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.id}></Grid>
+      );
+    });
+  }
+
 //*/
   render() {
+  //  this._fetchNews();
+    console.log(this.state.all.length);
+    var allnews = this._getAllNews() ;
     return (
       <div>
         <HeadLine />
         <section className="row">
+          {allnews}
         </section>
       </div>
     )
