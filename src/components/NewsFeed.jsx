@@ -51,13 +51,13 @@ class NewsFeed extends React.Component {
     this._fetchNews();
   }
 
-
+  /*
   componentDidMount(){
     this._timer = setInterval(
                   ()=>this._fetchNews(),
                   500000);
     }
-
+*/
     componentWillUnmount(){ // memory leak solving
       clearInterval(this._timer);
     }
