@@ -8,6 +8,7 @@ class NewsFeed extends React.Component {
   constructor()  {
     super() ;
     this.state = {
+      head: "",
       all: []
     };
   }
@@ -25,9 +26,9 @@ class NewsFeed extends React.Component {
       success :(result)=>{
         var array = [] ;
         console.log ( result.length + "size ");
+        this.setState({head:result.articles[0].title});
+        console.log("head "+result.articles[0].title);
         for (var i = 0; i<result.articles.length; i++){
-          console.log ( "rank "+i);
-        //  console.log( result.value[i] + "ppp");
             var each = {
               id : i ,
               author : result.articles[i].author,
@@ -43,25 +44,20 @@ class NewsFeed extends React.Component {
         this.setState({all:array});
         console.log(result) ;
       }
-
     })
-
-
   }
 
   componentWillMount () {
     this._fetchNews();
   }
 
-  /*
+
   componentDidMount(){
-
     this._timer = setInterval(
-                  ()=>this._getAllNews(),
+                  ()=>this._fetchNews(),
                   500000);
-
     }
-*/
+
     componentWillUnmount(){ // memory leak solving
       clearInterval(this._timer);
     }
@@ -69,7 +65,6 @@ class NewsFeed extends React.Component {
   _getAllNews() {
     console.log("get all ");
     return this.state.all.map((each)=>{
-
       return(
         <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.id}></Grid>
       );
@@ -78,12 +73,12 @@ class NewsFeed extends React.Component {
 
 //*/
   render() {
-  //  this._fetchNews();
     console.log(this.state.all.length);
     var allnews = this._getAllNews() ;
+    var head = this.state.head ;
     return (
       <div>
-        <HeadLine />
+        <HeadLine headline = {head}/>
         <section className="row">
           {allnews}
         </section>
