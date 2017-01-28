@@ -7,7 +7,7 @@ export default function Footer() {
       <footer className="campfire_footer">
         <p>&copy; 2017 Campfire Limited, all rights reserved. Campfire logo is trademarks and/or registered trademarks of Campfire Limited</p>
         <br></br>
-        powered by<Link to="https://newsapi.org/"> NewsAPI.org</Link>
+        powered by <Link href="https://newsapi.org/">NewsAPI.org</Link>
       </footer>
     </div>
   )
