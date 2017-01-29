@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-export default function Footer() {
+const Footer = () => {
   return (
     <div>
       <footer className="campfire_footer">
@@ -12,3 +12,5 @@ export default function Footer() {
     </div>
   )
 }
+
+export default Footer

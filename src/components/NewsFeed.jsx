@@ -1,90 +1,33 @@
 import React from 'react'
+import request from 'superagent'
 import HeadLine from './HeadLine.jsx'
-import Grid from './Grid.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 
-class NewsFeed extends React.Component {
-///*
-  constructor()  {
-    super() ;
-    this.state = {
-      head: "",
-      all: []
-    };
+const NewsFeed = () => {
+  const getRoute = (url, callback) => {
+    request
+      .get(url)
+      .end((error, response) => {
+        callback(error, response.body)
+      })
   }
 
-  _fetchNews() {
-    console.log('fetching news')
-    var urllink = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
-    jQuery.ajax({
-      method:'GET',
-      url: urllink,
-      beforeSend: function (xhrObj) {
-         xhrObj.setRequestHeader("Content-Type", "application/json");
-      },
-      data:"{body}",
-      success :(result)=>{
-        var array = [] ;
-        console.log ( result.length + "size ");
-        this.setState({head:result.articles[0].title});
-        console.log("head "+result.articles[0].title);
-        for (var i = 0; i<result.articles.length; i++){
-            var each = {
-              id : i ,
-              author : result.articles[i].author,
-              title : result.articles[i].title,
-              description : result.articles[i].description,
-              url : result.articles[i].url,
-              urlToImage : result.articles[i].urlToImage,
-              publishedAt: result.articles[i].publishedAt
-            };
-            array.push(each);
-        }
-        console.log ( "this array "+ array.length);
-        this.setState({all:array});
-        console.log(result) ;
-      }
-    })
-  }
+  const url = 'http://localhost:8080/api/v1/news' || 'http://www.campfire.news/api/v1/news'
+  const news = []
 
-  componentWillMount () {
-    this._fetchNews();
-  }
+  getRoute(url, (error, response) => {
+    console.log(response)
+    !err ? news.push(response) : console.log(error)
+  })
 
-  /*
-  componentDidMount(){
-    this._timer = setInterval(
-                  ()=>this._fetchNews(),
-                  500000);
-    }
-*/
-    componentWillUnmount(){ // memory leak solving
-      clearInterval(this._timer);
-    }
+  return (
+    <div>
+      <HeadLine url={news[0].articles[0].url} name={news[0].articles[0].title} />
+      <section className="row">
 
-  _getAllNews() {
-    console.log("get all ");
-    return this.state.all.map((each)=>{
-      return(
-        <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.id}></Grid>
-      );
-    });
-  }
-
-//*/
-  render() {
-    console.log(this.state.all.length);
-    var allnews = this._getAllNews() ;
-    var head = this.state.head ;
-    return (
-      <div>
-        <HeadLine headline = {head}/>
-        <section className="row">
-          {allnews}
-        </section>
-      </div>
-    )
-  }
+      </section>
+    </div>
+  )
 }
 
-export default NewsFeed ;
+export default NewsFeed

@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router'
 
-export default function Header() {
+const Header = () => {
   return (
     <div>
       <header>
-        <h1><a href="/">campfire news</a></h1>
+        <h1><Link to="/">campfire news</Link></h1>
       </header>
     </div>
   )
 }
+
+export default Header
