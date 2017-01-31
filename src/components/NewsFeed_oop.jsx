@@ -1,6 +1,7 @@
 import React from 'react'
 import HeadLine from './HeadLine_oop.jsx'
 import Grid from './Grid_oop.jsx'
+import FrontPage from './FrontPage.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 
 class NewsFeed extends React.Component {
@@ -82,6 +83,7 @@ class NewsFeed extends React.Component {
         <section className="row">
           {allnews}
         </section>
+        <FrontPage></FrontPage>
       </div>
     )
   }
