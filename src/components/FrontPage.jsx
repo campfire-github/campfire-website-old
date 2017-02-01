@@ -20,10 +20,14 @@ class FrontPage extends React.Component{
   }
 
   componentWillMount() {
-    var link = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
-    this._fetchNews(link , 1);
-    this._fetchNews(link,2);
-    this._fetchNews(link,3);
+    var entertainmentlink = 'https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
+    var worldlink = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
+    var technologylink = 'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=a4e9c4eb35084632a61272444aad8afb';
+
+
+    this._fetchNews(entertainmentlink , 1);
+    this._fetchNews(worldlink,2);
+    this._fetchNews(technologylink,3);
   }
 
   _fetchNews(categoryLink, category){
