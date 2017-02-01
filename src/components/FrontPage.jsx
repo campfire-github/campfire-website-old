@@ -14,8 +14,6 @@ class FrontPage extends React.Component{
       entertainment:[],
       world:[],
       technology :[]
-
-
     }
   }
 
@@ -40,9 +38,7 @@ class FrontPage extends React.Component{
       data:"{body}",
       success :(result)=>{
         var array = [] ;
-        console.log ( result.length + "size ");
         this.setState({head:result.articles[0].title});
-        console.log("head "+result.articles[0].title);
         for (var i = 0; i<result.articles.length; i++){
             var each = {
               id : i ,
@@ -55,7 +51,6 @@ class FrontPage extends React.Component{
             };
             array.push(each);
         }
-        console.log ( "this array "+ array.length);
         if(category ===1 ){
           this.setState({entertainment:array});
         }else if(category ===2){
@@ -63,7 +58,6 @@ class FrontPage extends React.Component{
         }else if(category ===3){
           this.setState({technology:array});
         }
-        console.log(result) ;
       }
     })
   }
@@ -85,6 +79,15 @@ class FrontPage extends React.Component{
 
   }
 
+  _technologyLinkClick() {
+    <Technology tech = {this.state.technology}></Technology>
+  }
+  _worldLinkClick(){
+    <World world = {this.state.world}></World>
+  }
+  _entertainmentLinkClick() {
+    <Entertainment entertainment={this.state.entertainment}></Entertainment>
+  }
 
   render() {
 
