@@ -23,8 +23,6 @@ class FrontPage extends React.Component{
     var entertainmentlink = 'https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
     var worldlink = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
     var technologylink = 'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=a4e9c4eb35084632a61272444aad8afb';
-
-
     this._fetchNews(entertainmentlink , 1);
     this._fetchNews(worldlink,2);
     this._fetchNews(technologylink,3);
@@ -65,8 +63,6 @@ class FrontPage extends React.Component{
         }else if(category ===3){
           this.setState({technology:array});
         }
-
-
         console.log(result) ;
       }
     })
@@ -83,17 +79,9 @@ class FrontPage extends React.Component{
     }
     return array.map((each)=>{
       return (
-        <Title title={each.title}  url={each.url} key={each.id}></Title>
+        <Title title={each.title} url={each.url} key={each.id}></Title>
       )
-
     });
-
-
-
-
-
-
-
 
   }
 
@@ -120,16 +108,10 @@ class FrontPage extends React.Component{
             <h2>Technology</h2>
             {technology}
           </div>
-
-
         </section>
       </div>
-
-
     )
   }
-
-
 
 }
 export default FrontPage ;
