@@ -6,13 +6,13 @@ const morgan = require('morgan')
 const request = require('request')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-
+///*
 const pg = require('pg')
 const connectionString = process.env.DATABASE_URL
 const client = new pg.Client(connectionString)
 
 client.connect()
-
+//*/
 const port = process.env.PORT || 8080
 const app = express()
 
@@ -31,22 +31,17 @@ app.get('/api/v1/news', (req, res) => (
 
 
 var requestLoop = setInterval(function(){
-  var result = [] ;
+
   request(url, (error, response, body) => {
     if(!error && response.statusCode == 200){
          console.log('sucess!');
-         result = body.articles ;
-         console.log("result" + result) ;
-         console.log("body " + body);
-         console.log("articles" + body.articles);
-        // console.log("lenght"+body.articles.length) ;
-         /*
-         for (var i = 0 ; i < 10 ;i++){
-           var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body.articles[i].author,body.articles[i].title,body.articles[i].url,body.articles[i].urlToImage,body.articles[i].publishedAt]);
+         var json =JSON.parse(body);
+         for (var i = 0 ; i < json.articles.length ;i++){
+           var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt]);
            query.on('err', function(err){
              console.log("CANT INSERT INTO NEWS TABLE " + err);
            });
-         }*/
+         }
      }else{
          console.log('error' + response.statusCode);
      }
@@ -56,8 +51,8 @@ var requestLoop = setInterval(function(){
 
 
   })
-  console.log(result);
-}, 5000000);
+//  console.log("resultarray " + result);
+}, 5000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
