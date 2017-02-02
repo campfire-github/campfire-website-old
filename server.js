@@ -18,9 +18,9 @@ const app = express()
 
 const corsOptions = { origin: '*' }
 const url = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + process.env.API_KEY
-var urls = {'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + process.env.API_KEY,
-            'https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey='+ process.env.API_KEY,
-            'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey='+ process.env.API_KEY,
+var urls = {'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' ,
+            'https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=',
+            'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=',
            }
 app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -37,7 +37,8 @@ var requestLoop = setInterval( function(){
   var deletequery = client.query('DELETE FROM newsnow');
   for (int i = 0 ; i < urls.length ;i++ ){
     ///*
-    request(urls[i], (error, response, body) => {
+    url = urls[i] + + process.env.API_KEY  ;
+    request(urls, (error, response, body) => {
       if(!error && response.statusCode == 200){
            var json =JSON.parse(body);
            for (var i = 0 ; i < json.articles.length ;i++){
