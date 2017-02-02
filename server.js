@@ -39,7 +39,7 @@ var requestLoop = setInterval(function(){
          console.log("result" + result) ;
          console.log("body " + body);
          console.log("articles" + body.articles);
-        // console.log("lenght"+body.articles.length) ; 
+        // console.log("lenght"+body.articles.length) ;
          /*
          for (var i = 0 ; i < 10 ;i++){
            var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body.articles[i].author,body.articles[i].title,body.articles[i].url,body.articles[i].urlToImage,body.articles[i].publishedAt]);
@@ -57,7 +57,7 @@ var requestLoop = setInterval(function(){
 
   })
   console.log(result);
-}, 5000);
+}, 5000000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
