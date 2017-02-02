@@ -39,18 +39,19 @@ var requestLoop = setInterval(function(){
      }else{
          console.log('error' + response.statusCode);
      }
-     var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body.author,body.title,body.url,body.urlToImage,body.publishedAt]);
-     query.on('err', function(err){
-       console.log("CANT INSERT INTO NEWS TABLE " + err);
-     });
-
+     for (var i = 0 ; i < body.length ;i++){
+       var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body[i].author,body[i].title,body[i].url,body[i].urlToImage,body[i].publishedAt]);
+       query.on('err', function(err){
+         console.log("CANT INSERT INTO NEWS TABLE " + err);
+       });
+     }
 
 
 
 
   })
   console.log(result);
-}, 5000000);
+}, 5000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
