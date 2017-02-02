@@ -1,14 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router'
 
-const HeadLine = () => {
-  return (
-    <div>
-      <h1 className="HeadLine">
-        <Link href={} target="_blank">{}</Link>
-      </h1>
-    </div>
-  )
+class HeadLine extends React.Component{
+  render() {
+    return (
+      <div>
+        <h1 className="HeadLine">
+          <a href="#" target="_blank">{this.props.headline}</a>
+        </h1>
+      </div>
+    )
+  }
 }
 
-export default HeadLine
+export default HeadLine;

@@ -2,8 +2,8 @@ import React from 'react';
 import Entertainment from './Entertainment.jsx';
 import Technology from './Technology.jsx';
 import World from './World.jsx';
-import HeadLine from './HeadLine_oop.jsx';
-import Grid from './Grid_oop.jsx';
+import HeadLine from './HeadLine.jsx';
+import Grid from './Grid.jsx';
 import Title from './Title.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js';
 
@@ -80,10 +80,10 @@ class FrontPage extends React.Component{
   }
 
   _technologyLinkClick() {
-    <Technology tech = {this.state.technology}></Technology>
+    <Technology tech={this.state.technology}></Technology>
   }
   _worldLinkClick(){
-    <World world = {this.state.world}></World>
+    <World world={this.state.world}></World>
   }
   _entertainmentLinkClick() {
     <Entertainment entertainment={this.state.entertainment}></Entertainment>
