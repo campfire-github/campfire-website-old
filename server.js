@@ -52,7 +52,7 @@ var requestLoop = setInterval(function(){
 
   })
 //  console.log("resultarray " + result);
-}, 5000);
+}, 10000000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
