@@ -1,0 +1,7 @@
+CREATE TABLE NEWS (
+  author VARCHAR,
+  title VARCHAR NOT NULL ,
+  url TEXT PRIMARY KEY ,
+  urlToImage TEXT ,
+  publishedAt DATE
+);
