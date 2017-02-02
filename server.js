@@ -41,7 +41,7 @@ var requestLoop = setInterval(function(){
          console.log('error' + response.statusCode);
      }
   })
-
+  console.log(result);
 }, 5000);
 
 app.get('*', (request, response) => {
