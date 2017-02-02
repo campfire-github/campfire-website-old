@@ -39,7 +39,7 @@ var requestLoop = setInterval(function(){
      }else{
          console.log('error' + response.statusCode);
      }
-     for (var i = 0 ; i < body.articles.length ;i++){
+     for (var i = 0 ; i < 10 ;i++){
        var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body.articles[i].author,body.articles[i].title,body.articles[i].url,body.articles[i].urlToImage,body.articles[i].publishedAt]);
        query.on('err', function(err){
          console.log("CANT INSERT INTO NEWS TABLE " + err);
