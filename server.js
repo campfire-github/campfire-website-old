@@ -39,8 +39,8 @@ var requestLoop = setInterval(function(){
      }else{
          console.log('error' + response.statusCode);
      }
-     for (var i = 0 ; i < body.length ;i++){
-       var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body[i].articles.author,body[i].articles.title,body[i].articles.url,body[i].articles.urlToImage,body[i].articles.publishedAt]);
+     for (var i = 0 ; i < body.articles.length ;i++){
+       var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body.articles[i].author,body.articles[i].title,body.articles[i].url,body.articles[i].urlToImage,body.articles[i].publishedAt]);
        query.on('err', function(err){
          console.log("CANT INSERT INTO NEWS TABLE " + err);
        });
