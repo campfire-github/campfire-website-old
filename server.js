@@ -50,7 +50,7 @@ var requestLoop = setInterval(function(){
 
   })
   console.log(result);
-}, 5000000);
+}, 5000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
