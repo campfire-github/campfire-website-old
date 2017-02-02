@@ -1,0 +1,9 @@
+  CREATE TABLE newsnow (
+    author VARCHAR ,
+    title VARCHAR NOT NULL ,
+    url TEXT PRIMARY KEY,
+    urlToImage TEXT ,
+    publishedAt DATE ,
+    source VARCHAR
+
+  );

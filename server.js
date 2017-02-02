@@ -18,7 +18,10 @@ const app = express()
 
 const corsOptions = { origin: '*' }
 const url = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + process.env.API_KEY
-
+var urls = {'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + process.env.API_KEY,
+            'https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey='+ process.env.API_KEY,
+            'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey='+ process.env.API_KEY,
+           }
 app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -30,28 +33,26 @@ app.get('/api/v1/news', (req, res) => (
 ))
 
 
-var requestLoop = setInterval(function(){
+var requestLoop = setInterval( function(){
+  var deletequery = client.query('DELETE FROM newsnow');
+  for (int i = 0 ; i < urls.length ;i++ ){
+    ///*
+    request(urls[i], (error, response, body) => {
+      if(!error && response.statusCode == 200){
+           var json =JSON.parse(body);
+           for (var i = 0 ; i < json.articles.length ;i++){
+             var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source)VALUES ($1,$2,$3,$4,$5,$6)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source]);
+             query.on('err', function(err){
+               console.log("CANT INSERT INTO NEWS TABLE " + err);
+             });
+           }
+       }else{
+           console.log('error' + response.statusCode);
+       }
+    })
+    //*/
+  }
 
-  request(url, (error, response, body) => {
-    if(!error && response.statusCode == 200){
-         console.log('sucess!');
-         var json =JSON.parse(body);
-         for (var i = 0 ; i < json.articles.length ;i++){
-           var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt]);
-           query.on('err', function(err){
-             console.log("CANT INSERT INTO NEWS TABLE " + err);
-           });
-         }
-     }else{
-         console.log('error' + response.statusCode);
-     }
-
-
-
-
-
-  })
-//  console.log("resultarray " + result);
 }, 10000000);
 
 app.get('*', (request, response) => {
