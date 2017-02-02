@@ -36,12 +36,15 @@ var requestLoop = setInterval(function(){
     if(!error && response.statusCode == 200){
          console.log('sucess!');
          result = body.articles ;
+         console.log("result" + result) ;
+         console.log("body " + body);
+         /*
          for (var i = 0 ; i < 10 ;i++){
            var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body.articles[i].author,body.articles[i].title,body.articles[i].url,body.articles[i].urlToImage,body.articles[i].publishedAt]);
            query.on('err', function(err){
              console.log("CANT INSERT INTO NEWS TABLE " + err);
            });
-         }
+         }*/
      }else{
          console.log('error' + response.statusCode);
      }
@@ -52,7 +55,7 @@ var requestLoop = setInterval(function(){
 
   })
   console.log(result);
-}, 5000);
+}, 5000000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
