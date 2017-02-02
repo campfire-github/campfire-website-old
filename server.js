@@ -38,6 +38,7 @@ var requestLoop = setInterval(function(){
          result = body.articles ;
          console.log("result" + result) ;
          console.log("body " + body);
+         console.log("lenght"+body.articles.length) ; 
          /*
          for (var i = 0 ; i < 10 ;i++){
            var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body.articles[i].author,body.articles[i].title,body.articles[i].url,body.articles[i].urlToImage,body.articles[i].publishedAt]);
