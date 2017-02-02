@@ -40,7 +40,7 @@ var requestLoop = setInterval(function(){
          console.log('error' + response.statusCode);
      }
      for (var i = 0 ; i < body.length ;i++){
-       var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body[i].author,body[i].title,body[i].url,body[i].urlToImage,body[i].publishedAt]);
+       var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[body[i].articles.author,body[i].articles.title,body[i].articles.url,body[i].articles.urlToImage,body[i].articles.publishedAt]);
        query.on('err', function(err){
          console.log("CANT INSERT INTO NEWS TABLE " + err);
        });
