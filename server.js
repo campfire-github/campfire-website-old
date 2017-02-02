@@ -36,10 +36,18 @@ var requestLoop = setInterval(function(){
     if(!error && response.statusCode == 200){
          console.log('sucess!');
          result = body.articles ;
-
      }else{
          console.log('error' + response.statusCode);
      }
+     var query = client.query('INSERT INTO news (author,title,url,urlToImage,publishedAt)VALUES ($1,$2,$3,$4,$5)',[result.author,result.title,result.url,result.urlToImage,result.publishedAt]);
+     query.on('err', function(err){
+       console.log("CANT INSERT INTO NEWS TABLE " + err);
+     });
+
+
+
+
+
   })
   console.log(result);
 }, 5000000);
