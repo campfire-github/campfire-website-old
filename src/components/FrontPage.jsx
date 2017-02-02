@@ -80,10 +80,10 @@ class FrontPage extends React.Component{
   }
 
   _technologyLinkClick() {
-    <Technology tech = {this.state.technology}></Technology>
+    <Technology tech={this.state.technology}></Technology>
   }
   _worldLinkClick(){
-    <World world = {this.state.world}></World>
+    <World world={this.state.world}></World>
   }
   _entertainmentLinkClick() {
     <Entertainment entertainment={this.state.entertainment}></Entertainment>
