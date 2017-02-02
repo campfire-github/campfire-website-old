@@ -2,8 +2,8 @@ import React from 'react';
 import Entertainment from './Entertainment.jsx';
 import Technology from './Technology.jsx';
 import World from './World.jsx';
-import HeadLine from './HeadLine_oop.jsx';
-import Grid from './Grid_oop.jsx';
+import HeadLine from './HeadLine.jsx';
+import Grid from './Grid.jsx';
 import Title from './Title.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js';
 
