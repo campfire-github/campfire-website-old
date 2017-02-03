@@ -35,10 +35,10 @@ app.get('/api/v1/news', (req, res) => (
 
 var requestLoop = setInterval( function(){
   var deletequery = client.query('DELETE FROM newsnow');
-  for (int i = 0 ; i < urls.length ;i++ ){
+  for (var index = 0 ; index < urls.length ;index++ ){
     ///*
-    url = urls[i] + + process.env.API_KEY  ;
-    request(urls, (error, response, body) => {
+    url = urls[index] + + process.env.API_KEY  ;
+    request(url, (error, response, body) => {
       if(!error && response.statusCode == 200){
            var json =JSON.parse(body);
            for (var i = 0 ; i < json.articles.length ;i++){
@@ -54,7 +54,7 @@ var requestLoop = setInterval( function(){
     //*/
   }
 
-}, 10000000);
+}, 10000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
