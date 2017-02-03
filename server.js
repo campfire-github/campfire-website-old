@@ -32,6 +32,30 @@ app.get('/api/v1/news', (req, res) => (
   request(url, (error, response, body) => (!error && response.statusCode === 200 ? res.json(JSON.parse(body)) : console.log(error)))
 ))
 
+app.get('/api/v1/newsnow', (req,res)=>(
+  var toreturn =  [] ;
+  var query = client.query('SELECT * FROM newsnow');
+  query.on('err',function(err){
+    console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
+    res.status(404)
+       .write('NOT FOUND');
+  });
+  query.on('row', function(result){
+    toreturn.push(result);
+  });
+  query.on('end', function(){
+    if(result.length == 0){
+
+      res.status(200);
+      .write("NO NEWS");
+    }else {
+      res.write(result);
+    }
+    res.end() ;
+
+  });
+));
+
 
 var requestLoop = setInterval( function(){
 ///*
