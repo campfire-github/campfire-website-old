@@ -37,8 +37,8 @@ var requestLoop = setInterval( function(){
   var deletequery = client.query('DELETE FROM newsnow');
   for (var index = 0 ; index < urls.length ;index++ ){
     ///*
-    url = urls[index] + + process.env.API_KEY  ;
-    request(url, (error, response, body) => {
+    var url1 = urls[index] + + process.env.API_KEY  ;
+    request(url1, (error, response, body) => {
       if(!error && response.statusCode == 200){
            var json =JSON.parse(body);
            for (var i = 0 ; i < json.articles.length ;i++){
