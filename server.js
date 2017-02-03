@@ -32,7 +32,7 @@ app.get('/api/v1/news', (req, res) => (
   request(url, (error, response, body) => (!error && response.statusCode === 200 ? res.json(JSON.parse(body)) : console.log(error)))
 ))
 
-app.get('/api/v1/newsnow', (req,res)=>(
+app.get('/api/v1/newsnow', function(req,res){
   var toreturn =  [] ;
   var query = client.query('SELECT * FROM newsnow');
   query.on('err',function(err){
@@ -54,7 +54,7 @@ app.get('/api/v1/newsnow', (req,res)=>(
     res.end() ;
 
   });
-));
+});
 
 
 var requestLoop = setInterval( function(){
