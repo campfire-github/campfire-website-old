@@ -44,8 +44,7 @@ app.get('/api/v1/newsnow', function(req,res){
     toreturn.push(result);
   });
   query.on('end', function(){
-    if(result.length == 0){
-
+    if(toreturn.length == 0){
       res.status(200)
       .write("NO NEWS");
     }else {
