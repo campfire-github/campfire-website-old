@@ -46,10 +46,10 @@ app.get('/api/v1/newsnow', function(req,res){
   query.on('end', function(){
     if(result.length == 0){
 
-      res.status(200);
-      .send("NO NEWS");
+      res.status(200)
+      .write("NO NEWS");
     }else {
-      res.send(JSON.parse(result));
+      res.write(JSON.parse(result));
     }
     res.end() ;
 
