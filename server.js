@@ -34,7 +34,7 @@ app.get('/api/v1/news', (req, res) => (
 
 
 var requestLoop = setInterval( function(){
-///* 
+///*
  var deletequery = client.query('DELETE FROM newsnow');
   deletequery.on('err', function(err){
     console.log("CANT DELETE" + err);
@@ -59,7 +59,7 @@ var requestLoop = setInterval( function(){
     //*/
   }
 
-}, 10000);
+}, 10000000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
