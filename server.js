@@ -34,10 +34,11 @@ app.get('/api/v1/news', (req, res) => (
 
 
 var requestLoop = setInterval( function(){
-/*  var deletequery = client.query('DELETE FROM newsnow');
+///* 
+ var deletequery = client.query('DELETE FROM newsnow');
   deletequery.on('err', function(err){
     console.log("CANT DELETE" + err);
-  });*/
+  });//*/
   for (var index = 0 ; index < urls.length ;index++ ){
     ///*
     var url1 = urls[index] + process.env.API_KEY  ;
