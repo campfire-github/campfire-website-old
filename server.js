@@ -41,6 +41,7 @@ var requestLoop = setInterval( function(){
   for (var index = 0 ; index < urls.length ;index++ ){
     ///*
     var url1 = urls[index] + process.env.API_KEY  ;
+    console.log(url1) ;
     request(url1, (error, response, body) => {
       if(!error && response.statusCode == 200){
            var json =JSON.parse(body);
