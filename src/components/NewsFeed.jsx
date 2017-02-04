@@ -84,7 +84,7 @@ class NewsFeed extends React.Component {
         <section className="row">
           {allnews}
         </section>
-        //<FrontPage></FrontPage>
+        
         <FrontPage2></FrontPage2>
       </div>
     )
