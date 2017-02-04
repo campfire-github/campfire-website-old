@@ -46,8 +46,8 @@ class FrontPage2 extends React.Component{
         var e = [] ;
         var w = [] ;
         var t = [] ;
-        this.setState({head:result.articles[0].title});
-        for (var i = 0; i<result.articles.length; i++){
+        this.setState({head:result[0].title});
+        for (var i = 0; i<result.length; i++){
             var each = {
               id : i ,
               source: result[i].source ,
