@@ -48,7 +48,8 @@ app.get('/api/v1/newsnow', function(req,res){
       res.status(200)
       .write("NO NEWS");
     }else {
-      res.write(toreturn.toString() );
+      var json = JSON.parse(toreturn);
+      res.write(json);
     }
     res.end() ;
 
