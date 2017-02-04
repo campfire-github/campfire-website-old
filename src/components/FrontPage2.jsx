@@ -60,9 +60,9 @@ class FrontPage2 extends React.Component{
             };
             if( each.source === "google-news"){
               w.push(each);
-            }else (each.source === "techcrunch"){
+            }else if (each.source === "techcrunch"){
               t.push(each);
-            }else (each.source === "entertainment-weekly"){
+            }else if(each.source === "entertainment-weekly"){
               e.push(each);
             }
         }
