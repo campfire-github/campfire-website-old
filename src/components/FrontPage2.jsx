@@ -124,6 +124,6 @@ class FrontPage2 extends React.Component{
       </div>
     )
   }
-
+//
 }
 export default FrontPage2 ;
