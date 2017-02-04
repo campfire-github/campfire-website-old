@@ -43,7 +43,8 @@ class FrontPage2 extends React.Component{
       },
       data:"{body}",
       success :(result)=>{
-        console.log(result);
+        console.log(result.length + "  --"+result);
+        console.log("1" + result[0]);
         var e = [] ;
         var w = [] ;
         var t = [] ;
