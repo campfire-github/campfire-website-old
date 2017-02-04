@@ -90,13 +90,12 @@ class FrontPage2 extends React.Component{
   }
 
   render() {
-
     var entertainment = this._getTitleAndLink( 1);
     var world = this._getTitleAndLink(2);
     var technology = this._getTitleAndLink(3);
     return (
       <div>
-        <HeadLine headline = "This is front page"/>
+        <HeadLine headline = "Categories"/>
         <section className="row">
           <div className ='col-md-6'>
             <h2>Entertainment</h2>
