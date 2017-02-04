@@ -43,22 +43,23 @@ class FrontPage2 extends React.Component{
       },
       data:"{body}",
       success :(result)=>{
-        console.log(result.length + "  --"+result);
-        console.log("1" + result[0]);
+        var json = JSON.parse(result);
+        console.log(json.length + "  --"+json);
+        console.log("1" + json[0]);
         var e = [] ;
         var w = [] ;
         var t = [] ;
         this.setState({head:result[0].title});
-        for (var i = 0; i<result.length; i++){
+        for (var i = 0; i<json.length; i++){
             var each = {
               id : i ,
-              source: result[i].source ,
-              author : result[i].author,
-              title : result[i].title,
-              description : result[i].description,
-              url : result[i].url,
-              urlToImage : result[i].urlToImage,
-              publishedAt: result[i].publishedAt
+              source: json[i].source ,
+              author : json[i].author,
+              title : json[i].title,
+              description : json[i].description,
+              url : json[i].url,
+              urlToImage : json[i].urlToImage,
+              publishedAt: json[i].publishedAt
             };
             if( each.source === "google-news"){
               w.push(each);
