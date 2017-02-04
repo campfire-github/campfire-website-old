@@ -21,6 +21,17 @@ class FrontPage2 extends React.Component{
     this._fetchNews();
   }
 
+  componentDidMount(){
+    console.log("refreshing news");
+    this._timer = setInterval(
+                  ()=>this._fetchNews(),
+                  600000);
+    }
+
+    componentWillUnmount(){ // memory leak solving
+      clearInterval(this._timer);
+    }
+
   _fetchNews(){
     console.log('fetching news')
     var urllink = "http://www.campfire.news/api/v1/newsnow";
