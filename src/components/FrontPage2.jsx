@@ -44,14 +44,12 @@ class FrontPage2 extends React.Component{
       data:"{body}",
       success :(result)=>{
         var json = JSON.parse(result);
-        console.log(json.length + "  --"+json);
-        console.log("1" + json[0]);
         var e = [] ;
         var w = [] ;
         var t = [] ;
         this.setState({head:result[0].title});
         for (var i = 0; i<json.length; i++){
-            var each = {
+      /*      var each = {
               id : i ,
               source: json[i].source ,
               author : json[i].author,
@@ -60,7 +58,9 @@ class FrontPage2 extends React.Component{
               url : json[i].url,
               urlToImage : json[i].urlToImage,
               publishedAt: json[i].publishedAt
-            };
+            };*/
+            var each = json[i] ;
+            each.id = i ; 
             if( each.source === "google-news"){
               w.push(each);
             }else if (each.source === "techcrunch"){
