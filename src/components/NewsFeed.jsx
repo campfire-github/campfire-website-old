@@ -28,6 +28,8 @@ class NewsFeed extends React.Component {
       success :(result)=>{
         var json = JSON.parse(result);
         var array = [] ;
+        console.log("log "+json);
+        console.log("key"+Object.keys(json));
       //  console.log ( result.length + "size ");
         this.setState({head:json[0].title});
         //console.log("head "+result.articles[0].title);
