@@ -62,7 +62,6 @@ class FrontPage2 extends React.Component{
             };
             */
             var each = json[i] ;
-            each.id = i ;
             if( each.source === "google-news"){
               w.push(each);
             }else if (each.source === "techcrunch"){
@@ -89,7 +88,7 @@ class FrontPage2 extends React.Component{
     }
     return array.map((each)=>{
       return (
-        <Title title={each.title} url={each.url} key={each.id}></Title>
+        <Title title={each.title} url={each.url} key={each.url}></Title>
       )
     });
 
