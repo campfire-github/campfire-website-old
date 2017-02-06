@@ -31,7 +31,7 @@ class NewsFeed extends React.Component {
         this.setState({head:result.articles[0].title});
         console.log("head "+result.articles[0].title);
         for (var i = 0; i<result.articles.length; i++){
-            var each = {
+            /*var each = {
               id : i ,
               author : result.articles[i].author,
               title : result.articles[i].title,
@@ -39,7 +39,8 @@ class NewsFeed extends React.Component {
               url : result.articles[i].url,
               urlToImage : result.articles[i].urlToImage,
               publishedAt: result.articles[i].publishedAt
-            };
+            };*/
+            var each = result.articles[i] ;
             array.push(each);
         }
         console.log ( "this array "+ array.length);
@@ -68,7 +69,7 @@ class NewsFeed extends React.Component {
     console.log("get all ");
     return this.state.all.map((each)=>{
       return(
-        <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.id}></Grid>
+        <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.url}></Grid>
       );
     });
   }
@@ -84,7 +85,7 @@ class NewsFeed extends React.Component {
         <section className="row">
           {allnews}
         </section>
-        
+
         <FrontPage2></FrontPage2>
       </div>
     )
