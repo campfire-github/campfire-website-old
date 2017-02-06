@@ -82,7 +82,7 @@ var requestLoop = setInterval( function(){
     //*/
   }
 
-}, 1000000);
+}, 10000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
