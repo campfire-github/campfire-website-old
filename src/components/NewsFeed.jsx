@@ -32,16 +32,16 @@ class NewsFeed extends React.Component {
         this.setState({head:json[0].title});
         //console.log("head "+result.articles[0].title);
         for (var i = 0; i<10; i++){
-            /*var each = {
-              id : i ,
-              author : result.articles[i].author,
-              title : result.articles[i].title,
-              description : result.articles[i].description,
-              url : result.articles[i].url,
-              urlToImage : result.articles[i].urlToImage,
-              publishedAt: result.articles[i].publishedAt
-            };*/
-            var each = json[i] ;
+            var each = {
+              author : json[i].author,
+              title : json[i].title,
+              description : json[i].description,
+              url : json[i].url,
+              urlToImage : json[i].urlToImage,
+              publishedAt: json[i].publishedAt
+            };
+            //*/
+
             array.push(each);
         }
         console.log ( "this array "+ array.length);
