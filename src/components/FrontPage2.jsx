@@ -62,11 +62,11 @@ class FrontPage2 extends React.Component{
             };
             */
             if( json[i].source === "google-news"){
-              w.push(each);
+              w.push(json[i]);
             }else if (json[i] .source === "techcrunch"){
-              t.push(each);
+              t.push(json[i]);
             }else if(json[i] .source === "entertainment-weekly"){
-              e.push(each);
+              e.push(json[i]);
             }
         }
         this.setState({world:w});
