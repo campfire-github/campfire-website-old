@@ -28,8 +28,8 @@ class NewsFeed extends React.Component {
       success :(result)=>{
         var json = JSON.parse(result);
         var array = [] ;
-        console.log("log "+json);
-        console.log("key"+Object.keys(json));
+        console.log("log "+json[0]);
+        console.log("key"+Object.keys(json[0]));
       //  console.log ( result.length + "size ");
         this.setState({head:json[0].title});
         //console.log("head "+result.articles[0].title);
@@ -43,7 +43,7 @@ class NewsFeed extends React.Component {
               publishedAt: json[i].publishedAt
             };
             //*/
-            console.log ( "img url "+ each.urlToImage.toString() );
+          
             array.push(each);
         }
         console.log ( "this array "+ array.length);
