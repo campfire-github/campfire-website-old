@@ -17,7 +17,7 @@ class NewsFeed extends React.Component {
 
   _fetchNews() {
     console.log('fetching news')
-    var urllink = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=a4e9c4eb35084632a61272444aad8afb';
+    var urllink = 'http://www.campfire.news/api/v1/newsnow';
     jQuery.ajax({
       method:'GET',
       url: urllink,
@@ -26,11 +26,12 @@ class NewsFeed extends React.Component {
       },
       data:"{body}",
       success :(result)=>{
+        var json = JSON.parse(result);
         var array = [] ;
-        console.log ( result.length + "size ");
-        this.setState({head:result.articles[0].title});
-        console.log("head "+result.articles[0].title);
-        for (var i = 0; i<result.articles.length; i++){
+      //  console.log ( result.length + "size ");
+        this.setState({head:json[0].title});
+        //console.log("head "+result.articles[0].title);
+        for (var i = 0; i<10; i++){
             /*var each = {
               id : i ,
               author : result.articles[i].author,
@@ -40,8 +41,8 @@ class NewsFeed extends React.Component {
               urlToImage : result.articles[i].urlToImage,
               publishedAt: result.articles[i].publishedAt
             };*/
-            var each = result.articles[i] ;
-            array.push(each);
+          //  var each = json[i] ;
+            array.push(json[i]);
         }
         console.log ( "this array "+ array.length);
         this.setState({all:array});
