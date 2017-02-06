@@ -41,7 +41,7 @@ class NewsFeed extends React.Component {
               publishedAt: json[i].publishedAt
             };
             //*/
-            console.log ( "img url "+ each.urlToImage );
+            console.log ( "img url "+ JSON.stringify(each.urlToImage) );
             array.push(each);
         }
         console.log ( "this array "+ array.length);
