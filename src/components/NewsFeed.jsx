@@ -39,11 +39,11 @@ class NewsFeed extends React.Component {
               title : json[i].title,
               description : json[i].description,
               url : json[i].url,
-              urlToImage : json[i].urlToImage,
-              publishedAt: json[i].publishedAt
+              urlToImage : json[i].urltoimage,
+              publishedAt: json[i].publishedat
             };
             //*/
-          
+
             array.push(each);
         }
         console.log ( "this array "+ array.length);
