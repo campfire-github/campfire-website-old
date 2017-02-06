@@ -61,12 +61,11 @@ class FrontPage2 extends React.Component{
               publishedAt: json[i].publishedAt
             };
             */
-            var each = json[i] ;
-            if( each.source === "google-news"){
+            if( json[i].source === "google-news"){
               w.push(each);
-            }else if (each.source === "techcrunch"){
+            }else if (json[i] .source === "techcrunch"){
               t.push(each);
-            }else if(each.source === "entertainment-weekly"){
+            }else if(json[i] .source === "entertainment-weekly"){
               e.push(each);
             }
         }
