@@ -70,7 +70,7 @@ var requestLoop = setInterval( function(){
       if(!error && response.statusCode == 200){
            var json =JSON.parse(body);
            for (var i = 0 ; i < json.articles.length ;i++){
-             var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source)VALUES ($1,$2,$3,$4,$5,$6)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source]);
+             var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description)VALUES ($1,$2,$3,$4,$5,$6)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description]);
              query.on('err', function(err){
                console.log("CANT INSERT INTO NEWS TABLE " + err);
              });
@@ -82,7 +82,7 @@ var requestLoop = setInterval( function(){
     //*/
   }
 
-}, 10000000);
+}, 1000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
