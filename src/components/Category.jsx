@@ -10,7 +10,7 @@ class Category extends React.Component{
   }
 
   _getTitleAsLink() {
-    return all.map((each)=>{
+    return this.state.all.map((each)=>{
       return (
         <Title title={each.title} url={each.url} key={each.url}></Title>
       )
