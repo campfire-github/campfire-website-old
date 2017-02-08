@@ -80,13 +80,14 @@ class NewsFeed extends React.Component {
 //*/
   render() {
     console.log(this.state.all.length);
-    var allnews = this._getAllNews() ;
+  //  var allnews = this._getAllNews() ;
     var head = this.state.head ;
     return (
       <div>
         <HeadLine headline = {head}/>
+
         <section className="row">
-          {allnews}
+
         </section>
 
         <FrontPage2></FrontPage2>
