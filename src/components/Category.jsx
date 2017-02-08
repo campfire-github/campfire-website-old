@@ -25,6 +25,17 @@ class Category extends React.Component{
     this.setState({all:this.props.arrays});
   }
 
+  componentDidMount(){
+    console.log("refreshing news");
+    this._timer = setInterval(
+                  ()=>this.setState({all:this.props.arrays}),
+                  1000);
+    }
+
+    componentWillUnmount(){ // memory leak solving
+      clearInterval(this._timer);
+    }
+
   render() {
 
     var title = this._getTitleAsLink() ;
