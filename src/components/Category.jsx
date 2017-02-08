@@ -19,7 +19,7 @@ class Category extends React.Component{
   }
 
   componentWillMount(){
-    this.setState({all:this.props.array});
+    this.setState({all:this.props.arrays});
   }
 
   render() {
