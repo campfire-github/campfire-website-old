@@ -47,9 +47,9 @@ class FrontPage2 extends React.Component{
       data:"{body}",
       success :(result)=>{
         var json = JSON.parse(result);
-        var e = [] ;
-        var w = [] ;
-        var t = [] ;
+        var e = [] ;//entertainment
+        var w = [] ;//world
+        var t = [] ;//technology
         var r = []; //reddit
         var s = []; //sport
         var g =[]; //gaming
@@ -125,30 +125,13 @@ class FrontPage2 extends React.Component{
       <div>
         <HeadLine headline = "Categories"/>
         <section className="row">
-          <div className ='category col-md-4'>
-            <h2>Entertainment</h2>
-            {entertainment}
-          </div>
-          <div className ='category col-md-4'>
-            <h2>World</h2>
-            {world}
-          </div>
-          <div className ='category col-md-4'>
-            <h2>Technology</h2>
-            {technology}
-          </div>
-          <div className ='category col-md-4'>
-            <h2>Reddit</h2>
-            {reddit}
-          </div>
-          <div className ='category col-md-4'>
-            <h2>Gaming</h2>
-            {gaming}
-          </div>
-          <div className ='category col-md-4'>
-            <h2>Sport</h2>
-            {sport}
-          </div>
+          <Category categoryname ="Entertainment" array={this.state.entertainment} ></Category>
+          <Category categoryname ="World"array={this.state.world} ></Category>
+          <Category categoryname ="Technology" array={this.state.technology} ></Category>
+          <Category categoryname ="Reddit" array={this.state.reddit} ></Category>
+          <Category categoryname ="Gaming" array={this.state.gaming} ></Category>
+          <Category categoryname ="Sport" array={this.state.sport} ></Category>
+
         </section>
       </div>
     )
