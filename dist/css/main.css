@@ -52,7 +52,7 @@ h2 a {
 }
 
 .category {
-  border-left: solid 1px grey ;
+  border-right: solid 2px grey ;
 }
 
 .title-div{
@@ -61,7 +61,7 @@ h2 a {
 }
 
 .title-h4{
-  margin-top: 0px ; 
+  margin-top: 0px ;
   text-decoration : none ;
   color: black ;
 }
