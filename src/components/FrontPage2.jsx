@@ -13,7 +13,10 @@ class FrontPage2 extends React.Component{
     this.state = {
       entertainment:[],
       world:[],
-      technology :[]
+      technology :[],
+      reddit : [],
+      gaming:[],
+      sport:[]
     }
   }
 
@@ -47,6 +50,9 @@ class FrontPage2 extends React.Component{
         var e = [] ;
         var w = [] ;
         var t = [] ;
+        var r = []; //reddit
+        var s = []; //sport
+        var g =[]; //gaming
         this.setState({head:result[0].title});
         for (var i = 0; i<json.length; i++){
             if( json[i].source === "google-news"){
@@ -56,10 +62,20 @@ class FrontPage2 extends React.Component{
             }else if(json[i] .source === "entertainment-weekly"){
               e.push(json[i]);
             }
+            else if(json[i] .source === "reddit-r-all"){
+              r.push(json[i]);
+            }else if(json[i] .source === "ign"){
+              g.push(json[i]);
+            }else if(json[i] .source === "espn"){
+              s.push(json[i]);
+            }
         }
         this.setState({world:w});
         this.setState({technology:t});
         this.setState({entertainment:e});
+        this.setState({reddit:r});
+        this.setState({sport:s});
+        this.setState({gaming:g}) ;
       }
     })
   }
@@ -72,7 +88,14 @@ class FrontPage2 extends React.Component{
       array = this.state.world;
     }else if(category===3){
       array = this.state.technology;
+    }else if(category===4){
+      array = this.state.reddit;
+    }else if(category===5){
+      array = this.state.gaming;
+    }else if(category===6){
+      array = this.state.sport;
     }
+
     return array.map((each)=>{
       return (
         <Title title={each.title} url={each.url} key={each.url}></Title>
@@ -95,6 +118,9 @@ class FrontPage2 extends React.Component{
     var entertainment = this._getTitleAndLink( 1);
     var world = this._getTitleAndLink(2);
     var technology = this._getTitleAndLink(3);
+    var reddit = this._getTitleAndLink(4);
+    var gaming = this._getTitleAndLink(5);
+    var sport = this._getTitleAndLink(6);
     return (
       <div>
         <HeadLine headline = "Categories"/>
@@ -110,6 +136,18 @@ class FrontPage2 extends React.Component{
           <div className ='category col-md-4'>
             <h2>Technology</h2>
             {technology}
+          </div>
+          <div className ='category col-md-4'>
+            <h2>Reddit</h2>
+            {reddit}
+          </div>
+          <div className ='category col-md-4'>
+            <h2>Gaming</h2>
+            {gaming}
+          </div>
+          <div className ='category col-md-4'>
+            <h2>Sport</h2>
+            {sport}
           </div>
         </section>
       </div>
