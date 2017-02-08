@@ -99,15 +99,15 @@ class FrontPage2 extends React.Component{
       <div>
         <HeadLine headline = "Categories"/>
         <section className="row">
-          <div className ='col-md-6'>
+          <div className ='category col-md-6'>
             <h2>Entertainment</h2>
             {entertainment}
           </div>
-          <div className ='col-md-6'>
+          <div className ='category col-md-6'>
             <h2>World</h2>
             {world}
           </div>
-          <div className ='col-md-6'>
+          <div className ='category col-md-6'>
             <h2>Technology</h2>
             {technology}
           </div>

@@ -37,6 +37,10 @@ h2 a {
   padding: 0px;
 }
 
+.category {
+  border-left: solid 1px grey ; 
+}
+
 .HeadLine {
   font-family: 'Roboto', sans-serif;
   text-align: center;
@@ -50,7 +54,7 @@ h2 a {
 }
 
 .title-div{
-  margin-top:  30px ;
+  margin-top:  0px ;
 }
 
 .title-h4{
