@@ -10,16 +10,13 @@ const bodyParser = require('body-parser')
 const pg = require('pg')
 const connectionString = process.env.DATABASE_URL
 const client = new pg.Client(connectionString)
-
 client.connect()
 //*/
 const port = process.env.PORT || 8080
 const app = express()
-
 const corsOptions = { origin: '*' }
 const url = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + process.env.API_KEY
-var urls = [
-            'https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=',
+var urls = ['https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=',
             'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' ,
            ]
@@ -56,19 +53,14 @@ app.get('/api/v1/newsnow', function(req,res){
   });
 });
 
-app.get('/api/deleteandinsert', function(req,res){
-  deleteAndInsert() ;
-});
-
 var deleteAndInsert = function(){
   var deletequery = client.query('DELETE FROM newsnow');
    deletequery.on('err', function(err){
      console.log("CANT DELETE" + err);
    });//*/
    for (var index = 0 ; index < urls.length ;index++ ){
-     ///*
      var url1 = urls[index] + process.env.API_KEY  ;
-     console.log(index+"-"+url1) ;
+     console.log(index+"-"+urls[index]) ;
      request(url1, (error, response, body) => {
        if(!error && response.statusCode == 200){
             var json =JSON.parse(body);
@@ -82,16 +74,12 @@ var deleteAndInsert = function(){
             console.log('error' + response.statusCode);
         }
      })
-     //*/
    }
 }
 
 var requestLoop = setInterval( function(){
   deleteAndInsert() ;
 }, 1000000);
-
-
-
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
@@ -100,6 +88,5 @@ app.get('*', (request, response) => {
 app.get('*', (request, response) => (response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))))
 
 
-var server  = app.listen(port)
-server.timeout = 300000;
+app.listen(port)
 console.log('Listening on port ' + port)
