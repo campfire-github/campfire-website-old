@@ -67,7 +67,7 @@ class FrontPage2 extends React.Component{
               r.push(json[i]);
             }else if(json[i] .source === "ign"){
               g.push(json[i]);
-            }else if(json[i] .source === "espn"){
+            }else if(json[i] .source === "bbc-sport"){
               s.push(json[i]);
             }
         }
