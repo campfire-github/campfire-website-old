@@ -10,10 +10,6 @@ class Category extends React.Component{
     }
   }
 
-  componentWillMount() {
-    this.setState({all:this.props.array});
-  }
-
   _getTitleAsLink() {
     return this.state.all.map((each)=>{
       return (
@@ -22,15 +18,17 @@ class Category extends React.Component{
     });
   }
 
-
+  componentWillMount(){
+    this.setState({all:this.props.array});
+  }
 
   render() {
 
     var title = this._getTitleAsLink() ;
-    console.log("TITLE " + title);
     console.log(this.props);
     return(
       <div className ='category col-md-4'>
+        <h2>"HERE"</h2>
         <h2>{this.props.categoryname}</h2>
         {title}
       </div>
