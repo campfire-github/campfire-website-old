@@ -37,9 +37,7 @@ h2 a {
   padding: 0px;
 }
 
-.category {
-  border-left: solid 1px grey ; 
-}
+
 
 .HeadLine {
   font-family: 'Roboto', sans-serif;
@@ -53,11 +51,17 @@ h2 a {
 
 }
 
+.category {
+  border-left: solid 1px grey ;
+}
+
 .title-div{
   margin-top:  0px ;
+
 }
 
 .title-h4{
+  margin-top: 0px ; 
   text-decoration : none ;
   color: black ;
 }
