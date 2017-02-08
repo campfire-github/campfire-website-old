@@ -24,6 +24,7 @@ class Category extends React.Component{
   render() {
 
     var title = this._getTitleAsLink() ;
+    console.log(this.props);
     return(
       <div className ='category col-md-4'>
         <h2>this.props.categoryname</h2>
