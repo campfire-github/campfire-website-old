@@ -10,6 +10,10 @@ class Category extends React.Component{
     }
   }
 
+  componentWillMount() {
+    this.setState({all:this.props.array});
+  }
+
   _getTitleAsLink() {
     return this.state.all.map((each)=>{
       return (
@@ -18,9 +22,7 @@ class Category extends React.Component{
     });
   }
 
-  componentWillMount() {
-    this.setState({all:this.props.array});
-  }
+
 
   render() {
 
