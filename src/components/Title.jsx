@@ -19,7 +19,7 @@ class Title extends React.Component{
     return (
       <div className = "col-md-12">
         <a href = {this.props.url}>
-          <h3>{this.props.title}</h3>
+          <h4>{this.props.title}</h4>
         </a>
       </div>
     )
