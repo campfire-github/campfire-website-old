@@ -1,4 +1,5 @@
 import React from 'react'  ;
+import Title from './Title.jsx'
 
 class Category extends React.Component{
 
