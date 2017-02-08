@@ -18,9 +18,10 @@ const app = express()
 
 const corsOptions = { origin: '*' }
 const url = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + process.env.API_KEY
-var urls = ['https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' ,
+var urls = [
             'https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=',
+            'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' ,
            ]
 app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -55,34 +56,42 @@ app.get('/api/v1/newsnow', function(req,res){
   });
 });
 
+app.get('/api/deleteandinsert', function(req,res){
+  deleteandinsert() ;  
+});
+
+var deleteAndInsert = function(){
+  var deletequery = client.query('DELETE FROM newsnow');
+   deletequery.on('err', function(err){
+     console.log("CANT DELETE" + err);
+   });//*/
+   for (var index = 0 ; index < urls.length ;index++ ){
+     ///*
+     var url1 = urls[index] + process.env.API_KEY  ;
+     console.log(index+"-"+url1) ;
+     request(url1, (error, response, body) => {
+       if(!error && response.statusCode == 200){
+            var json =JSON.parse(body);
+            for (var i = 0 ; i < json.articles.length ;i++){
+              var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description)VALUES ($1,$2,$3,$4,$5,$6,$7)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description]);
+              query.on('err', function(err){
+                console.log("CANT INSERT INTO NEWS TABLE " + err);
+              });
+            }
+        }else{
+            console.log('error' + response.statusCode);
+        }
+     })
+     //*/
+   }
+}
 
 var requestLoop = setInterval( function(){
-///*
- var deletequery = client.query('DELETE FROM newsnow');
-  deletequery.on('err', function(err){
-    console.log("CANT DELETE" + err);
-  });//*/
-  for (var index = 0 ; index < urls.length ;index++ ){
-    ///*
-    var url1 = urls[index] + process.env.API_KEY  ;
-    console.log(index+"-"+url1) ;
-    request(url1, (error, response, body) => {
-      if(!error && response.statusCode == 200){
-           var json =JSON.parse(body);
-           for (var i = 0 ; i < json.articles.length ;i++){
-             var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description)VALUES ($1,$2,$3,$4,$5,$6,$7)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description]);
-             query.on('err', function(err){
-               console.log("CANT INSERT INTO NEWS TABLE " + err);
-             });
-           }
-       }else{
-           console.log('error' + response.statusCode);
-       }
-    })
-    //*/
-  }
-
+  deleteAndInsert() ;
 }, 1000000);
+
+
+
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
