@@ -48,6 +48,10 @@ h2 a {
   height:  350 ;
 
 }
+.title{
+  text-decoration : none ;
+  color: black ; 
+}
 
 iframe {
   border: none;
