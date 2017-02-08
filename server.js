@@ -100,5 +100,6 @@ app.get('*', (request, response) => {
 app.get('*', (request, response) => (response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))))
 
 
-app.listen(port)
+var server  = app.listen(port)
+server.timeout = 300000;
 console.log('Listening on port ' + port)
