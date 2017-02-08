@@ -120,7 +120,7 @@ class FrontPage2 extends React.Component{
     var technology = this._getTitleAndLink(3);
     var reddit = this._getTitleAndLink(4);
     var gaming = this._getTitleAndLink(5);
-    var sport = this._getTitleAndLink(6);
+    var sport = this._getTitleAndLink(6); //
     return (
       <div>
         <HeadLine headline = "Categories"/>
