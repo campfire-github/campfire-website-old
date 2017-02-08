@@ -17,9 +17,12 @@ class Category extends React.Component{
     });
   }
 
+  componentWillMount(){
+    this.setState({all:this.props.array});
+  }
 
   render() {
-    this.setState({all:this.props.array});
+
     var title = this._getTitleAsLink() ;
     return(
       <div className ='category col-md-4'>
