@@ -57,7 +57,7 @@ app.get('/api/v1/newsnow', function(req,res){
 });
 
 app.get('/api/deleteandinsert', function(req,res){
-  deleteandinsert() ;  
+  deleteAndInsert() ;
 });
 
 var deleteAndInsert = function(){
