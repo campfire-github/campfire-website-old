@@ -135,6 +135,7 @@ class FrontPage2 extends React.Component{
   }
 
   render() {
+    /*
     var entertainment = this._getTitleAndLink( 1);
     var world = this._getTitleAndLink(2);
     var technology = this._getTitleAndLink(3);
@@ -143,7 +144,7 @@ class FrontPage2 extends React.Component{
     var sport = this._getTitleAndLink(6); //
     var nationalgeo = this._getTitleAndLink(7);
     var hackernews = this._getTitleAndLink(8);
-    var mtvnews = this._getTitleAndLink(9);
+    var mtvnews = this._getTitleAndLink(9);*/
     return (
       <div>
         <HeadLine headline = "Categories"/>
@@ -159,7 +160,7 @@ class FrontPage2 extends React.Component{
         </section>
         <section className="row">
 
-          
+
         </section>
 
       </div>
