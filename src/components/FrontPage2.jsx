@@ -15,7 +15,7 @@ class FrontPage2 extends React.Component{
       entertainment:[],
       world:[],
       technology :[],
-      reddit : [],
+      time : [],
       gaming:[],
       sport:[]
     }
@@ -51,7 +51,7 @@ class FrontPage2 extends React.Component{
         var e = [] ;//entertainment
         var w = [] ;//world
         var t = [] ;//technology
-        var r = []; //reddit
+        var ti = []; //reddit
         var s = []; //sport
         var g =[]; //gaming
         this.setState({head:result[0].title});
@@ -62,8 +62,8 @@ class FrontPage2 extends React.Component{
               t.push(json[i]);
             }else if(json[i] .source === "entertainment-weekly"){
               e.push(json[i]);
-            }else if(json[i] .source === "//reddit-r-all"){
-              r.push(json[i]);
+            }else if(json[i] .source === "time"){
+              ti.push(json[i]);
             }else if(json[i] .source === "ign"){
               g.push(json[i]);
             }else if(json[i] .source === "bbc-sport"){
@@ -73,7 +73,7 @@ class FrontPage2 extends React.Component{
         this.setState({world:w});
         this.setState({technology:t});
         this.setState({entertainment:e});
-        this.setState({reddit:r});
+        this.setState({time:ti});
         this.setState({sport:s});
         this.setState({gaming:g}) ;
       }
@@ -89,7 +89,7 @@ class FrontPage2 extends React.Component{
     }else if(category===3){
       array = this.state.technology;
     }else if(category===4){
-      array = this.state.reddit;
+      array = this.state.time;
     }else if(category===5){
       array = this.state.gaming;
     }else if(category===6){
@@ -116,7 +116,7 @@ class FrontPage2 extends React.Component{
     var entertainment = this._getTitleAndLink( 1);
     var world = this._getTitleAndLink(2);
     var technology = this._getTitleAndLink(3);
-    var reddit = this._getTitleAndLink(4);
+    var time = this._getTitleAndLink(4);
     var gaming = this._getTitleAndLink(5);
     var sport = this._getTitleAndLink(6); //
     return (
@@ -126,7 +126,7 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Entertainment" arrays={this.state.entertainment} ></Category>
           <Category categoryname ="World" arrays={this.state.world} ></Category>
           <Category categoryname ="Technology" arrays={this.state.technology} ></Category>
-          <Category categoryname ="Reddit" arrays={this.state.reddit} ></Category>
+          <Category categoryname ="Time" arrays={this.state.reddit} ></Category>
           <Category categoryname ="Gaming" arrays={this.state.gaming} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
         </section>
