@@ -17,7 +17,10 @@ class FrontPage2 extends React.Component{
       technology :[],
       time : [],
       gaming:[],
-      sport:[]
+      sport:[],
+      nationalGeographic:[],
+      hackerNews:[],
+      mtvNews:[]
     }
   }
 
@@ -54,6 +57,9 @@ class FrontPage2 extends React.Component{
         var ti = []; //reddit
         var s = []; //sport
         var g =[]; //gaming
+        var geo = [];//national-geographic
+        var hacker = []; // hacker-news
+        var mtv = [];//mtv-news
         this.setState({head:result[0].title});
         for (var i = 0; i<json.length; i++){
             if( json[i].source === "google-news"){
@@ -68,6 +74,12 @@ class FrontPage2 extends React.Component{
               g.push(json[i]);
             }else if(json[i] .source === "bbc-sport"){
               s.push(json[i]);
+            }else if(json[i] .source === "national-geographic"){
+              geo.push(json[i]);
+            }else if(json[i] .source === "hacker-news"){
+              hacker.push(json[i]);
+            }else if(json[i] .source === "mtv-news"){
+              mtv.push(json[i]);
             }
         }
         this.setState({world:w});
@@ -76,6 +88,9 @@ class FrontPage2 extends React.Component{
         this.setState({time:ti});
         this.setState({sport:s});
         this.setState({gaming:g}) ;
+        this.setState({hackerNews:hacker});
+        this.setState({nationalGeographic:geo});
+        this.setState({mtvNews:mtv});
       }
     })
   }
@@ -94,7 +109,14 @@ class FrontPage2 extends React.Component{
       array = this.state.gaming;
     }else if(category===6){
       array = this.state.sport;
+    }else if(category===7){
+      array = this.state.nationalGeographic;
+    }else if(category===8){
+      array = this.state.hackerNews;
+    }else if(category===9){
+      array = this.state.mtvNews;
     }
+
     return array.map((each)=>{
       return (
         <Title title={each.title} url={each.url} key={each.url}></Title>
@@ -119,6 +141,9 @@ class FrontPage2 extends React.Component{
     var time = this._getTitleAndLink(4);
     var gaming = this._getTitleAndLink(5);
     var sport = this._getTitleAndLink(6); //
+    var nationalgeo = this._getTitleAndLink(7);
+    var hackernews = this._getTitleAndLink(8);
+    var mtvnews = this._getTitleAndLink(9);
     return (
       <div>
         <HeadLine headline = "Categories"/>
@@ -131,6 +156,11 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Time" arrays={this.state.time} ></Category>
           <Category categoryname ="Gaming" arrays={this.state.gaming} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
+        </section>
+        <section className="row">
+          <Category categoryname ="National-geographic" arrays={this.state.nationalGeographic} ></Category>
+          <Category categoryname ="Hacker-News" arrays={this.state.hackerNews} ></Category>
+          <Category categoryname ="Music" arrays={this.state.mtvnews} ></Category>
         </section>
 
       </div>

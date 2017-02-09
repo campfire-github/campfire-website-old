@@ -2,7 +2,6 @@ import React from 'react'  ;
 import Title from './Title.jsx'
 
 class Category extends React.Component{
-
   constructor(){
     super() ;
     this.state = {
@@ -11,7 +10,6 @@ class Category extends React.Component{
   }
 
   _getTitleAsLink() {
-
     var a = this.state.all ;
     console.log("a" + a );
     return a.map((each)=>{
@@ -37,7 +35,6 @@ class Category extends React.Component{
     }
 
   render() {
-
     var title = this._getTitleAsLink() ;
     console.log(this.props);
     return(
@@ -45,13 +42,8 @@ class Category extends React.Component{
         <h2>{this.props.categoryname}</h2>
         {title}
       </div>
-
     )
-
-
   }
-
-
 
 }
 export default Category ;
