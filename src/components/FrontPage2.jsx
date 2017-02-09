@@ -126,7 +126,7 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Entertainment" arrays={this.state.entertainment} ></Category>
           <Category categoryname ="World" arrays={this.state.world} ></Category>
           <Category categoryname ="Technology" arrays={this.state.technology} ></Category>
-          <Category categoryname ="Time" arrays={this.state.reddit} ></Category>
+          <Category categoryname ="Time" arrays={this.state.time} ></Category>
           <Category categoryname ="Gaming" arrays={this.state.gaming} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
         </section>
