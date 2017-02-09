@@ -158,8 +158,7 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
         </section>
         <section className="row">
-          <Category categoryname ="National-geographic" arrays={this.state.nationalGeographic} ></Category>
-          
+        
           <Category categoryname ="Music" arrays={this.state.mtvnews} ></Category>
         </section>
 
