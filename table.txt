@@ -8,3 +8,6 @@
     source VARCHAR
 
   );
+
+
+INSERT INTO newsnow (author,title,url,urlToImage,source,description)VALUES ('cseng','Is Jason gay?','https://www.facebook.com/jasonveng','www','entertainment-weekly','Haa gay')

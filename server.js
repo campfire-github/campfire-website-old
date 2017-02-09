@@ -21,7 +21,7 @@ var urls = ['https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=
             'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' ,
             'https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=ign&sortBy=latest&apiKey=',
-            'https://newsapi.org/v1/articles?source=time&sortBy=latest&apiKey='
+            'https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey='
 
            ]
 app.use(cors(corsOptions))
