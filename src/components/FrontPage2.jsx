@@ -62,8 +62,7 @@ class FrontPage2 extends React.Component{
               t.push(json[i]);
             }else if(json[i] .source === "entertainment-weekly"){
               e.push(json[i]);
-            }
-            else if(json[i] .source === "reddit-r-all"){
+            }else if(json[i] .source === "reddit-r-all"){
               r.push(json[i]);
             }else if(json[i] .source === "ign"){
               g.push(json[i]);
@@ -96,13 +95,11 @@ class FrontPage2 extends React.Component{
     }else if(category===6){
       array = this.state.sport;
     }
-
     return array.map((each)=>{
       return (
         <Title title={each.title} url={each.url} key={each.url}></Title>
       )
     });
-
   }
 
   _technologyLinkClick() {
@@ -132,11 +129,9 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Reddit" arrays={this.state.reddit} ></Category>
           <Category categoryname ="Gaming" arrays={this.state.gaming} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
-
         </section>
       </div>
     )
   }
-//
 }
 export default FrontPage2 ;

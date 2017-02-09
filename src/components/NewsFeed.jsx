@@ -6,7 +6,6 @@ import FrontPage2 from './FrontPage2.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 
 class NewsFeed extends React.Component {
-///*
   constructor()  {
     super() ;
     this.state = {
@@ -30,9 +29,7 @@ class NewsFeed extends React.Component {
         var array = [] ;
         console.log("log "+json[0]);
         console.log("key"+Object.keys(json[0]));
-      //  console.log ( result.length + "size ");
         this.setState({head:json[0].title});
-        //console.log("head "+result.articles[0].title);
         for (var i = 0; i<10; i++){
             var each = {
               author : json[i].author,
@@ -42,8 +39,6 @@ class NewsFeed extends React.Component {
               urlToImage : json[i].urltoimage,
               publishedAt: json[i].publishedat
             };
-            //*/
-
             array.push(each);
         }
         console.log ( "this array "+ array.length);
@@ -57,16 +52,9 @@ class NewsFeed extends React.Component {
     this._fetchNews();
   }
 
-  /*
-  componentDidMount(){
-    this._timer = setInterval(
-                  ()=>this._fetchNews(),
-                  500000);
-    }
-*/
-    componentWillUnmount(){ // memory leak solving
+  componentWillUnmount(){ // memory leak solving
       clearInterval(this._timer);
-    }
+  }
 
   _getAllNews() {
     console.log("get all ");
@@ -77,19 +65,13 @@ class NewsFeed extends React.Component {
     });
   }
 
-//*/
   render() {
     console.log(this.state.all.length);
-  //  var allnews = this._getAllNews() ;
     var head = this.state.head ;
     return (
       <div>
         <HeadLine headline = {head}/>
-
-        <section className="row">
-
-        </section>
-
+        <section className="row"></section>
         <FrontPage2></FrontPage2>
       </div>
     )

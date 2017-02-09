@@ -53,7 +53,8 @@ h2 a {
 
 .category {
   border-right: solid 2px grey ;
-  margin-top: 1px ; 
+  margin-top: 3px ;
+  background-color: #ccd5e5 ;
 }
 
 .title-div{
