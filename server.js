@@ -65,6 +65,7 @@ var weatherRequest = function(){
   const fivedayforcast = "http://api.openweathermap.org/data/2.5/forecast?q=wellington,nz&mode=json&units=metric&APPID=440e3d0ee33a977c5e2fff6bc12448ee";
   request(fivedayforcast, (error, response, body) => {
     if(!error && response.statusCode == 200){
+        console.log("weather " + body);
         const cityname = body.city.name ;
         const cityid = body.city.id ;
         const countryname = body.country ;
