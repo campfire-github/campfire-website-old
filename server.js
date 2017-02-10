@@ -92,7 +92,7 @@ var weatherRequest = function(){
 }
 
 var weatherloop = setInterval( function(){
-  weatherRequest() ;
+  weatherRequest() ; // 
 }, 80000);
 
 var deleteAndInsert = function(){
