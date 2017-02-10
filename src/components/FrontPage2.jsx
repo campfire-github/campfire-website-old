@@ -147,7 +147,6 @@ class FrontPage2 extends React.Component{
     var mtvnews = this._getTitleAndLink(9);*/
     return (
       <div>
-        <HeadLine headline = "Categories"/>
         <section className="row">
           <Category categoryname ="World" arrays={this.state.world} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
@@ -163,10 +162,7 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Nation-Geographic" arrays={this.state.nationalGeographic} ></Category>
           <Category categoryname ="Hacker-News" arrays={this.state.hackerNews} ></Category>
         </section>
-        <section className="row">
-
-
-        </section>
+        
 
       </div>
     )
