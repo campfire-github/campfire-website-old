@@ -60,6 +60,41 @@ app.get('/api/v1/newsnow', function(req,res){
   });
 });
 
+var weatherRequest = function(){
+  const weatherurl = "http://api.openweathermap.org/data/2.5/weather?q=wellington,nz&units=metric&APPID=440e3d0ee33a977c5e2fff6bc12448ee";
+  const fivedayforcast = "http://api.openweathermap.org/data/2.5/forecast?q=wellington,nz&mode=json&units=metric&APPID=440e3d0ee33a977c5e2fff6bc12448ee";
+  request(url1, (error, response, body) => {
+    if(!error && response.statusCode == 200){
+        const cityname = body.city.name ;
+        const cityid = body.city.id ;
+        const countryname = body.country ;
+        for ( var i=0; i<body.list.length ;i++ ){
+          var each = {
+            id : cityid ,
+            city : cityname ,
+            country: country,
+            temp: body.list[i].main.temp,
+            description :body.list[i].weather.description,
+            icon : body.list[i].weather.icon,
+            dt: body.list[i].dt,
+            dtText : body.list[i].dt_txt
+          }
+          var query = client.query('insert into weather (cityid,name,country,temp,description,icon,dt,dt_text ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',
+                                    [each.id,each.city,each.country,each.temp,each.description,each.icon,each.dt,each.dtText]);
+          query.on('err',function(err){
+              console.log("CANT INSERT INTO weather " + err);
+          })
+        }
+     }else{
+         console.log('error' + response.statusCode);
+     }
+  })
+}
+
+var weatherloop = setInterval( function(){
+  weatherRequest() ;
+}, 80000);
+
 var deleteAndInsert = function(){
   var deletequery = client.query('DELETE FROM newsnow');
    deletequery.on('err', function(err){

@@ -11,3 +11,17 @@
 
 
 INSERT INTO newsnow (author,title,url,urlToImage,source,description)VALUES ('cseng','Is Jason gay?','https://www.facebook.com/jasonveng','www','entertainment-weekly','Haa gay')
+
+
+  CREATE TABLE weather(
+    cityid INTEGER PRIMARY KEY ,
+    name VARCHAR ,
+    country VARCHAR ,
+    dt INTEGER ,
+    temp DECIMAL,
+    description VARCHAR ,
+    icon VARCHAR ,
+    wind DECIMAL,
+    dt_text DATE
+
+  );
