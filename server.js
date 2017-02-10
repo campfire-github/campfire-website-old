@@ -66,19 +66,20 @@ var weatherRequest = function(){
   request(fivedayforcast, (error, response, body) => {
     if(!error && response.statusCode == 200){
         console.log("weather " + body);
-        const cityname = body.city.name ;
-        const cityid = body.city.id ;
-        const countryname = body.country ;
-        for ( var i=0; i<body.list.length ;i++ ){
+        var json = JSON.parse(body);
+        const cityname = json.city.name ;
+        const cityid = json.city.id ;
+        const countryname = json.country ;
+        for ( var i=0; i<json.list.length ;i++ ){
           var each = {
             id : cityid ,
             city : cityname ,
             country: country,
-            temp: body.list[i].main.temp,
-            description :body.list[i].weather.description,
-            icon : body.list[i].weather.icon,
-            dt: body.list[i].dt,
-            dtText : body.list[i].dt_txt
+            temp: json.list[i].main.temp,
+            description :json.list[i].weather.description,
+            icon : json.list[i].weather.icon,
+            dt: json.list[i].dt,
+            dtText : json.list[i].dt_txt
           }
           var query = client.query('insert into weather (cityid,name,country,temp,description,icon,dt,dt_text ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',
                                     [each.id,each.city,each.country,each.temp,each.description,each.icon,each.dt,each.dtText]);
