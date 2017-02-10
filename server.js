@@ -61,6 +61,10 @@ app.get('/api/v1/newsnow', function(req,res){
 });
 
 var weatherRequest = function(){
+  var deletequery = client.query('DELETE FROM weather');
+   deletequery.on('err', function(err){
+     console.log("CANT DELETE" + err);
+   });
   const weatherurl = "http://api.openweathermap.org/data/2.5/weather?q=wellington,nz&units=metric&APPID=440e3d0ee33a977c5e2fff6bc12448ee";
   const fivedayforcast = "http://api.openweathermap.org/data/2.5/forecast?q=wellington,nz&mode=json&units=metric&APPID=440e3d0ee33a977c5e2fff6bc12448ee";
   request(fivedayforcast, (error, response, body) => {
@@ -95,7 +99,7 @@ var weatherRequest = function(){
 
 var weatherloop = setInterval( function(){
   weatherRequest() ; //
-}, 80000);
+}, 10800000); // every 3 hours 
 
 var deleteAndInsert = function(){
   var deletequery = client.query('DELETE FROM newsnow');
