@@ -74,7 +74,7 @@ var weatherRequest = function(){
           var each = {
             id : cityid ,
             city : cityname ,
-            country: country,
+            country: countryname,
             temp: json.list[i].main.temp,
             description :json.list[i].weather.description,
             icon : json.list[i].weather.icon,
