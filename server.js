@@ -76,8 +76,8 @@ var weatherRequest = function(){
             city : cityname ,
             country: countryname,
             temp: json.list[i].main.temp,
-            description :json.list[i].weather.description,
-            icon : json.list[i].weather.icon,
+            description :json.list[i].weather[0].description,
+            icon : json.list[i].weather[0].icon,
             dt: json.list[i].dt,
             dtText : json.list[i].dt_txt
           }

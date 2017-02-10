@@ -14,7 +14,7 @@ INSERT INTO newsnow (author,title,url,urlToImage,source,description)VALUES ('cse
 
 
   CREATE TABLE weather(
-    cityid INTEGER PRIMARY KEY ,
+    cityid INTEGER ,
     name VARCHAR ,
     country VARCHAR ,
     dt INTEGER ,
@@ -22,6 +22,6 @@ INSERT INTO newsnow (author,title,url,urlToImage,source,description)VALUES ('cse
     description VARCHAR ,
     icon VARCHAR ,
     wind DECIMAL,
-    dt_text DATE
-
+    dt_text DATE,
+    PRIMARY KEY (cityid, dt)
   );
