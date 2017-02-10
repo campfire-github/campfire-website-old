@@ -81,7 +81,7 @@ var weatherRequest = function(){
             dt: json.list[i].dt,
             dtText : json.list[i].dt_txt
           }
-          var query = client.query('insert into weather (cityid,name,country,temp,description,icon,dt,dt_text ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',
+          var query = client.query('insert into weather (cityid,name,country,temp,description,icon,dt,dt_text ) VALUES($1,$2,$3,$4,$5,$6,$7,$8)',
                                     [each.id,each.city,each.country,each.temp,each.description,each.icon,each.dt,each.dtText]);
           query.on('err',function(err){
               console.log("CANT INSERT INTO weather " + err);
