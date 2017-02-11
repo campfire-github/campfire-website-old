@@ -1,5 +1,4 @@
 require('dotenv').config()
-
 const express = require('express')
 const path = require('path')
 const morgan = require('morgan')
@@ -60,6 +59,30 @@ app.get('/api/v1/newsnow', function(req,res){
   });
 });
 
+app.get('/api/v1/weather', function (req, res){
+  var toreturn = [ ] ;
+  var query = client.query ('SELECT * FROM weahter');
+  query.on('err',function(err){
+    console.log("CAN NOT GET ANYTHING FROM weather");
+    res.status(404)
+       .write('NOT FOUND');
+  });
+  query.on('row', function(result){
+    toreturn.push(result);
+  });
+  query.on('end', function(){
+    if(toreturn.length == 0){
+      res.status(200)
+      .write("OK BUT NO weather");
+    }else {
+      var json = JSON.stringify(toreturn);
+      res.write(json);
+    }
+    res.end() ;
+  });
+});
+
+
 var weatherRequest = function(){
   var deletequery = client.query('DELETE FROM weather');
    deletequery.on('err', function(err){
@@ -85,8 +108,7 @@ var weatherRequest = function(){
             dt: json.list[i].dt,
             dtText : json.list[i].dt_txt
           }
-          var query = client.query('insert into weather (cityid,name,country,temp,description,icon,dt,dt_text ) VALUES($1,$2,$3,$4,$5,$6,$7,$8)',
-                                    [each.id,each.city,each.country,each.temp,each.description,each.icon,each.dt,each.dtText]);
+          var query = client.query('insert into weather (cityid,name,country,temp,description,icon,dt,dt_text ) VALUES($1,$2,$3,$4,$5,$6,$7,$8)',[each.id,each.city,each.country,each.temp,each.description,each.icon,each.dt,each.dtText]);
           query.on('err',function(err){
               console.log("CANT INSERT INTO weather " + err);
           })
@@ -99,7 +121,7 @@ var weatherRequest = function(){
 
 var weatherloop = setInterval( function(){
   weatherRequest() ; //
-}, 10800000); // every 3 hours 
+}, 10800000); // every 3 hours
 
 var deleteAndInsert = function(){
   var deletequery = client.query('DELETE FROM newsnow');

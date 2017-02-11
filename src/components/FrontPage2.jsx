@@ -32,7 +32,7 @@ class FrontPage2 extends React.Component{
     console.log("refreshing news");
     this._timer = setInterval(
                   ()=>this._fetchNews(),
-                  600000);
+                  300000);
     }
 
     componentWillUnmount(){ // memory leak solving
@@ -95,34 +95,7 @@ class FrontPage2 extends React.Component{
     })
   }
 
-  _getTitleAndLink(category){
-    var array = [];
-    if(category ===1 ){
-      array = this.state.entertainment;
-    }else if(category===2){
-      array = this.state.world;
-    }else if(category===3){
-      array = this.state.technology;
-    }else if(category===4){
-      array = this.state.time;
-    }else if(category===5){
-      array = this.state.gaming;
-    }else if(category===6){
-      array = this.state.sport;
-    }else if(category===7){
-      array = this.state.nationalGeographic;
-    }else if(category===8){
-      array = this.state.hackerNews;
-    }else if(category===9){
-      array = this.state.mtvNews;
-    }
 
-    return array.map((each)=>{
-      return (
-        <Title title={each.title} url={each.url} key={each.url}></Title>
-      )
-    });
-  }
 
   _technologyLinkClick() {
     <Technology tech={this.state.technology}></Technology>
@@ -135,16 +108,7 @@ class FrontPage2 extends React.Component{
   }
 
   render() {
-    /*
-    var entertainment = this._getTitleAndLink( 1);
-    var world = this._getTitleAndLink(2);
-    var technology = this._getTitleAndLink(3);
-    var time = this._getTitleAndLink(4);
-    var gaming = this._getTitleAndLink(5);
-    var sport = this._getTitleAndLink(6); //
-    var nationalgeo = this._getTitleAndLink(7);
-    var hackernews = this._getTitleAndLink(8);
-    var mtvnews = this._getTitleAndLink(9);*/
+
     return (
       <div>
         <section className="row">
@@ -162,7 +126,7 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Nation-Geographic" arrays={this.state.nationalGeographic} ></Category>
           <Category categoryname ="Hacker-News" arrays={this.state.hackerNews} ></Category>
         </section>
-        
+
 
       </div>
     )
