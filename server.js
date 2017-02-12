@@ -61,7 +61,7 @@ app.get('/api/v1/newsnow', function(req,res){
 
 app.get('/api/v1/weather', function (req, res){
   var toreturn = [ ] ;
-  var query = client.query ('SELECT * FROM weahter');
+  var query = client.query ('SELECT * FROM weather');
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM weather");
     res.status(404)
