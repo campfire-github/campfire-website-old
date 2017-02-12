@@ -3,7 +3,10 @@ import React from 'react';
 
 class WeatherGrid extends React.Component{
   constructor() {
-    this.state = {}
+    super()  ;
+    this.state = {
+      all : []
+    };
   }
 
   render() {
