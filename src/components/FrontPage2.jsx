@@ -6,6 +6,7 @@ import HeadLine from './HeadLine.jsx';
 import Grid from './Grid.jsx';
 import Title from './Title.jsx'
 import Category from './Category.jsx'
+import Weather from './Weather.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js';
 
 class FrontPage2 extends React.Component{
