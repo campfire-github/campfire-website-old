@@ -2,6 +2,7 @@ import React from 'react'
 import HeadLine from './HeadLine.jsx'
 import Grid from './Grid.jsx'
 //import FrontPage from './FrontPage.jsx'
+import Weather from './Weather.jsx'
 import FrontPage2 from './FrontPage2.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 
