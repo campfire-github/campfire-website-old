@@ -11,6 +11,11 @@ class Weather extends React.Component{
     };
   }
 
+  componentWillMount() {
+    console.log ( "mounting")
+    this._fetch5dayforcast() ;
+  }
+
   _fetch5dayforcast() {
     var array = [] ;
     var urllink = "http://www.campfire.news/api/v1/weather";
@@ -45,7 +50,7 @@ class Weather extends React.Component{
   }
 
   render() {
-    this._fetch5dayforcast() ;
+    //this._fetch5dayforcast() ;
     var allweather = this._getWeather() ;
     return (
       <div>
