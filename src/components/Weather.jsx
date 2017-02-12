@@ -33,6 +33,7 @@ class Weather extends React.Component{
 
   _getWeather() {
     var a = this.state.all ;
+    console.log( "a---" + a  );
     console.log("a" + a );
     return a.map((each)=>{
       return (
