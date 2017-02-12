@@ -16,7 +16,7 @@ class WeatherGrid extends React.Component{
         <img className = "col-md-10 col-xs-10" src ={icon} ></img>
         <h2>{this.props.temp}</h2>
         <p className = "temp-p">{this.props.description}</p>
-        <p className = "temp-p">{this.props.wind}</p>
+        <p className = "tempdescription-p">{this.props.wind}</p>
       </div>
     )
   }

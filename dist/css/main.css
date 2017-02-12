@@ -41,8 +41,12 @@ h2 a {
   text-align: center;
 }
 
+.tempdescription-p{
+  text-align: center ;
+}
+
 .weather_grid{
-  border: solid grey ; 
+  border: solid grey ;
 }
 
 .HeadLine {
