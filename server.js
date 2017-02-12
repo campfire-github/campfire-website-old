@@ -76,6 +76,7 @@ app.get('/api/v1/weather', function (req, res){
       .write("OK BUT NO weather");
     }else {
       var json = JSON.stringify(toreturn);
+      console.log( "returning "+ toreturn);
       res.write(json);
     }
     res.end() ;
