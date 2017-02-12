@@ -27,8 +27,8 @@ class NewsFeed extends React.Component {
       success :(result)=>{
         var json = JSON.parse(result);
         var array = [] ;
-        console.log("log "+json[0]);
-        console.log("key"+Object.keys(json[0]));
+      //  console.log("log "+json[0]);
+      //  console.log("key"+Object.keys(json[0]));
         this.setState({head:json[0].title});
         for (var i = 0; i<10; i++){
             var each = {
@@ -43,7 +43,7 @@ class NewsFeed extends React.Component {
         }
         console.log ( "this array "+ array.length);
         this.setState({all:array});
-        console.log(result) ;
+      //  console.log(result) ;
       }
     })
   }
