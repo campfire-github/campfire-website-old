@@ -6,7 +6,7 @@ const Footer = () => (
     <footer className="campfire_footer">
       <p>&copy; 2017 Campfire Limited, all rights reserved. Campfire logo is trademarks and/or registered trademarks of Campfire Limited</p>
       <br></br>
-      powered by <Link href="https://newsapi.org/">NewsAPI.org</Link> and <Link href="https://openweathermap.org">NewsAPI.org</Link>
+      powered by <Link href="https://newsapi.org/">NewsAPI.org</Link> and <Link href="https://openweathermap.org">OpenWeatherMap.org</Link>
     </footer>
   </div>
 )
