@@ -6,10 +6,10 @@ const request = require('request')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 ///*
-// const pg = require('pg')
-// const connectionString = process.env.DATABASE_URL
-// const client = new pg.Client(connectionString)
-// client.connect()
+const pg = require('pg')
+const connectionString = process.env.DATABASE_URL
+const client = new pg.Client(connectionString)
+client.connect()
 //*/
 const port = process.env.PORT || 8080
 const app = express()
