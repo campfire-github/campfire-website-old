@@ -1,5 +1,4 @@
 import React from 'react'
-import HeadLine from './HeadLine.jsx'
 import Grid from './Grid.jsx'
 //import FrontPage from './FrontPage.jsx'
 import Weather from './Weather.jsx'
@@ -71,11 +70,10 @@ class NewsFeed extends React.Component {
     var head = this.state.head ;
     return (
       <div>
-        
+
         <section className ="row">
           <Weather></Weather>
         </section>
-        <HeadLine headline = {head}/>
         <FrontPage2></FrontPage2>
       </div>
     )

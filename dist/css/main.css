@@ -7,6 +7,10 @@ header {
   text-align: center;
 }
 
+.loadie {
+  z-index: 9999;
+}
+
 header h1 {
   font-family: threedventure;
   font-size: 50px;
@@ -18,7 +22,7 @@ header a {
 }
 
 header a:hover {
-  color: rgb(248, 0, 0);
+  color: #FF3C38;
   text-decoration: none;
 }
 
@@ -26,10 +30,20 @@ h2 a {
   color: black;
 }
 
+a {
+  color: #FFF275;
+}
+
+a:hover {
+  color: #FFF275;
+  text-decoration: underline;
+}
+
 .campfire_footer {
+  font-size: 20px;
   text-align: center;
   color: rgb(255, 255, 255);
-  background-color: rgb(0, 0, 0);
+  background-color: #FF3C38;
   padding: 0px;
 }
 

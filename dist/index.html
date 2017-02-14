@@ -4,14 +4,24 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Campfire News</title>
+
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery.loadie.min.js"></script>
+
   <link href="./favicon.ico" rel="icon">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="./css/normalize.css" rel="stylesheet">
+  <link href="./css/loadie.css" rel="stylesheet">
   <link href="./css/bootstrap.css" rel="stylesheet">
   <link href="./css/main.css" rel="stylesheet">
 </head>
 <body>
+  <script>
+  $('body').loadie()
+  console.log('loadie loaded')
+  </script>
   <div id="app"></div>
   <script src="./bundle.js"></script>
 </body>
