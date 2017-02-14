@@ -2,15 +2,16 @@
     author VARCHAR ,
     title VARCHAR NOT NULL ,
     description TEXT,
-    url TEXT PRIMARY KEY,
+    url TEXT ,
     urlToImage TEXT ,
     publishedAt DATE ,
-    source VARCHAR
+    source VARCHAR,
+    PRIMARY KEY (url ,source )
 
   );
 
 
-INSERT INTO newsnow (author,title,url,urlToImage,source,description)VALUES ('cseng','Is Jason gay?','https://www.facebook.com/jasonveng','www','entertainment-weekly','Haa gay')
+INSERT INTO newsnow (author,title,url,urlToImage,source,description)VALUES ('cseng','site under construction','https://www.facebook.com/jasonveng','www','world','Haa ?')
 
 
   CREATE TABLE weather(

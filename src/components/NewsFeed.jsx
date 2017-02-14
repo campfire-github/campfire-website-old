@@ -70,7 +70,7 @@ class NewsFeed extends React.Component {
     var head = this.state.head ;
     return (
       <div>
-
+        
         <section className ="row">
           <Weather></Weather>
         </section>
