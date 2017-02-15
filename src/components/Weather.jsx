@@ -31,7 +31,7 @@ class Weather extends React.Component{
       success :(result)=>{
         var json =JSON.parse(result);
 
-        for(var i =0 ; i<6 ;i++ ){
+        for(var i =0 ; i<5 ;i++ ){
             //var each = json[i];
             array.push(json[i]);
         }
