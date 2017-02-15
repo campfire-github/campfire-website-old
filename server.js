@@ -43,7 +43,7 @@ app.get('/api/v1/memorynewsnow', function(req,res){
   }
 });
 
-app.get('/api/v1/newsnow', function(req,res){ //790 ms -> 1000 ms 
+app.get('/api/v1/newsnow', function(req,res){ //790 ms -> 1000 ms
   var toreturn =  [] ;
   var query = client.query('SELECT * FROM newsnow');
   query.on('err',function(err){
@@ -161,11 +161,11 @@ var deleteAndInsertNewsnow = function(){
               });
             }
         }else{
-            temp.clear() ;
+            temp= [] ;
             console.log('error' + response.statusCode);
         }
         if(temp.length>0){
-          newsnow.clear();
+          newsnow= [] ;
           newsnow = temp ;
         }
      })
