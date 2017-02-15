@@ -39,10 +39,9 @@ class Weather extends React.Component{
       data:"{body}",
       success :(result)=>{
         console.log(result.toString() );
-      //  var json = JSON.parse(result);
         for(var i =0 ; i<6 ;i++ ){
             array.push(result[i]);
-            console.log(result[i]);
+            console.log(result[i].city);
         }
         this.setState({all:array});
       }
