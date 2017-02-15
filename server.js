@@ -35,7 +35,7 @@ app.get('/api/v1/news', (req, res) => (
   request(url, (error, response, body) => (!error && response.statusCode === 200 ? res.json(JSON.parse(body)) : console.log(error)))
 ))
 
-app.get('/api/v1/memorynewsnow'), function(req,res){
+app.get('/api/v1/memorynewsnow', function(req,res){
   if(newsnow.length>0 ){
     res.status(200).write(JSON.stringify(newsnow));
   }else {
