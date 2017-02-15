@@ -12,20 +12,21 @@ class Weather extends React.Component{
   }
 
   componentWillMount() {
-    console.log ( "mounting")
+    console.log ( "weather mounting");
     this._fetch5dayforcast() ;
   }
 
   componentDidMount(){
-    console.log("refreshing news");
+    console.log("refreshing weather");
     this._timer = setInterval(
                   ()=>this._fetch5dayforcast(),
                   30000);
     }
 
-    componentWillUnmount(){ // memory leak solving
-      clearInterval(this._timer);
-    }
+  componentWillUnmount(){ // memory leak solving
+    clearInterval(this._timer);
+  }
+
   _fetch5dayforcast() {
     var array = [] ;
     var urllink = "http://www.campfire.news/api/v1/weather";
@@ -50,9 +51,9 @@ class Weather extends React.Component{
     var a = this.state.all ;
     console.log("a" + a );
     return a.map((each)=>{
-      console.log("each   "+  each.icon + each.temp + each.description + each.wind + "+++" + Date()  );
+      //console.log("each   "+  each.icon + each.temp + each.description + each.wind + "+++" + Date()  );
       return (
-        <WeatherGrid icon={each.icon} temp={each.temp} description={each.description} wind={each.wind}></WeatherGrid>
+        <WeatherGrid temp={each.temp} icon={each.icon} description={each.description} wind={each.wind}></WeatherGrid>
       )
     });
 
