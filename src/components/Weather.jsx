@@ -38,7 +38,7 @@ class Weather extends React.Component{
       },
       data:"{body}",
       success :(result)=>{
-        console.log(result.length +"-length-"+result.toString() );
+        console.log(result.length +"-length-"+result.toString() +"--"+Object.keys(result[0]));
         for(var i =0 ; i<6 ;i++ ){
             array.push(result[i]);
             console.log ( result[i].cityid );
