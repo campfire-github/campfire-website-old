@@ -33,14 +33,16 @@ class Weather extends React.Component{
     jQuery.ajax({
       method:'GET',
       url: urllink,
-
+      beforeSend: function (xhrObj) {
+         xhrObj.setRequestHeader("Content-Type", "application/json");
+      },
       data:"{body}",
       success :(result)=>{
-        //console.log(result.length +"-length-"+result.toString() +"--"+Object.keys(result[0]));
-        var json = JSON.parse(result);
+        console.log(result.length +"-length-"+result.toString() +"--"+Object.keys(result[0]));
+        var json =JSON.parse(result);
         for(var i =0 ; i<6 ;i++ ){
             array.push(json[i]);
-          //  console.log ( json[i].cityid );
+          //  console.log ( result[i].cityid );
         }
         this.setState({all:array});
       }
