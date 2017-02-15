@@ -49,11 +49,13 @@ class Weather extends React.Component{
 
   _getWeather() {
   //  var a = this.state.all ;
-    //console.log("a" + a );
+    //
     var a = this.state.all ;
+
     return a.map((each)=>{
       return (
-        <WeatherGrid temp={each.temp} icon = {each.icon} description={each.description} wind={each.description}></WeatherGrid>
+        console.log("a" + each.temp +" "+ each.icon +" "+ each.description +" "+ each.wind );
+        <WeatherGrid temp={each.temp} icon = {each.icon} description={each.description} wind={each.wind}></WeatherGrid>
       )
     });
 
