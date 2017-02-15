@@ -38,8 +38,9 @@ class Weather extends React.Component{
       },
       data:"{body}",
       success :(result)=>{
-        console.log(result.length +"-length-"+result.toString() +"--"+Object.keys(result[0]));
+
         var json =JSON.parse(result);
+        console.log(json.length +"-length-"+json.toString() +"--"+Object.keys(json[0]));
         for(var i =0 ; i<6 ;i++ ){
             array.push(json[i]);
           //  console.log ( result[i].cityid );
@@ -54,7 +55,7 @@ class Weather extends React.Component{
     var a = this.state.all ;
     console.log( 'log a '+ a );
     return a.map((each)=>{
-
+      console.log("e  "+each.toString());
       return (
         <WeatherGrid temp={each.temp} icon = {each.icon} description={each.description} wind={each.wind}></WeatherGrid>
       )
