@@ -16,16 +16,7 @@ class Weather extends React.Component{
     this._fetch5dayforcast() ;
   }
 
-  componentDidMount(){
-    console.log("refreshing weather");
-    this._timer = setInterval(
-                  ()=>this._fetch5dayforcast(),
-                  30000);
-    }
 
-  componentWillUnmount(){ // memory leak solving
-    clearInterval(this._timer);
-  }
 
   _fetch5dayforcast() {
     var array = [] ;
@@ -38,14 +29,11 @@ class Weather extends React.Component{
       },
       data:"{body}",
       success :(result)=>{
-
         var json =JSON.parse(result);
-        console.log(json.length +"-length-"+json +"--"+Object.keys(json[0]));
-        console.log(json[0].toString()  + " --000" );
-        for(var i =0 ; i<6 ;i++ ){
-          console.log(json[i].toString()  + " --"+ i );
-            array.push(json[i]);
-          //  console.log ( result[i].cityid );
+
+        for(var i =0 ; i<json.length ;i++ ){
+            var each = json[i];
+            array.push(each);
         }
         this.setState({all:array});
       }
@@ -53,11 +41,8 @@ class Weather extends React.Component{
   }
 
   _getWeather() {
-
     var a = this.state.all ;
-    console.log( 'log a '+ a );
     return a.map((each)=>{
-      console.log("e  "+each.toString());
       return (
         <WeatherGrid temp={each.temp} icon = {each.icon} description={each.description} wind={each.wind}></WeatherGrid>
       )
