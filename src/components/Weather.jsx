@@ -41,7 +41,7 @@ class Weather extends React.Component{
         console.log(result.length +"-length-"+result.toString() );
         for(var i =0 ; i<6 ;i++ ){
             array.push(result[i]);
-            console.log(result[i].city);
+            console.log ( result[i].cityid );
         }
         this.setState({all:array});
       }
@@ -53,7 +53,7 @@ class Weather extends React.Component{
     var a = this.state.all ;
     console.log( 'log a '+ a );
     return a.map((each)=>{
-      console.log("a" + each.toString() );
+
       return (
         <WeatherGrid temp={each.temp} icon = {each.icon} description={each.description} wind={each.wind}></WeatherGrid>
       )
