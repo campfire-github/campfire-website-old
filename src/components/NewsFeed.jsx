@@ -49,7 +49,7 @@ class NewsFeed extends React.Component {
   }
 
   componentWillMount () {
-    this._fetchNews();
+    //this._fetchNews();
   }
 
   componentWillUnmount(){ // memory leak solving
@@ -66,8 +66,8 @@ class NewsFeed extends React.Component {
   }
 
   render() {
-    console.log(this.state.all.length);
-    var head = this.state.head ;
+    //console.log(this.state.all.length);
+    //var head = this.state.head ;
     return (
       <div>
         <FrontPage2></FrontPage2>
