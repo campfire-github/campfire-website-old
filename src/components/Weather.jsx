@@ -38,10 +38,11 @@ class Weather extends React.Component{
       },
       data:"{body}",
       success :(result)=>{
+        console.log(result.toString() );
       //  var json = JSON.parse(result);
         for(var i =0 ; i<6 ;i++ ){
             array.push(result[i]);
-            console.log(result[i].toString() );
+            console.log(result[i]);
         }
         this.setState({all:array});
       }
@@ -49,14 +50,11 @@ class Weather extends React.Component{
   }
 
   _getWeather() {
-  //  var a = this.state.all ;
-    //
-    var a = this.state.all ;
 
+    var a = this.state.all ;
     return a.map((each)=>{
       console.log("a" + each.temp +" "+ each.icon +" "+ each.description +" "+ each.wind );
       return (
-
         <WeatherGrid temp={each.temp} icon = {each.icon} description={each.description} wind={each.wind}></WeatherGrid>
       )
     });
