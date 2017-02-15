@@ -40,7 +40,7 @@ class Weather extends React.Component{
       success :(result)=>{
 
         var json =JSON.parse(result);
-        console.log(json.length +"-length-"+json.toString() +"--"+Object.keys(json[0]));
+        console.log(json.length +"-length-"+json +"--"+Object.keys(json[0]));
         console.log(json[0].toString()  + " --000" );
         for(var i =0 ; i<6 ;i++ ){
           console.log(json[i].toString()  + " --"+ i );
