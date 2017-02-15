@@ -130,7 +130,7 @@ var weatherRequest = function(){
 
 var weatherloop = setInterval( function(){
   weatherRequest() ; //
-}, 10800000); // every 3 hours
+}, 7500000); // every 2 hours 5 mn 
 
 var deleteAndInsertNewsnow = function(){
   var temp =[] ;
