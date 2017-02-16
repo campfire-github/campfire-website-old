@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from './Grid.jsx'
 //import FrontPage from './FrontPage.jsx'
-import Weather from './Weather.jsx'
+
 import FrontPage2 from './FrontPage2.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 
@@ -49,7 +49,7 @@ class NewsFeed extends React.Component {
   }
 
   componentWillMount () {
-    this._fetchNews();
+    //this._fetchNews();
   }
 
   componentWillUnmount(){ // memory leak solving
@@ -66,14 +66,10 @@ class NewsFeed extends React.Component {
   }
 
   render() {
-    console.log(this.state.all.length);
-    var head = this.state.head ;
+    //console.log(this.state.all.length);
+    //var head = this.state.head ;
     return (
       <div>
-
-        <section className ="row">
-          <Weather></Weather>
-        </section>
         <FrontPage2></FrontPage2>
       </div>
     )

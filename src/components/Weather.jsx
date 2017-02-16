@@ -12,9 +12,11 @@ class Weather extends React.Component{
   }
 
   componentWillMount() {
-    console.log ( "mounting")
+    console.log ( "weather mounting");
     this._fetch5dayforcast() ;
   }
+
+
 
   _fetch5dayforcast() {
     var array = [] ;
@@ -27,8 +29,10 @@ class Weather extends React.Component{
       },
       data:"{body}",
       success :(result)=>{
-        var json = JSON.parse(result);
-        for(var i =0 ; i<6 ;i++ ){
+        var json =JSON.parse(result);
+
+        for(var i =0 ; i<5 ;i++ ){
+            //var each = json[i];
             array.push(json[i]);
         }
         this.setState({all:array});
@@ -38,11 +42,9 @@ class Weather extends React.Component{
 
   _getWeather() {
     var a = this.state.all ;
-    console.log( "a---" + a  );
-    console.log("a" + a );
     return a.map((each)=>{
       return (
-        <WeatherGrid icon={each.icon} temp={each.temp} description={each.description} wind={each.wind}></WeatherGrid>
+        <WeatherGrid temp={each.temp} icon = {each.icon} description={each.description} wind={each.wind}></WeatherGrid>
       )
     });
 
@@ -50,7 +52,7 @@ class Weather extends React.Component{
   }
 
   render() {
-    //this._fetch5dayforcast() ;
+
     var allweather = this._getWeather() ;
     return (
       <div>

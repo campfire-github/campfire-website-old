@@ -24,19 +24,26 @@ var urls = ['https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=
             'https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=hacker-news&sortBy=latest&apiKey=',
             'https://newsapi.org/v1/articles?source=mtv-news&sortBy=latest&apiKey='
-
            ]
 app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
 app.use(express.static('dist'))
-
+var newsnow = [];
 app.get('/api/v1/news', (req, res) => (
   request(url, (error, response, body) => (!error && response.statusCode === 200 ? res.json(JSON.parse(body)) : console.log(error)))
 ))
 
-app.get('/api/v1/newsnow', function(req,res){
+app.get('/api/v1/memorynewsnow', function(req,res){
+  if(newsnow.length>0 ){
+    res.status(200).write(JSON.stringify(newsnow));
+  }else {
+    res.status(404).write('NO NEWS FOUND');
+  }
+});
+
+app.get('/api/v1/newsnow', function(req,res){ //790 ms -> 1000 ms
   var toreturn =  [] ;
   var query = client.query('SELECT * FROM newsnow');
   query.on('err',function(err){
@@ -123,34 +130,50 @@ var weatherRequest = function(){
 
 var weatherloop = setInterval( function(){
   weatherRequest() ; //
-}, 10800000); // every 3 hours
+}, 7500000); // every 2 hours 5 mn 
 
-var deleteAndInsert = function(){
+var deleteAndInsertNewsnow = function(){
+  var temp =[] ;
   var deletequery = client.query('DELETE FROM newsnow');
    deletequery.on('err', function(err){
      console.log("CANT DELETE" + err);
    });//*/
    for (var index = 0 ; index < urls.length ;index++ ){
      var url1 = urls[index] + process.env.API_KEY  ;
-     console.log(index+"-"+urls[index]) ;
+     //console.log(index+"-"+urls[index]) ;
      request(url1, (error, response, body) => {
        if(!error && response.statusCode == 200){
             var json =JSON.parse(body);
             for (var i = 0 ; i < json.articles.length ;i++){
+              var each ={
+                author: json.articles[i].author,
+                title: json.articles[i].title,
+                url:json.articles[i].url,
+                urlToImage:json.articles[i].urlToImage,
+                publishedAt:json.articles[i].publishedAt,
+                source:json.source,
+                description:json.articles[i].description
+              }
+              temp.push(each);
               var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description)VALUES ($1,$2,$3,$4,$5,$6,$7)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description]);
               query.on('err', function(err){
                 console.log("CANT INSERT INTO NEWS TABLE " + err);
               });
             }
         }else{
+            temp= [] ;
             console.log('error' + response.statusCode);
+        }
+        if(temp.length>0){
+          newsnow= [] ;
+          newsnow = temp ;
         }
      })
    }
 }
 
 var requestLoop = setInterval( function(){
-  deleteAndInsert() ;
+  deleteAndInsertNewsnow() ;
 }, 1000000);
 
 app.get('*', (request, response) => {

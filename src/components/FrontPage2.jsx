@@ -112,8 +112,10 @@ class FrontPage2 extends React.Component{
 
     return (
       <div>
-        
 
+        <section className ="row">
+          
+        </section>
         <section className="row">
           <Category categoryname ="World" arrays={this.state.world} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
