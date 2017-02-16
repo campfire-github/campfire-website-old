@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import { Router, Route, browserHistory } from 'react-router'
 
 //components
@@ -9,7 +9,7 @@ import World from './components/World.jsx'
 import Entertainment from './components/Entertainment.jsx'
 import NotFound from './components/NotFound.jsx'
 
-ReactDOM.render((
+render((
   <Router history={browserHistory}>
     <Route path="/" component={App} />
     <Route path="/*" component={NotFound} />
