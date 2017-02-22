@@ -17,11 +17,12 @@ class Sport extends React.Component{
     const url =  'http://www.campfire.news'
     console.log('fetching news')
     request
-      .get(url + '/api/v1/newsnow')
+      .get('http://www.campfire.news/api/v1/newsnow')
       .set('Accept', 'application/json')
       .end (function(err,res){
         if(!err){
           var json = res;
+          console.log(res);
           var a = [] ;
           for (var i = 0; i<json.length; i++){
               if( json[i].source === "bbc-sport"){
