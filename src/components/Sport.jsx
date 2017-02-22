@@ -18,7 +18,7 @@ class Sport extends React.Component{
     request
       .get(url + '/api/v1/news')
       .set('Accept', 'application/json')
-      .end ((err,res){
+      .end (function(err,res){
         var json = JSON.parse(res);
         var all = [] ;
         for (var i = 0; i<json.length; i++){
@@ -27,7 +27,7 @@ class Sport extends React.Component{
         }
         this.setState({tech:all});
       }else {console.log('error :(', err)}
-      }) 
+      })
 
   }
 
