@@ -22,13 +22,13 @@ class Sport extends React.Component{
       .end (function(err,res){
         if(!err){
           var json = JSON.parse(res);
-          var all = [] ;
+          var a = [] ;
           for (var i = 0; i<json.length; i++){
               if( json[i].source === "bbc-sport"){
                 all.push(json[i]);
               }
           }
-          this.setState({tech:all});
+          this.setState({all:a});
         }else {
           console.log('error :(', err);
         }
@@ -38,7 +38,7 @@ class Sport extends React.Component{
 
   _getAllNews() {
     console.log("get all ");
-    return this.state.tech.map((each)=>{
+    return this.state.all.map((each)=>{
       return(
         <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.url}></Grid>
       );
