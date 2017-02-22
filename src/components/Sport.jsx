@@ -20,15 +20,15 @@ class Sport extends React.Component{
       .set('Accept', 'application/json')
       .end (function(err,res){
         if(!err){
-          var json = res;
+
           console.log(res);
-          var a = [] ;
-          for (var i = 0; i<json.length; i++){
-              if( json[i].source === "bbc-sport"){
-                a.push(json[i]);
+          var array = [] ;
+          for (var i = 0; i<res.text.length; i++){
+              if( res.text[i].source === "bbc-sport"){
+                array.push(res[i]);
               }
-          }console.log("aaa" + a );
-          this.setState({all:a});
+          }console.log("aaa" + array );
+          this.setState({all:array});
         }else {
           console.log('error :(', err);
         }
