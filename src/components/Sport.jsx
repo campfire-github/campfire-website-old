@@ -17,16 +17,15 @@ class Sport extends React.Component{
     console.log('fetching news')
     request
       .get('http://www.campfire.news/api/v1/newsnow')
-      .set('Accept', 'application/json')
       .end (function(err,res){
         if(!err){
-
+          var json = JSON.parse (res)
           console.log(res);
           var array = [] ;
-          console.log( res.text.length + "length " + Object.keys(res.text));
-          for (var i = 0; i<res.text.length; i++){
-            console.log( "re "+res.text[i].source );
-              if( res.text[i].source === "bbc-sport"){
+          console.log( json.text.length + "length " + Object.keys(json.text));
+          for (var i = 0; i<json.text.length; i++){
+            console.log( "re "+json.text[i].source );
+              if( json.text[i].source === "bbc-sport"){
 
                 array.push(res[i]);
               }
