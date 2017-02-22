@@ -30,7 +30,7 @@ class Technology extends React.Component{
               all.push(json[i]);
             }
         }
-        this.setState({technology:tech});
+        this.setState({technology:all});
       }
     })
   }
@@ -60,9 +60,7 @@ class Technology extends React.Component{
           {alltech}
         </section>
       </div>
-
     )
-
   }
 
   _getAllTech() {
@@ -73,6 +71,5 @@ class Technology extends React.Component{
       );
     });
   }
-
 }
 export default Technology ;
