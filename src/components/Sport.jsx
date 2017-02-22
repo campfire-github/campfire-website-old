@@ -19,7 +19,7 @@ class Sport extends React.Component{
       .get('http://www.campfire.news/api/v1/newsnow')
       .end (function(err,res){
         if(!err){
-          var json = JSON.parse (res)
+          var json = res;
           console.log(res);
           var array = [] ;
           console.log( json.text.length + "length " + Object.keys(json.text));
