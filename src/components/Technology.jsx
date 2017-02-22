@@ -30,7 +30,7 @@ class Technology extends React.Component{
               all.push(json[i]);
             }
         }
-        this.setState({technology:all});
+        this.setState({tech:all});
       }
     })
   }
@@ -48,11 +48,19 @@ class Technology extends React.Component{
   componentWillMount() {
     this._fetchNews() ;
   }
-  componentDidMount() {}
+  
+  componentDidMount() {
+    this._timer = setInterval(
+                  ()=>this.fetchNews(),
+                  60000);
+  }
+
+  componentWillUnmount(){ // memory leak solving
+    clearInterval(this._timer);
+  }
 
   render() {
     var alltech = this._getAllNews() ;
-    console.log(this.props.whatis);
     return(
       <div>
         <HeadLine headline = "Technology Stuff"/>
