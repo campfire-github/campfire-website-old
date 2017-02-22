@@ -14,9 +14,10 @@ class Sport extends React.Component{
   }
 
   _fetchNews(){
+    const url =  'http://www.campfire.news'
     console.log('fetching news')
     request
-      .get(url + '/api/v1/news')
+      .get(url + '/api/v1/newsnow')
       .set('Accept', 'application/json')
       .end (function(err,res){
         if(!err){
