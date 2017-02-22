@@ -7,6 +7,7 @@ import Grid from './Grid.jsx';
 import Title from './Title.jsx'
 import Category from './Category.jsx'
 import Weather from './Weather.jsx'
+import { Link } from 'react-router'
 import jQuery from '../../dist/js/jquery-3.1.1.js';
 
 class FrontPage2 extends React.Component{
@@ -114,7 +115,7 @@ class FrontPage2 extends React.Component{
       <div>
 
         <section className ="row">
-          
+          <p><Link to="/newsfeedfun">"newsfeedfun"</Link></p>
         </section>
         <section className="row">
           <Category categoryname ="World" arrays={this.state.world} ></Category>

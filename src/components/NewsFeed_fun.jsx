@@ -9,7 +9,7 @@ const NewsFeed = () => {
     const url = 'http://localhost:8080' || 'http://www.campfire.news'
     const news = []
     request
-      .get(url + '/api/v1/news')
+      .get(url + '/api/v1/newsnow')
       .set('Accept', 'application/json')
       .end((err, res) => (!err ? news.push(res.body.articles) : console.log('error :(', err)))
     return news[0]
