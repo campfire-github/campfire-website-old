@@ -1,38 +1,34 @@
 import React from 'react'
 import HeadLine from './HeadLine.jsx'
 import Grid from './Grid.jsx'
-import jQuery from '../../dist/js/jquery-3.1.1.js'
-class Technology extends React.Component{
+//import jQuery from '../../dist/js/jquery-3.1.1.js'
+import request from 'superagent'
+class Sport extends React.Component{
 
   constructor() {
     super() ;
     this.state = {
       techHeadlind : [],
-      tech : []
+      all : []
     }
   }
 
   _fetchNews(){
     console.log('fetching news')
-    var urllink = "http://www.campfire.news/api/v1/newsnow";
-    jQuery.ajax({
-      method:'GET',
-      url: urllink,
-      beforeSend: function (xhrObj) {
-         xhrObj.setRequestHeader("Content-Type", "application/json");
-      },
-      data:"{body}",
-      success :(result)=>{
-        var json = JSON.parse(result);
-        var all = [] ;
-        for (var i = 0; i<json.length; i++){
-            if( json[i].source === "techcrunch"){
-              all.push(json[i]);
-            }
-        }
-        this.setState({tech:all});
-      }
-    })
+    request
+      .get(url + '/api/v1/news')
+      .set('Accept', 'application/json')
+      .end((err, res) => (
+        if(!err){
+          var json = JSON.parse(result);
+          var all = [] ;
+          for (var i = 0; i<json.length; i++){
+              if( json[i].source === "techcrunch"){
+                all.push(json[i]);
+          }
+          this.setState({tech:all});
+        }else {console.log('error :(', err)}
+      ))
   }
 
   _getAllNews() {
@@ -63,7 +59,7 @@ class Technology extends React.Component{
     var alltech = this._getAllNews() ;
     return(
       <div>
-        <h1>Technology</h1>
+        <h1>Sport</h1>
         <section className="row">
           {alltech}
         </section>
@@ -80,4 +76,4 @@ class Technology extends React.Component{
     });
   }
 }
-export default Technology ;
+export default Sport ;
