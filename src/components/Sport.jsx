@@ -8,7 +8,6 @@ class Sport extends React.Component{
   constructor() {
     super() ;
     this.state = {
-      techHeadlind : [],
       all : []
     }
   }
@@ -28,7 +27,7 @@ class Sport extends React.Component{
               if( json[i].source === "bbc-sport"){
                 a.push(json[i]);
               }
-          }
+          }console.log("aaa" + a );
           this.setState({all:a});
         }else {
           console.log('error :(', err);
