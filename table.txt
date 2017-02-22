@@ -11,7 +11,7 @@
   );
 
 
-INSERT INTO newsnow (author,title,url,urlToImage,source,description)VALUES ('cseng','site under construction','https://www.facebook.com/jasonveng','www','world','Haa ?')
+ 
 
 
   CREATE TABLE weather(
@@ -26,3 +26,5 @@ INSERT INTO newsnow (author,title,url,urlToImage,source,description)VALUES ('cse
     dt_text DATE,
     PRIMARY KEY (cityid, dt)
   );
+
+INSERT INTO WEATHER (CITYID, NAME , COUNTRY, DT, TEMP,DESCRIPTION , ICON,WIND ) VALUES (1111,'WELLINGTON','NZ',22332,23.3,'cloudy','02n',33);

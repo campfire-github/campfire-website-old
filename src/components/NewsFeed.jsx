@@ -1,7 +1,5 @@
 import React from 'react'
 import Grid from './Grid.jsx'
-//import FrontPage from './FrontPage.jsx'
-
 import FrontPage2 from './FrontPage2.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 
