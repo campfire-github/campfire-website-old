@@ -25,7 +25,7 @@ class Sport extends React.Component{
           var a = [] ;
           for (var i = 0; i<json.length; i++){
               if( json[i].source === "bbc-sport"){
-                all.push(json[i]);
+                a.push(json[i]);
               }
           }
           this.setState({all:a});
