@@ -16,6 +16,7 @@ class Technology extends React.Component{
 
   render() {
     var alltech = this._getAllTech() ;
+    console.log(this.props.whatis);
     return(
       <div>
 
