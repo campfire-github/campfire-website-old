@@ -1,4 +1,7 @@
 import React from 'react' ;
+import HeadLine from './HeadLine.jsx'
+import Grid from './Grid.jsx'
+import jQuery from '../../dist/js/jquery-3.1.1.js'
 
 class Entertainment extends React.Component{
 
