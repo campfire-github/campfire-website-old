@@ -1,8 +1,8 @@
 import React from 'react'
 import HeadLine from './HeadLine.jsx'
 import Grid from './Grid.jsx'
-//import jQuery from '../../dist/js/jquery-3.1.1.js'
-import request from 'superagent'
+import jQuery from '../../dist/js/jquery-3.1.1.js'
+//import request from 'superagent'
 class Sport extends React.Component{
 
   constructor() {
