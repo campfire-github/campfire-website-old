@@ -51,7 +51,7 @@ class Sport extends React.Component{
 
   componentDidMount() {
     this._timer = setInterval(
-                  ()=>this.fetchNews(),
+                  ()=>this._fetchNews(),
                   60000);
   }
 
