@@ -66,11 +66,15 @@ class World extends React.Component{
   render() {
     var allnews = this._getAllNews() ;
     return(
-      <div>
-        <h1>World</h1>
-        <section className="row">
-          {allnews}
-        </section>
+      <div className="container-fluid">
+        <Header />
+        <div className="container">
+          <h1>World</h1>
+          <section className="row">
+            {allnews}
+          </section>
+        </div>
+        <Footer />
       </div>
     )
   }
