@@ -61,20 +61,20 @@ class Sport extends React.Component{
   }
 
   render() {
-    var alltech = this._getAllNews() ;
+    var allnews = this._getAllNews() ;
     return(
       <div>
         <h1>Sport</h1>
         <section className="row">
-          {alltech}
+          {allnews}
         </section>
       </div>
     )
   }
 
-  _getAllTech() {
+  _getAllNews() {
     console.log("get all ");
-    return this.state.tech.map((each)=>{
+    return this.state.all.map((each)=>{
       return(
         <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.id}></Grid>
       );
