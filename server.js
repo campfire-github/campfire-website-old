@@ -66,6 +66,30 @@ app.get('/api/v1/newsnow', function(req,res){ //790 ms -> 1000 ms
   });
 });
 
+app.get('/api/v1/:news', function(req,res){ //790 ms -> 1000 ms
+  const news = req.params.news ;
+  var toreturn =  [] ;
+  var query = client.query('SELECT * FROM newsnow WHERE source = $1', [news]);
+  query.on('err',function(err){
+    console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
+    res.status(404)
+       .write('NOT FOUND');
+  });
+  query.on('row', function(result){
+    toreturn.push(result);
+  });
+  query.on('end', function(){
+    if(toreturn.length == 0){
+      res.status(200)
+      .write("OK BUT NO NEWS");
+    }else {
+      var json = JSON.stringify(toreturn);
+      res.write(json);
+    }
+    res.end() ;
+  });
+});
+
 app.get('/api/v1/weather', function (req, res){
   var toreturn = [ ] ;
   var query = client.query ('SELECT * FROM weather');
@@ -130,7 +154,7 @@ var weatherRequest = function(){
 
 var weatherloop = setInterval( function(){
   weatherRequest() ; //
-}, 7500000); // every 2 hours 5 mn 
+}, 7500000); // every 2 hours 5 mn
 
 var deleteAndInsertNewsnow = function(){
   var temp =[] ;
@@ -181,7 +205,5 @@ app.get('*', (request, response) => {
 })
 
 app.get('*', (request, response) => (response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))))
-
-
 app.listen(port)
 console.log('Listening on port ' + port)

@@ -29,20 +29,18 @@ class FrontPage2 extends React.Component{
   componentWillMount() {
     this._fetchNews();
   }
-
   componentDidMount(){
-    console.log("refreshing news");
+    console.log("refreshing frontpage");
     this._timer = setInterval(
                   ()=>this._fetchNews(),
                   300000);
     }
-
     componentWillUnmount(){ // memory leak solving
       clearInterval(this._timer);
     }
 
   _fetchNews(){
-    console.log('fetching news')
+    console.log('fetching news frontpage')
     var urllink = "http://www.campfire.news/api/v1/newsnow";
     jQuery.ajax({
       method:'GET',
@@ -56,7 +54,7 @@ class FrontPage2 extends React.Component{
         var e = [] ;//entertainment
         var w = [] ;//world
         var t = [] ;//technology
-        var ti = []; //reddit
+        var ti = []; //time
         var s = []; //sport
         var g =[]; //gaming
         var geo = [];//national-geographic
