@@ -1,4 +1,5 @@
 import React from 'react' ;
+import HeadLine from './Headline.jsx'
 
 class Technology extends React.Component{
 
@@ -17,7 +18,9 @@ class Technology extends React.Component{
     var alltech = this._getAllTech() ;
     return(
       <div>
+
         <HeadLine headline = "Technology Stuff"/>
+        <p>{this.props.whatis}</p>
         <section className="row">
           {alltech}
         </section>
@@ -37,4 +40,4 @@ class Technology extends React.Component{
   }
 
 }
-export default Technology ; 
+export default Technology ;
