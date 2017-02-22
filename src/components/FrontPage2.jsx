@@ -97,26 +97,9 @@ class FrontPage2 extends React.Component{
     })
   }
 
-
-
-  _technologyLinkClick() {
-    <Technology tech={this.state.technology}></Technology>
-  }
-  _worldLinkClick(){
-    <World world={this.state.world}></World>
-  }
-  _entertainmentLinkClick() {
-    <Entertainment entertainment={this.state.entertainment}></Entertainment>
-  }
-
   render() {
-
     return (
       <div>
-
-        <section className ="row">
-          <p><Link to="/newsfeedfun">"newsfeedfun"</Link></p>
-        </section>
         <section className="row">
           <Category categoryname ="World" arrays={this.state.world} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
@@ -132,8 +115,6 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Nation-Geographic" arrays={this.state.nationalGeographic} ></Category>
           <Category categoryname ="Hacker-News" arrays={this.state.hackerNews} ></Category>
         </section>
-
-
       </div>
     )
   }
