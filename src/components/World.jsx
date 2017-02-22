@@ -71,7 +71,7 @@ class World extends React.Component{
       <div className="container-fluid">
         <Header />
         <div className="container">
-          <h1>World <a href="https://www.campfire.news/">HOME</a></h1>
+          <h1>World</h1>
           <section className="row">
             {allnews}
           </section>
