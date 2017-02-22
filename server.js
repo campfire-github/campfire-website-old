@@ -42,7 +42,7 @@ app.get('/api/v1/memorynewsnow', function(req,res){
     res.status(404).write('NO NEWS FOUND');
   }
 });
-
+/*
 app.get('/api/v1/newsnow', function(req,res){ //790 ms -> 1000 ms
   var toreturn =  [] ;
   var query = client.query('SELECT * FROM newsnow');
@@ -65,11 +65,15 @@ app.get('/api/v1/newsnow', function(req,res){ //790 ms -> 1000 ms
     res.end() ;
   });
 });
-
-app.get('/api/v1/:news', function(req,res){ //790 ms -> 1000 ms
+*/
+app.get('/api/v1/:news', function(req,res){
   const news = req.params.news ;
-  var toreturn =  [] ;
-  var query = client.query('SELECT * FROM newsnow WHERE source = $1', [news]);
+  var toreturn =  [] ; var query ;
+  if(news === "newsnow"){
+    query = client.query('SELECT * FROM newsnow');
+  }else {
+    query = client.query('SELECT * FROM newsnow WHERE source = $1', [news]);
+  }
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
     res.status(404)

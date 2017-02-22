@@ -20,7 +20,7 @@ class World extends React.Component{
 
   _fetchNews(){
     console.log('fetching news')
-    var urllink = "http://www.campfire.news/api/v1/newsnow";
+    var urllink = "http://www.campfire.news/api/v1/google-news";
     jQuery.ajax({
       method:'GET',
       url: urllink,
