@@ -18,17 +18,17 @@ class Sport extends React.Component{
     request
       .get(url + '/api/v1/news')
       .set('Accept', 'application/json')
-      .end((err, res) => (
-        if(!err){
-          var json = JSON.parse(res);
-          var all = [] ;
-          for (var i = 0; i<json.length; i++){
-              if( json[i].source === "bbc-sport"){
-                all.push(json[i]);
-          }
-          this.setState({tech:all});
-        }else {console.log('error :(', err)}
-      ))
+      .end ((err,res){
+        var json = JSON.parse(res);
+        var all = [] ;
+        for (var i = 0; i<json.length; i++){
+            if( json[i].source === "bbc-sport"){
+              all.push(json[i]);
+        }
+        this.setState({tech:all});
+      }else {console.log('error :(', err)}
+      }) 
+
   }
 
   _getAllNews() {
