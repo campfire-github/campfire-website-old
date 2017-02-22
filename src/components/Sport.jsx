@@ -28,6 +28,7 @@ class Sport extends React.Component{
         for (var i = 0; i<json.length; i++){
             if( json[i].source === "bbc-sport"){
               array.push(json[i]);
+              console.log ( json[i].urltoimage);
             }
         }
         this.setState({all:array});
