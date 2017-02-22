@@ -1,5 +1,5 @@
 import React from 'react' ;
-import HeadLine from './Headline.jsx'
+import HeadLine from './HeadLine.jsx'
 
 class Technology extends React.Component{
 
