@@ -13,29 +13,26 @@ class Sport extends React.Component{
   }
 
   _fetchNews(){
-    const url =  'http://www.campfire.news'
     console.log('fetching news')
-    request
-      .get('http://www.campfire.news/api/v1/newsnow')
-      .end (function(err,res){
-        if(!err){
-          var json = res;
-          console.log(res);
-          var array = [] ;
-          console.log( json.text.length + "length " + Object.keys(json.text));
-          for (var i = 0; i<json.text.length; i++){
-            console.log( "re "+json.text[i].source );
-              if( json.text[i].source === "bbc-sport"){
-
-                array.push(res[i]);
-              }
-          }console.log("aaa" + array );
-          this.setState({all:array});
-        }else {
-          console.log('error :(', err);
+    var urllink = "http://www.campfire.news/api/v1/newsnow";
+    jQuery.ajax({
+      method:'GET',
+      url: urllink,
+      beforeSend: function (xhrObj) {
+         xhrObj.setRequestHeader("Content-Type", "application/json");
+      },
+      data:"{body}",
+      success :(result)=>{
+        var json = JSON.parse(result);
+        var array = [] ;
+        for (var i = 0; i<json.length; i++){
+            if( json[i].source === "bbc-sport"){
+              array.push(json[i]);
+            }
         }
-      })
-
+        this.setState({all:array});
+      }
+    })
   }
 
   _getAllNews() {
