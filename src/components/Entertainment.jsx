@@ -66,22 +66,19 @@ class Entertainment extends React.Component{
   render() {
     var allnews = this._getAllNews() ;
     return(
-      <div>
-        <h1>World</h1>
-        <section className="row">
-          {allnews}
-        </section>
+      <div className="container-fluid">
+        <Header />
+        <div className="container">
+          <h1>Entertainment</h1>
+          <section className="row">
+            {allnews}
+          </section>
+        </div>
+        <Footer />
       </div>
     )
   }
 
-  _getAllNews() {
-    console.log("get all ");
-    return this.state.all.map((each)=>{
-      return(
-        <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.id}></Grid>
-      );
-    });
-  }
+
 }
 export default Entertainment  ;
