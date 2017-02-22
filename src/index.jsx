@@ -15,13 +15,13 @@ import NotFound from './components/NotFound.jsx'
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App} />
-    <Route path="/*" component={NotFound} />
+
     <Route path="/entertainment" component={Entertainment} />
     <Route path="/technology" component={Technology} />
     <Route path="/sport" component={Sport} />
     <Route path="/world" component={World} />
     <Route path="/newsfeedfun" component={NewsFeedFun} />
-
+    <Route path="/*" component={NotFound} />
 
   </Router>
 ), document.getElementById('app'))
