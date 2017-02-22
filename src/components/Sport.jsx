@@ -21,7 +21,7 @@ class Sport extends React.Component{
       .set('Accept', 'application/json')
       .end (function(err,res){
         if(!err){
-          var json = JSON.parse(res);
+          var json = res;
           var a = [] ;
           for (var i = 0; i<json.length; i++){
               if( json[i].source === "bbc-sport"){
