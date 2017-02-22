@@ -1,6 +1,8 @@
 import React from 'react'
 import HeadLine from './HeadLine.jsx'
 import Grid from './Grid.jsx'
+import Header from './Header.jsx'
+import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 class Technology extends React.Component{
 
