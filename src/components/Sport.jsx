@@ -23,6 +23,7 @@ class Sport extends React.Component{
 
           console.log(res);
           var array = [] ;
+          console.log( res.text.length + "length ");
           for (var i = 0; i<res.text.length; i++){
               if( res.text[i].source === "bbc-sport"){
                 console.log( "re "+res.text[i] )
