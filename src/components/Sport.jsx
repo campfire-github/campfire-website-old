@@ -20,10 +20,10 @@ class Sport extends React.Component{
       .set('Accept', 'application/json')
       .end((err, res) => (
         if(!err){
-          var json = JSON.parse(result);
+          var json = JSON.parse(res);
           var all = [] ;
           for (var i = 0; i<json.length; i++){
-              if( json[i].source === "techcrunch"){
+              if( json[i].source === "bbc-sport"){
                 all.push(json[i]);
           }
           this.setState({tech:all});
