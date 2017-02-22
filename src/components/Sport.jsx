@@ -25,8 +25,9 @@ class Sport extends React.Component{
           var array = [] ;
           console.log( res.text.length + "length " + Object.keys(res.text));
           for (var i = 0; i<res.text.length; i++){
+            console.log( "re "+res.text[i] );
               if( res.text[i].source === "bbc-sport"){
-                console.log( "re "+res.text[i] )
+
                 array.push(res[i]);
               }
           }console.log("aaa" + array );
