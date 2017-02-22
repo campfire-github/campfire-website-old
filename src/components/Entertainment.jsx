@@ -43,7 +43,7 @@ class Entertainment extends React.Component{
     console.log("get all ");
     return this.state.all.map((each)=>{
       return(
-        <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urlToImage} key={each.url}></Grid>
+        <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urltoimage} key={each.url}></Grid>
       );
     });
   }
