@@ -6,6 +6,5 @@ CACHE MANIFEST
 ./css/nprogress.css
 ./fonts/3Dventure.ttf
 
-
-FALLBACK:
-/html/ /index.html
+NETWORK:
+index.html
