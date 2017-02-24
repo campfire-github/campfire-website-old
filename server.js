@@ -183,10 +183,19 @@ var deleteAndInsertNewsnow = function(){
                 description:json.articles[i].description
               }
               temp.push(each);
-              var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description)VALUES ($1,$2,$3,$4,$5,$6,$7)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description]);
-              query.on('err', function(err){
-                console.log("CANT INSERT INTO NEWS TABLE " + err);
-              });
+              var selectquery = client.query('SELECT COUNT(*) FROM newsnow WHERE url = $1', [each.url]);
+              let count = 0  ;
+              selectquery.on('err',function(err){ console.log("err in selecting : "+ err)})
+              selectquery.on('row', function(res){
+                count = result;
+              })
+              if( count ==0){
+                var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description)VALUES ($1,$2,$3,$4,$5,$6,$7)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description]);
+                query.on('err', function(err){
+                  console.log("CANT INSERT INTO NEWS TABLE " + err);
+                });
+              }
+
             }
         }else{
             temp= [] ;
