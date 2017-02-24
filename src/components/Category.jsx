@@ -39,7 +39,7 @@ class Category extends React.Component{
     var title = this._getTitleAsLink() ;
     let page = "/"+this.props.categoryname.toLowerCase() ;
     return(
-      <div className ='category col-md-4'>
+      <div className ='category col-md-3'>
         <h2><Link to={page}>{this.props.categoryname}</Link></h2>
         {title}
       </div>

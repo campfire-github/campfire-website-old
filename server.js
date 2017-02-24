@@ -143,7 +143,7 @@ var weatherRequest = function(){
             icon : json.list[i].weather[0].icon,
             dt: json.list[i].dt,
             dtText : json.list[i].dt_txt,
-            wind : json.list[i].wind
+            wind : json.list[i].wind.speed
           }
           var query = client.query('insert into weather (cityid,name,country,temp,description,icon,dt,dt_text,wind ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',[each.id,each.city,each.country,each.temp,each.description,each.icon,each.dt,each.dtText,each.wind]);
           query.on('err',function(err){
