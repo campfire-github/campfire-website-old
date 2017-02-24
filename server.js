@@ -162,10 +162,10 @@ var weatherloop = setInterval( function(){
 
 var deleteAndInsertNewsnow = function(){
   var temp =[] ;
-  var deletequery = client.query('DELETE FROM newsnow');
-   deletequery.on('err', function(err){
-     console.log("CANT DELETE" + err);
-   });//*/
+//  var deletequery = client.query('DELETE FROM newsnow');
+  // deletequery.on('err', function(err){
+    // console.log("CANT DELETE" + err);
+  // });//*/
    for (var index = 0 ; index < urls.length ;index++ ){
      var url1 = urls[index] + process.env.API_KEY  ;
      //console.log(index+"-"+urls[index]) ;
