@@ -187,7 +187,7 @@ var deleteAndInsertNewsnow = function(){
               let count = 0  ;
               selectquery.on('err',function(err){ console.log("err in selecting : "+ err)})
               selectquery.on('row', function(res){
-                count = result;
+                count = res;
               })
               if( count ==0){
                 var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description)VALUES ($1,$2,$3,$4,$5,$6,$7)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description]);
