@@ -70,7 +70,7 @@ app.get('/api/v1/:news', function(req,res){
   const news = req.params.news ;
   var toreturn =  [] ; var query ;
   if(news === "newsnow"){
-    query = client.query('SELECT * FROM newsnow ORDER BY insertDate DESC TOP 90');
+    query = client.query('SELECT * FROM newsnow ORDER BY publishedAt DESC LIMIT 90');
   }else {
     query = client.query('SELECT * FROM newsnow WHERE source = $1', [news]);
   }
