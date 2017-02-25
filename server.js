@@ -213,7 +213,7 @@ var deleteAndInsertNewsnow = function(){
 
 var requestLoop = setInterval( function(){
   deleteAndInsertNewsnow() ;
-}, 1000000);
+}, 100000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
