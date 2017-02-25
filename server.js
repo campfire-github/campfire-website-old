@@ -186,13 +186,14 @@ var deleteAndInsertNewsnow = function(){
               const today  = new Date () ;
               console.log( "print url " +each.url );
               var selectquery = client.query('SELECT COUNT(*) FROM newsnow WHERE url = $1', [each.url]);
-              var count = 0  ;
+              var count   ;
               selectquery.on('err',function(err){ console.log("err in selecting : "+ err)})
               selectquery.on('row', function(res){
                 count = res.count;
                 console.log( "result " + res.count ) ;
               })
-              if( count ==0){
+              if( count == 0){
+                console.log ("if count = 0 "+ count );
                 var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description, today]);
                 query.on('err', function(err){
                   console.log("CANT INSERT INTO NEWS TABLE " + err);
