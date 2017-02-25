@@ -190,7 +190,7 @@ var deleteAndInsertNewsnow = function(){
               selectquery.on('err',function(err){ console.log("err in selecting : "+ err)})
               selectquery.on('row', function(res){
                 count = res.count;
-                console.log( "result " + res.count ) ;
+                console.log( "result " + res.count + "-"+ count ) ;
               })
               console.log("what is count " + count);
               if( count == 0){
