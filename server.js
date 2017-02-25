@@ -70,7 +70,7 @@ app.get('/api/v1/:news', function(req,res){
   const news = req.params.news ;
   var toreturn =  [] ; var query ;
   if(news === "newsnow"){
-    query = client.query('SELECT * FROM newsnow');
+    query = client.query('SELECT * FROM newsnow ORDER BY insertDate DESC TOP 90');
   }else {
     query = client.query('SELECT * FROM newsnow WHERE source = $1', [news]);
   }
@@ -183,15 +183,16 @@ var deleteAndInsertNewsnow = function(){
                 description:json.articles[i].description
               }
               temp.push(each);
+              const today  = new Date () ;
               var selectquery = client.query('SELECT COUNT(*) FROM newsnow WHERE url = $1', [each.url]);
               let count = 0  ;
               selectquery.on('err',function(err){ console.log("err in selecting : "+ err)})
               selectquery.on('row', function(res){
                 count = res;
-                console.log( "result " + res) ; 
+                console.log( "result " + res) ;
               })
               if( count.count ==0){
-                var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description)VALUES ($1,$2,$3,$4,$5,$6,$7)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description]);
+                var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description, today]);
                 query.on('err', function(err){
                   console.log("CANT INSERT INTO NEWS TABLE " + err);
                 });

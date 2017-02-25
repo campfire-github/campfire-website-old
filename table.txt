@@ -6,12 +6,13 @@
     urlToImage TEXT ,
     publishedAt DATE ,
     source VARCHAR,
+    insertDate DATE, 
     PRIMARY KEY (url ,source )
 
   );
 
 
- 
+
 
 
   CREATE TABLE weather(
