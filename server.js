@@ -184,9 +184,11 @@ var deleteAndInsertNewsnow = function(){
               }
               temp.push(each);
               const today  = new Date () ;
-              console.log( "print url " +each.url );
-              var selectquery = client.query('SELECT COUNT(*) FROM newsnow WHERE url = $1', [each.url]);
               var count ={}  ;
+              console.log( "print url " +each.url );
+
+              var selectquery = client.query('SELECT COUNT(*) FROM newsnow WHERE url = $1', [each.url]);
+
               selectquery.on('err',function(err){ console.log("err in selecting : "+ err)})
               selectquery.on('row', function(res){
                 count.count = res.count;
