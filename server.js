@@ -198,7 +198,7 @@ var deleteAndInsertNewsnow = function(){
                 query.on('err', function(err){
                   console.log("CANT INSERT INTO NEWS TABLE " + err);
                 });
-              }else {console.log("not inserting" + count ); }
+              }else {console.log("not inserting" + count ); }  
 
             }
         }else{
