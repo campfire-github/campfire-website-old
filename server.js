@@ -191,17 +191,16 @@ var deleteAndInsertNewsnow = function(){
 
               selectquery.on('err',function(err){ console.log("err in selecting : "+ err)})
               selectquery.on('row', function(res){
-                count.count = res.count;
-                console.log( "result " + res.count + "-"+ count.count ) ;
+                if( result.count == 0){
+                  console.log ("if count = 0 "+ result.count );
+                  var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description, today]);
+                  query.on('err', function(err){
+                    console.log("CANT INSERT INTO NEWS TABLE " + err);
+                  });
+                }else {console.log("not inserting" + result.count ); }
               })
-              console.log("what is count " + count);
-              if( count.count == 0){
-                console.log ("if count = 0 "+ count.count );
-                var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description, today]);
-                query.on('err', function(err){
-                  console.log("CANT INSERT INTO NEWS TABLE " + err);
-                });
-              }else {console.log("not inserting" + count.count ); }
+
+
 
             }
         }else{
