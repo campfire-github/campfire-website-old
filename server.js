@@ -192,6 +192,7 @@ var deleteAndInsertNewsnow = function(){
                 count = res.count;
                 console.log( "result " + res.count ) ;
               })
+              console.log("what is count " + count);
               if( count == 0){
                 console.log ("if count = 0 "+ count );
                 var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[json.articles[i].author,json.articles[i].title,json.articles[i].url,json.articles[i].urlToImage,json.articles[i].publishedAt, json.source, json.articles[i].description, today]);
