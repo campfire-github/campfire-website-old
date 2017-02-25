@@ -198,7 +198,7 @@ var deleteAndInsertNewsnow = function(){
                 query.on('err', function(err){
                   console.log("CANT INSERT INTO NEWS TABLE " + err);
                 });
-              }else {console.log("not inserting" + count ); }  
+              }else {console.log("not inserting" + count ); }
 
             }
         }else{
@@ -215,7 +215,7 @@ var deleteAndInsertNewsnow = function(){
 
 var requestLoop = setInterval( function(){
   deleteAndInsertNewsnow() ;
-}, 1000000);
+}, 100000);
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
