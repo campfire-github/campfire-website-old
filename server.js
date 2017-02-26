@@ -225,7 +225,7 @@ var insertNews = function(){
               query.on('err',function(error){console.log("err")});
               query.on('row',function (row ){ count = row.count;})
               query.on('end', function(){
-                if( count === 0  ){
+                if( count == 0 && once ==false   ){
 
 
                     console.log("inserting to news1 "+ count+ " "+once + each.url  );
