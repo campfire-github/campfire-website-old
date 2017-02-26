@@ -245,10 +245,10 @@ var insertNews = function(){
    }
 }
 
-var insertLoop = setInterval( function(){
+/*var insertLoop = setInterval( function(){
   insertNews() ;
 }, 100000);
-
+*/
 var requestLoop = setInterval( function(){
   deleteAndInsertNewsnow() ;
 }, 1000000);
