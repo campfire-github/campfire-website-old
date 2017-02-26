@@ -187,15 +187,15 @@ var deleteAndInsertNewsnow = function(){
               var count = -1  ;
               console.log( "print url " +each.url );
 
-              var selectquery = client.query('SELECT COUNT(*) FROM newsnow WHERE url = $1', [each.url]);
+              var query = client.query('SELECT COUNT(*) FROM newsnow WHERE url = $1', [each.url]);
 
-              selectquery.on('err',function(err){ console.log("err in selecting : "+ err)})
-              selectquery.on('row', function(res){
+              query.on('err',function(err){ console.log("err in selecting : "+ err)})
+              query.on('row', function(res){
                 count = res.count ;
                 console.log("why still "+  count )
                 if( count <= 0){
                   console.log ("inserting count"+ res.count  +"---"+ each.url );
-                  var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
+                  query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
                   query.on('err', function(err){
                     console.log("CANT INSERT INTO NEWS TABLE " + err);
                   });
