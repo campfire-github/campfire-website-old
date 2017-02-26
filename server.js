@@ -197,7 +197,7 @@ var deleteAndInsertNewsnow = function(){
               })
               query.on('end', function(){
                 if( count <= 0){
-                  console.log ("inserting count"+ res.count  +"---"+ each.url );
+                  console.log ("inserting count"+ count  +"---"+ each.url );
                   query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
                   query.on('err', function(err){
                     console.log("CANT INSERT INTO NEWS TABLE " + err);
