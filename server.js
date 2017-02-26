@@ -222,7 +222,7 @@ var insertNews = function(){
               const today  = new Date () ;
               var query = client.query ('SELECT COUNT(*) FROM news1 WHERE url = $1', [each.url]);
               query.on('err',function(error){console.log("err")});
-              query.on('row',function (result){ result.push(row);})
+              query.on('row',function (row , result){ result.push(row);})
               query.on('end', function(result){
                 if( result.count == 0){
                   console.log("inserting to news1 "+ result.count +"-"+ Object.keys(result) );
