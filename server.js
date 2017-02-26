@@ -202,6 +202,50 @@ var deleteAndInsertNewsnow = function(){
    }
 }
 
+var insertNews = function(){
+   for (var index = 0 ; index < urls.length ;index++ ){
+     var url1 = urls[index] + process.env.API_KEY  ;
+     //console.log(index+"-"+urls[index]) ;
+     request(url1, (error, response, body) => {
+       if(!error && response.statusCode == 200){
+            var json =JSON.parse(body);
+            for (var i = 0 ; i < json.articles.length ;i++){
+              var each ={
+                author: json.articles[i].author,
+                title: json.articles[i].title,
+                url:json.articles[i].url,
+                urlToImage:json.articles[i].urlToImage,
+                publishedAt:json.articles[i].publishedAt,
+                source:json.source,
+                description:json.articles[i].description
+              }
+              const today  = new Date () ;
+              var query = client.query ('SELECT COUNT(*) FROM news1 WHERE url = $1', [each.url]);
+              query.on('err',function(error){console.log("err")});
+              query.on('row',function (result){ result.push(row);})
+              query.on('end', function(result){
+                if( result.count == 0){
+                  console.log("inserting to news1 "+ result.count +"-"+ Object.keys(result) );
+                  query = client.query('INSERT INTO news1 (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
+                  query.on('err', function(err){
+                    console.log("CANT INSERT INTO NEWS TABLE " + err);
+                  });
+                }else {
+                  console.log( not inserting +" - "+ result.count );
+                }
+              })
+            }
+        }else{
+            console.log('error' + response.statusCode);
+        }
+     })
+   }
+}
+
+var insertLoop = setInterval( function(){
+  insertNews() ;
+}, 100000);
+
 var requestLoop = setInterval( function(){
   deleteAndInsertNewsnow() ;
 }, 1000000);
