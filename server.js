@@ -210,6 +210,7 @@ var insertNews = function(){
        if(!error && response.statusCode == 200){
             var json =JSON.parse(body);
             for (var i = 0 ; i < json.articles.length ;i++){
+              console.log( "url "+json.articles[i].url );
               var each ={
                 author: json.articles[i].author,
                 title: json.articles[i].title,
