@@ -162,10 +162,10 @@ var weatherloop = setInterval( function(){
 
 var deleteAndInsertNewsnow = function(){
   var temp =[] ;
-//  var deletequery = client.query('DELETE FROM newsnow');
-  // deletequery.on('err', function(err){
-    // console.log("CANT DELETE" + err);
-  // });//*/
+  var deletequery = client.query('DELETE FROM newsnow');
+   deletequery.on('err', function(err){
+   console.log("CANT DELETE" + err);
+   });//*/
    for (var index = 0 ; index < urls.length ;index++ ){
      var url1 = urls[index] + process.env.API_KEY  ;
      //console.log(index+"-"+urls[index]) ;
@@ -185,28 +185,10 @@ var deleteAndInsertNewsnow = function(){
               temp.push(each);
               const today  = new Date () ;
               var count = -1  ;
-              console.log( "print url " +each.url );
-
-              var query = client.query('SELECT COUNT(*) FROM newsnow WHERE url = $1', [each.url]);
-
-              query.on('err',function(err){ console.log("err in selecting : "+ err)})
-              query.on('row', function(res){
-                count = res.count ;
-                console.log("why still "+  count )
-
-              })
-              query.on('end', function(){
-                if( count <= 0){
-                  console.log ("inserting count"+ count  +"---"+ each.url );
-                  query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
-                  query.on('err', function(err){
-                    console.log("CANT INSERT INTO NEWS TABLE " + err);
-                  });
-                }else {console.log("not inserting" + count ); }
-              })
-
-
-
+              var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
+              query.on('err', function(err){
+                console.log("CANT INSERT INTO NEWS TABLE " + err);
+              });
             }
         }else{
             temp= [] ;
