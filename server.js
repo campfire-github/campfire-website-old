@@ -210,7 +210,7 @@ var insertNews = function(){
        if(!error && response.statusCode == 200){
             var json =JSON.parse(body);
             for (var i = 0 ; i < json.articles.length ;i++){
-              console.log( "url "+json.articles[i].url );
+
               var each ={
                 author: json.articles[i].author,
                 title: json.articles[i].title,
@@ -219,20 +219,23 @@ var insertNews = function(){
                 publishedAt:json.articles[i].publishedAt,
                 source:json.source,
                 description:json.articles[i].description
-              }
+              }console.log( "url "+json.articles[i].url );
               const today  = new Date () ;
               var count = -1; var once = false ;
-              var query = client.query ('SELECT COUNT(*) FROM news1 WHERE url = $1', [each.url]);
-              query.on('err',function(error){console.log("err")});
-              query.on('row',function (row ){ count = row.count;})
-              query.on('end', function(){
+              var selectquery = client.query ('SELECT COUNT(*) FROM news1 WHERE url = $1', [each.url]);
+              selectquery.on('err',function(error){console.log("err")});
+              selectquery.on('row',function (row ){ count = row.count;})
+              selectquery.on('end', function(){
                 if( count == 0 && once ==false){
                     console.log("inserting to news1 "+ count+ " "+once + each.url  );
-                    query = client.query('INSERT INTO news1 (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
+                    var query = client.query('INSERT INTO news1 (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
                     query.on('err', function(err){
                       console.log("CANT INSERT INTO NEWS TABLE " + err);
                     });
-                    once = true ;
+                    query.on('end', function(){
+                      once = true ;
+                    });
+
 
                 }else {
                   console.log(" not inserting - "+ count + once );
