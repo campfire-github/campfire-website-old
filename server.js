@@ -225,9 +225,7 @@ var insertNews = function(){
               query.on('err',function(error){console.log("err")});
               query.on('row',function (row ){ count = row.count;})
               query.on('end', function(){
-                if( count == 0 && once ==false   ){
-
-
+                if( count == 0 && once ==false){
                     console.log("inserting to news1 "+ count+ " "+once + each.url  );
                     query = client.query('INSERT INTO news1 (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
                     query.on('err', function(err){
