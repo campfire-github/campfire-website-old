@@ -219,7 +219,8 @@ var insertNews = function(){
                 publishedAt:json.articles[i].publishedAt,
                 source:json.source,
                 description:json.articles[i].description
-              }console.log( "url "+json.articles[i].url );
+              };
+              console.log( "url "+json.articles[i].url );
               const today  = new Date () ;
               var count = -1; var once = false ;
               var selectquery = client.query ('SELECT COUNT(*) FROM news1 WHERE url = $1', [each.url]);
