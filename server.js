@@ -220,22 +220,23 @@ var insertNews = function(){
                 description:json.articles[i].description
               }
               const today  = new Date () ;
-              var count = [ ]; var once = false ;
+              var count = -1; var once = false ;
               var query = client.query ('SELECT COUNT(*) FROM news1 WHERE url = $1', [each.url]);
               query.on('err',function(error){console.log("err")});
-              query.on('row',function (row , result){ count.push(row);})
+              query.on('row',function (row ){ count = row.count;})
               query.on('end', function(){
-                if( count[0].count == 0){
+                if( count == 0){
                   if(once == false ){
-                    once = true ;
-                    console.log(count.length + "inserting to news1 "+ count[0].count+ " "+once + each.url  );
+
+                    console.log(count.length + "inserting to news1 "+ count+ " "+once + each.url  );
                     query = client.query('INSERT INTO news1 (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
                     query.on('err', function(err){
                       console.log("CANT INSERT INTO NEWS TABLE " + err);
                     });
+                    once = true ;
                   }
                 }else {
-                  console.log(" not inserting - "+ result.count );
+                  console.log(" not inserting - "+ count );
                 }
               })
             }
