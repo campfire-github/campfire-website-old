@@ -202,15 +202,18 @@ var deleteAndInsertNewsnow = function(){
    }
 }
 
-var insertNews = function(){
+var insertNewsnow = function(){
+  var temp =[] ;
+/*  var deletequery = client.query('DELETE FROM newsnow');
+   deletequery.on('err', function(err){
+   console.log("CANT DELETE" + err);
+ });*/
    for (var index = 0 ; index < urls.length ;index++ ){
      var url1 = urls[index] + process.env.API_KEY  ;
-     //console.log(index+"-"+urls[index]) ;
      request(url1, (error, response, body) => {
        if(!error && response.statusCode == 200){
             var json =JSON.parse(body);
             for (var i = 0 ; i < json.articles.length ;i++){
-
               var each ={
                 author: json.articles[i].author,
                 title: json.articles[i].title,
@@ -219,44 +222,29 @@ var insertNews = function(){
                 publishedAt:json.articles[i].publishedAt,
                 source:json.source,
                 description:json.articles[i].description
-              };
-              console.log( "url "+json.articles[i].url );
+              }
+              temp.push(each);
               const today  = new Date () ;
-              var count = -1; var once = false ;
-              var selectquery = client.query ('SELECT COUNT(*) FROM news1 WHERE url = $1', [each.url]);
-              selectquery.on('err',function(error){console.log("err")});
-              selectquery.on('row',function (row ){ count = row.count;})
-              selectquery.on('end', function(){
-                if( count == 0 && once ==false){
-                    console.log("inserting to news1 "+ count+ " "+once + each.url  );
-                    var query = client.query('INSERT INTO news1 (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
-                    query.on('err', function(err){
-                      console.log("CANT INSERT INTO NEWS TABLE " + err);
-                    });
-                    query.on('end', function(){
-                      once = true ;
-                    });
-
-
-                }else {
-                  console.log(" not inserting - "+ count + once );
-                }
-              })
+              var query = client.query ('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate) SELECT $1,$2,$3,$4,$5,$6,$7,$8 WHERE NOT EXISTS (SELECT * FROM newsnow where url = $9 and source = $10)',
+              [each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today,each.url, each.source]);
+              query.on('err', function(err){
+                console.log("the error is + "+ err);
+              });
             }
         }else{
+            temp= [] ;
             console.log('error' + response.statusCode);
+        }
+        if(temp.length>0){
+          newsnow= [] ;
+          newsnow = temp ;
         }
      })
    }
 }
 
-/*
-var insertLoop = setInterval( function(){
-  insertNews() ;
-}, 100000);
-*/
 var requestLoop = setInterval( function(){
-  deleteAndInsertNewsnow() ;
+  insertNewsnow() ;
 }, 1000000);
 
 app.get('*', (request, response) => {
