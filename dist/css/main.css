@@ -67,7 +67,13 @@ h2 a {
 
 }
 
-.title-h4 .grid-h4{
+.title-h4 {
+  margin-top: 0px ;
+  text-decoration : none ;
+  color: black ;
+}
+
+.grid-h4{
   margin-top: 0px ;
   text-decoration : none ;
   color: black ;
