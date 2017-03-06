@@ -72,7 +72,7 @@ app.get('/api/v1/:news', function(req,res){
   if(news === "newsnow"){
     query = client.query('SELECT * FROM newsnow ORDER BY publishedAt DESC LIMIT 90');
   }else {
-    query = client.query('SELECT * FROM newsnow WHERE source = $1', [news]);
+    query = client.query('SELECT * FROM newsnow WHERE source = $1 ORDER BY publishedAt DESC LIMIT 30', [news]);
   }
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
