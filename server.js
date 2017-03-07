@@ -70,7 +70,7 @@ app.get('/api/v1/:news', function(req,res){
   const news = req.params.news ;
   var toreturn =  [] ; var query ;
   if(news === "newsnow"){
-    query = client.query('SELECT * FROM newsnow ORDER BY publishedAt DESC LIMIT 90');
+    query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.publishedAt DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.publishedAt DESC ');
   }else {
     query = client.query('SELECT * FROM newsnow WHERE source = $1 ORDER BY publishedAt DESC LIMIT 30', [news]);
   }
@@ -160,47 +160,6 @@ var weatherloop = setInterval( function(){
   weatherRequest() ; //
 }, 7500000); // every 2 hours 5 mn
 
-var deleteAndInsertNewsnow = function(){
-  var temp =[] ;
-  var deletequery = client.query('DELETE FROM newsnow');
-   deletequery.on('err', function(err){
-   console.log("CANT DELETE" + err);
-   });//*/
-   for (var index = 0 ; index < urls.length ;index++ ){
-     var url1 = urls[index] + process.env.API_KEY  ;
-     //console.log(index+"-"+urls[index]) ;
-     request(url1, (error, response, body) => {
-       if(!error && response.statusCode == 200){
-            var json =JSON.parse(body);
-            for (var i = 0 ; i < json.articles.length ;i++){
-              var each ={
-                author: json.articles[i].author,
-                title: json.articles[i].title,
-                url:json.articles[i].url,
-                urlToImage:json.articles[i].urlToImage,
-                publishedAt:json.articles[i].publishedAt,
-                source:json.source,
-                description:json.articles[i].description
-              }
-              temp.push(each);
-              const today  = new Date () ;
-              var count = -1  ;
-              var query = client.query('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate )VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today]);
-              query.on('err', function(err){
-                console.log("CANT INSERT INTO NEWS TABLE " + err);
-              });
-            }
-        }else{
-            temp= [] ;
-            console.log('error' + response.statusCode);
-        }
-        if(temp.length>0){
-          newsnow= [] ;
-          newsnow = temp ;
-        }
-     })
-   }
-}
 
 var insertNewsnow = function(){
   var temp =[] ;
