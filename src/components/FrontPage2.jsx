@@ -106,10 +106,10 @@ class FrontPage2 extends React.Component{
         <section className="row">
           <Category categoryname ="Entertainment" arrays={this.state.entertainment} ></Category>
           <Category categoryname ="Gaming" arrays={this.state.gaming} ></Category>
-          <Category categoryname ="Nation-Geographic" arrays={this.state.nationalGeographic} ></Category>
+          <Category categoryname ="National-Geographic" arrays={this.state.nationalGeographic} ></Category>
         </section>
         <section className="row">
-          <Category categoryname ="Time" arrays={this.state.time} ></Category>    
+          <Category categoryname ="Time" arrays={this.state.time} ></Category>
           <Category categoryname ="Hacker-News" arrays={this.state.hackerNews} ></Category>
           <Category categoryname ="Mtv" arrays={this.state.mtvNews} ></Category>
         </section>
