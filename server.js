@@ -69,6 +69,7 @@ app.get('/api/v1/:news/:news1', function(req,res){
       .write("OK BUT NO NEWS");
     }else {
       var json = JSON.stringify(toreturn);
+      console.log ( json );
       res.write(json);
     }
     res.end() ;
