@@ -41,7 +41,7 @@ class FrontPage2 extends React.Component{
 
   _fetchNews(){
     console.log('fetching news frontpage')
-    var urllink = "http://www.campfire.news/api/v1/newsnow";
+    var urllink = "http://www.campfire.news/api/v1/newsnow/newsnow";
     jQuery.ajax({
       method:'GET',
       url: urllink,
