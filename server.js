@@ -17,8 +17,11 @@ const corsOptions = { origin: '*' }
 const url = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + process.env.API_KEY
 var urls = ['https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=',
+            'https://newsapi.org/v1/articles?source=recode&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' ,
+            'https://newsapi.org/v1/articles?source=the-telegraph&sortBy=latest&apiKey=',
             'https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=',
+            'https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=ign&sortBy=latest&apiKey=',
             'https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=',
@@ -42,37 +45,15 @@ app.get('/api/v1/memorynewsnow', function(req,res){
     res.status(404).write('NO NEWS FOUND');
   }
 });
-/*
-app.get('/api/v1/newsnow', function(req,res){ //790 ms -> 1000 ms
-  var toreturn =  [] ;
-  var query = client.query('SELECT * FROM newsnow');
-  query.on('err',function(err){
-    console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
-    res.status(404)
-       .write('NOT FOUND');
-  });
-  query.on('row', function(result){
-    toreturn.push(result);
-  });
-  query.on('end', function(){
-    if(toreturn.length == 0){
-      res.status(200)
-      .write("OK BUT NO NEWS");
-    }else {
-      var json = JSON.stringify(toreturn);
-      res.write(json);
-    }
-    res.end() ;
-  });
-});
-*/
-app.get('/api/v1/:news', function(req,res){
+
+app.get('/api/v1/:news/:news1', function(req,res){
   const news = req.params.news ;
+  const news1 = req.params.news1 ;
   var toreturn =  [] ; var query ;
   if(news === "newsnow"){
     query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.publishedAt DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.publishedAt DESC ');
   }else {
-    query = client.query('SELECT * FROM newsnow WHERE source = $1 ORDER BY publishedAt DESC LIMIT 30', [news]);
+    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 ORDER BY insertDate DESC LIMIT 30', [news, news1]);
   }
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
@@ -163,10 +144,6 @@ var weatherloop = setInterval( function(){
 
 var insertNewsnow = function(){
   var temp =[] ;
-/*  var deletequery = client.query('DELETE FROM newsnow');
-   deletequery.on('err', function(err){
-   console.log("CANT DELETE" + err);
- });*/
    for (var index = 0 ; index < urls.length ;index++ ){
      var url1 = urls[index] + process.env.API_KEY  ;
      request(url1, (error, response, body) => {

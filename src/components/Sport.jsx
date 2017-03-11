@@ -16,7 +16,7 @@ class Sport extends React.Component{
 
   _fetchNews(){
     console.log('fetching news')
-    var urllink = "http://www.campfire.news/api/v1/bbc-sport";
+    var urllink = "http://www.campfire.news/api/v1/bbc-sport/espn";
     jQuery.ajax({
       method:'GET',
       url: urllink,

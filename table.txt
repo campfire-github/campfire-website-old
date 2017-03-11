@@ -6,7 +6,7 @@
     urlToImage TEXT ,
     publishedAt DATE ,
     source VARCHAR,
-    insertDate DATE, 
+    insertDate DATE,
     PRIMARY KEY (url ,source )
 
   );
@@ -29,3 +29,20 @@
   );
 
 INSERT INTO WEATHER (CITYID, NAME , COUNTRY, DT, TEMP,DESCRIPTION , ICON,WIND ) VALUES (1111,'WELLINGTON','NZ',22332,23.3,'cloudy','02n',33);
+
+
+SELECT r.*
+FROM
+(
+    SELECT r.*, ROW_NUMBER() OVER(PARTITION BY r.[SectionID] ORDER BY r.[DateEntered] DESC) rn
+    FROM [Records] r
+) r
+WHERE r.rn <= 10
+ORDER BY r.[DateEntered] DESC
+
+
+SELECT nn.*
+FROM
+(
+  SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.publishedAt DESC) rn FROM newsnow n
+) nn WHERE nn.rn <=10 ORDER BY nn.publishedAt DESC

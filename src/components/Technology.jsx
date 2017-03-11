@@ -16,7 +16,7 @@ class Technology extends React.Component{
 
   _fetchNews(){
     console.log('fetching news')
-    var urllink = "http://www.campfire.news/api/v1/techcrunch";
+    var urllink = "http://www.campfire.news/api/v1/techcrunch/recode";
     jQuery.ajax({
       method:'GET',
       url: urllink,

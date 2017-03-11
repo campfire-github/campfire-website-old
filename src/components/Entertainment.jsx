@@ -20,7 +20,7 @@ class Entertainment extends React.Component{
 
   _fetchNews(){
     console.log('fetching news')
-    var urllink = "http://www.campfire.news/api/v1/entertainment-weekly";
+    var urllink = "http://www.campfire.news/api/v1/entertainment-weekly/mtv-news";
     jQuery.ajax({
       method:'GET',
       url: urllink,
