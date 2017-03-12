@@ -50,6 +50,7 @@ app.get('/api/v1/:news/:news1', function(req,res){
   const news = req.params.news ;
   const news1 = req.params.news1 ;
   var toreturn =  [] ; var query ;
+
   if(news === "newsnow"){
     query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.publishedAt DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.publishedAt DESC ');
   }else {
@@ -69,7 +70,7 @@ app.get('/api/v1/:news/:news1', function(req,res){
       .write("OK BUT NO NEWS");
     }else {
       var json = JSON.stringify(toreturn);
-      //console.log ( json );
+      console.log ( json );
       res.write(json);
     }
     res.end() ;
