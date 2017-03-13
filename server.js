@@ -54,7 +54,7 @@ app.get('/api/v1/:news/:news1', function(req,res){
   if(news === "newsnow"){
     query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.publishedAt DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.publishedAt DESC ');
   }else {
-    query = client.query('SELECT * FROM newsnow WHERE source = $1 and source = $2 ORDER BY insertDate DESC LIMIT 50', [news, news1]);
+    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 ORDER BY insertDate DESC LIMIT 50', [news, news1]);
   }
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
@@ -70,7 +70,7 @@ app.get('/api/v1/:news/:news1', function(req,res){
       .write("OK BUT NO NEWS");
     }else {
       var json = JSON.stringify(toreturn);
-      console.log ( json );
+    //  console.log ( json );
       res.write(json);
     }
     res.end() ;
