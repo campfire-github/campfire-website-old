@@ -32,7 +32,7 @@ class Entertainment extends React.Component{
         var json = JSON.parse(result);
         var array = [] ;
         for (var i = 0; i<json.length; i++){
-            if( json[i].source === "entertainment-weekly"){
+            if( json[i].source === "entertainment-weekly" || json[i].source === "mtv-news"){
               array.push(json[i]);
             }
         }

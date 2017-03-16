@@ -28,7 +28,7 @@ class Sport extends React.Component{
         var json = JSON.parse(result);
         var array = [] ;
         for (var i = 0; i<json.length; i++){
-            if( json[i].source === "bbc-sport"){
+            if( json[i].source === "bbc-sport" || json[i].source === "espn"){
               array.push(json[i]);
               console.log ( json[i].urltoimage);
             }

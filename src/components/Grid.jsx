@@ -5,10 +5,10 @@ class Grid extends React.Component{
 
   _handleClick (e){
      console.log(e.button);
-     if((e.button == 2)){
-      return false ;
+     if((e.button == 0)){
 
-     }
+
+     }else {return false ;}
    }
 
 

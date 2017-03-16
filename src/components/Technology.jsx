@@ -28,7 +28,7 @@ class Technology extends React.Component{
         var json = JSON.parse(result);
         var all = [] ;
         for (var i = 0; i<json.length; i++){
-            if( json[i].source === "techcrunch"){
+            if( json[i].source === "techcrunch" || json[i].source === "recode"){
               all.push(json[i]);
             }
         }

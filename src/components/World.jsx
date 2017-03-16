@@ -32,7 +32,7 @@ class World extends React.Component{
         var json = JSON.parse(result);
         var array = [] ;
         for (var i = 0; i<json.length; i++){
-            if( json[i].source === "google-news"){
+            if( json[i].source === "google-news" || json[i].source === "the-telegraph"){
               array.push(json[i]);
             }
         }
