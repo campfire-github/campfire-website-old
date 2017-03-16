@@ -4,9 +4,10 @@ import Technology from './Technology.jsx';
 import World from './World.jsx';
 import HeadLine from './HeadLine.jsx';
 import Grid from './Grid.jsx';
-import Title from './Title.jsx'
-import Category from './Category.jsx'
-import Weather from './Weather.jsx'
+import Title from './Title.jsx';
+import Category from './Category.jsx';
+import Weather from './Weather.jsx';
+import Gaming from './Gaming.jsx';
 import { Link } from 'react-router'
 import jQuery from '../../dist/js/jquery-3.1.1.js';
 
