@@ -7,13 +7,6 @@ import Masonry from 'react-masonry-component';
 
 class Entertainment extends React.Component{
 
-  constructor() {
-    super() ;
-    this.state = {
-      entertainmentHeadlind : [],
-      all : []
-    }
-  };
   var masonryOptions = {
       transitionDuration: 0
   };
@@ -21,6 +14,15 @@ class Entertainment extends React.Component{
   var style = {
       backgroundColor: 'tomato'
   };
+
+  constructor() {
+    super() ;
+    this.state = {
+      entertainmentHeadlind : [],
+      all : []
+    }
+  }
+
 
 
 
