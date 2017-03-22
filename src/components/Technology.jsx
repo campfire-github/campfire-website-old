@@ -54,7 +54,7 @@ class Technology extends React.Component{
   componentDidMount() {
     this._timer = setInterval(
                   ()=>this.fetchNews(),
-                  60000);
+                  90000);
   }
 
   componentWillUnmount(){ // memory leak solving

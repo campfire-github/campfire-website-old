@@ -13,7 +13,7 @@ class Entertainment extends React.Component{
       entertainmentHeadlind : [],
       all : []
     }
-  }
+  };
   var masonryOptions = {
       transitionDuration: 0
   };
@@ -64,7 +64,7 @@ class Entertainment extends React.Component{
   componentDidMount() {
     this._timer = setInterval(
                   ()=>this._fetchNews(),
-                  60000);
+                  90000);
   }
 
   componentWillUnmount(){ // memory leak solving

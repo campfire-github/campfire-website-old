@@ -55,7 +55,7 @@ class Sport extends React.Component{
   componentDidMount() {
     this._timer = setInterval(
                   ()=>this._fetchNews(),
-                  60000);
+                  90000);
   }
 
   componentWillUnmount(){ // memory leak solving
