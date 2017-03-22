@@ -5,6 +5,14 @@ import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 //import request from 'superagent'
+import Masonry from 'react-masonry-component';
+
+var masonryOptions = {
+    transitionDuration: 10
+};
+var style = {
+  backgroundColor : #d9dde2 ;
+};
 class Sport extends React.Component{
 
   constructor() {
@@ -55,7 +63,7 @@ class Sport extends React.Component{
   componentDidMount() {
     this._timer = setInterval(
                   ()=>this._fetchNews(),
-                  90000);
+                  1001000);
   }
 
   componentWillUnmount(){ // memory leak solving
@@ -70,7 +78,9 @@ class Sport extends React.Component{
         <div className="container">
           <h1>Sport</h1>
           <section className="row">
-            {allnews}
+            <Masonry className={'my-gallery-class'} >
+                  {allnews}
+            </Masonry>
           </section>
         </div>
         <Footer />

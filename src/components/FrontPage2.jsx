@@ -29,7 +29,7 @@ class FrontPage2 extends React.Component{
     console.log("refreshing frontpage");
     this._timer = setInterval(
                   ()=>this._fetchNews(),
-                  300000);
+                  1001000);
     }
     componentWillUnmount(){ // memory leak solving
       clearInterval(this._timer);

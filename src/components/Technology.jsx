@@ -4,6 +4,14 @@ import Grid from './Grid.jsx'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
+import Masonry from 'react-masonry-component';
+
+var masonryOptions = {
+    transitionDuration: 10
+};
+var style = {
+  backgroundColor : #d9dde2 ;
+};
 class Technology extends React.Component{
 
   constructor() {
@@ -54,7 +62,7 @@ class Technology extends React.Component{
   componentDidMount() {
     this._timer = setInterval(
                   ()=>this.fetchNews(),
-                  90000);
+                  1001000);
   }
 
   componentWillUnmount(){ // memory leak solving
@@ -69,7 +77,9 @@ class Technology extends React.Component{
         <div className="container">
           <h1>Technology</h1>
           <section className="row">
-            {allnews}
+            <Masonry className={'my-gallery-class'} >
+                  {allnews}
+            </Masonry>
           </section>
         </div>
         <Footer />

@@ -3,7 +3,14 @@ import Grid from './Grid.jsx'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
+import Masonry from 'react-masonry-component';
 
+var masonryOptions = {
+    transitionDuration: 10
+};
+var style = {
+  backgroundColor : #d9dde2 ;
+};
 class Gaming extends React.Component{
 
   constructor() {
@@ -57,7 +64,7 @@ class Gaming extends React.Component{
   componentDidMount() {
     this._timer = setInterval(
                   ()=>this._fetchNews(),
-                  90000);
+                  1001000);
   }
 
   componentWillUnmount(){ // memory leak solving
@@ -72,7 +79,9 @@ class Gaming extends React.Component{
         <div className="container">
           <h1>Gaming</h1>
           <section className="row">
-            {allnews}
+            <Masonry className={'my-gallery-class'} >
+                  {allnews}
+            </Masonry>
           </section>
         </div>
         <Footer />

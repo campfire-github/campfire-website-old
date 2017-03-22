@@ -6,12 +6,12 @@ import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Masonry from 'react-masonry-component';
 
 var masonryOptions = {
-    transitionDuration: 0
+    transitionDuration: 10
+};
+var style = {
+  backgroundColor : #d9dde2 ; 
 };
 
-var style = {
-    backgroundColor: 'tomato'
-};
 
 class Entertainment extends React.Component{
 
@@ -81,7 +81,7 @@ class Entertainment extends React.Component{
         <div className="container">
           <h1>Entertainment</h1>
           <section className="row">
-            <Masonry className={'my-gallery-class'} style={style} >
+            <Masonry className={'my-gallery-class'} >
                   {allnews}
             </Masonry>
 
