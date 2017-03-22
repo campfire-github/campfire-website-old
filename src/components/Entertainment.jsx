@@ -5,6 +5,14 @@ import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Masonry from 'react-masonry-component';
 
+var masonryOptions = {
+    transitionDuration: 0
+};
+
+var style = {
+    backgroundColor: 'tomato'
+};
+
 class Entertainment extends React.Component{
 
   constructor() {
@@ -13,14 +21,8 @@ class Entertainment extends React.Component{
       entertainmentHeadlind : [],
       all : []
     }
-  },
-  var masonryOptions = {
-      transitionDuration: 0
-  },
-
-  var style = {
-      backgroundColor: 'tomato'
   }
+
 
 
 
