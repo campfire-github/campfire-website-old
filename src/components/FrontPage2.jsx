@@ -1,7 +1,4 @@
 import React from 'react';
-
-
-
 import Title from './Title.jsx';
 import Category from './Category.jsx';
 import Weather from './Weather.jsx';

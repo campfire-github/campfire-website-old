@@ -1,9 +1,9 @@
 import React from 'react' ;
-import HeadLine from './HeadLine.jsx'
 import Grid from './Grid.jsx'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
+import Masonry from 'react-masonry-component';
 
 class Entertainment extends React.Component{
 
@@ -14,7 +14,13 @@ class Entertainment extends React.Component{
       all : []
     }
   }
+  var masonryOptions = {
+      transitionDuration: 0
+  };
 
+  var style = {
+      backgroundColor: 'tomato'
+  };
 
 
 
@@ -73,7 +79,10 @@ class Entertainment extends React.Component{
         <div className="container">
           <h1>Entertainment</h1>
           <section className="row">
-            {allnews}
+            <Masonry className={'my-gallery-class'} style={style} >
+                  {allnews}
+            </Masonry>
+
           </section>
         </div>
         <Footer />

@@ -1,5 +1,4 @@
 import React from 'react' ;
-import HeadLine from './HeadLine.jsx'
 import Grid from './Grid.jsx'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'

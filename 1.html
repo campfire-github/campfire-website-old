@@ -1,0 +1,47 @@
+import React from 'react';
+
+class Footer extends React.Component{
+  render(){
+    const footername = this.props.footername;
+    return (
+      <footer>
+
+        <div className = "row col-md-12 col-lg-12 col-sm-12 col-xs-12">
+           <div className= "footer-col  col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <h5> Map maybe </h5>
+           </div>
+
+            <div className="footer-col  col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <h5>Find me on</h5>
+                <ul className="list-inline">
+                      <li>
+                          <a href="https://www.facebook.com/CSengleat" className="btn-social btn-outline"><span className="sr-only">Facebook</span><i className="fa fa-fw fa-facebook"></i></a>
+                      </li>
+                      <li>
+                          <a href="https://www.instagram.com/csengleat" className="btn-social btn-outline"><span className="sr-only">Instagram</span><i className="fa fa-fw fa-instagram"></i></a>
+                      </li>
+                      <li>
+                          <a href="https://www.500px.com" className="btn-social btn-outline"><span className="sr-only">500 px</span><i className="fa fa-fw fa-500px"></i></a>
+                      </li>
+                      <li>
+                          <a href="https://twitter.com" className="btn-social btn-outline"><span className="sr-only">Twitter</span><i className="fa fa-fw fa-twitter"></i></a>
+                      </li>
+                </ul>
+            </div>
+
+            <div className= "footer-col col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                  <h5> idonknow </h5>
+            </div>
+        </div>
+
+
+      </footer>
+
+    )
+
+
+  }
+
+
+}
+export default Footer ;
