@@ -9,7 +9,7 @@ var masonryOptions = {
     transitionDuration: 10
 };
 var style = {
-  backgroundColor : #d9dde2 ;
+  backgroundColor : '#d9dde2' ;
 };
 class Gaming extends React.Component{
 
@@ -79,7 +79,7 @@ class Gaming extends React.Component{
         <div className="container">
           <h1>Gaming</h1>
           <section className="row">
-            <Masonry className={'my-gallery-class'} >
+            <Masonry className={'my-gallery-class'} style={style} >
                   {allnews}
             </Masonry>
           </section>
