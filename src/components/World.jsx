@@ -8,9 +8,7 @@ import Masonry from 'react-masonry-component';
 var masonryOptions = {
     transitionDuration: 10
 };
-var style = {
-  backgroundColor: '#d9dde2' ;
-};
+
 
 class World extends React.Component{
 
@@ -80,7 +78,7 @@ class World extends React.Component{
         <div className="container">
           <h1>World</h1>
           <section className="row">
-            <Masonry className={'my-gallery-class'} style={style}>
+            <Masonry className={'my-gallery-class'} >
                   {allnews}
             </Masonry>
           </section>
