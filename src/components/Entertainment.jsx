@@ -4,7 +4,7 @@ import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Masonry from 'react-masonry-component';
-
+//https://github.com/eiriklv/react-masonry-component
 var masonryOptions = {
     transitionDuration: 10
 };
