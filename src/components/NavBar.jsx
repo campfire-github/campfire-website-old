@@ -25,18 +25,21 @@ class NavBar extends React.Component{
               <ul className="nav navbar-nav  navbar-right">
 
                   <li ><Link to="/world">World</Link></li>
-                  <li ><a href="#">triplab</a></li>
+                  <li ><Link to="/sport">Sport</Link></li>
+                  <li ><Link to="/technology">Technology</Link></li>
+                  <li ><Link to="/entertainment">Entertainment</Link></li>
+                  <li ><Link to="/gaming">Gaming</Link></li>
                   <li className="dropdown">
-                    <a href= "#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span className="caret"></span></a>
+                    <a href= "#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span className="caret"></span></a>
                     <ul className="dropdown-menu">
-                      <li><a href="#">Address</a></li>
-                      <li><a href="#">Phone</a></li>
-                      <li><a href="#">Something else</a></li>
+                      <li ><Link to="/national-geographic">National-Geographic</Link></li>
+                      <li ><Link to="/time">Time</Link></li>
+                      <li ><Link to="/mtv">MTV</Link></li>
                       <li role="separator" className="divider"></li>
-                      <li><a href="#">Business hours</a></li>
+                      <li ><Link to="/hacker-news">Hacker-News</Link></li>
                     </ul>
                   </li>
-                  <li classname = "nav-li"><a href="#">Link</a></li>
+                  <li classname = "nav-li"><a href="#">Contact Us</a></li>
 
               </ul>
           </div>
