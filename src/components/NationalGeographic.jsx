@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionPage from './SectionPage.jsx';
 
-class NationalGeographic extends React.components{
+class NationalGeographic extends React.component{
 
   render () {
     return (
@@ -15,4 +15,4 @@ class NationalGeographic extends React.components{
 
 
 }
-export default NationalGeographic ; 
+export default NationalGeographic ;
