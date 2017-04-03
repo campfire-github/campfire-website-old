@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import Navbar from './NavBar.jsx'
+import NavBar from './NavBar.jsx'
 
 const Header = () => (
   <div>
