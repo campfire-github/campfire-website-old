@@ -24,10 +24,10 @@ class NavBar extends React.Component{
 
               <ul className="nav navbar-nav  navbar-right">
 
-                  <li><Link to="/world">World</Link></li>
-                  <li><a href="#">triplab</a></li>
+                  <li classname = "nav-li"><Link to="/world">World</Link></li>
+                  <li classname = "nav-li"><a href="#">triplab</a></li>
                   <li className="dropdown">
-                    <a href= "#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span className="caret"></span></a>
+                    <a href= "#" className="dropdown-toggle nav-li" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span className="caret"></span></a>
                     <ul className="dropdown-menu">
                       <li><a href="#">Address</a></li>
                       <li><a href="#">Phone</a></li>
@@ -36,7 +36,7 @@ class NavBar extends React.Component{
                       <li><a href="#">Business hours</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">Link</a></li>
+                  <li classname = "nav-li"><a href="#">Link</a></li>
 
               </ul>
           </div>

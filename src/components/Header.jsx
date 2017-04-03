@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router'
 import NavBar from './NavBar.jsx'
-
+//  <h1><Link to="/">campfire news</Link></h1>
 const Header = () => (
   <div>
     <header>
       <NavBar></NavBar>
-      <h1><Link to="/">campfire news</Link></h1>
+
 
     </header>
   </div>

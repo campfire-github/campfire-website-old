@@ -16,6 +16,10 @@ header {
 
 }
 
+.nav-li{
+  font-family: threedventure;
+}
+
 header h1 {
   font-family: threedventure;
   font-size: 50px;
