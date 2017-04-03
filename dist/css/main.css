@@ -17,7 +17,10 @@ header {
 
 }
 
-
+.frontpage2{
+  padding-top: 10px;
+   
+}
 
 header h1 {
   font-family: threedventure;
@@ -45,7 +48,7 @@ h2 a {
 }
 
 .container{
-  padding-top: 5px ; 
+  padding-top: 5px ;
 }
 
 .container-fluid {
