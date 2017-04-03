@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionPage from './SectionPage.jsx';
 
-class NationalGeographic extends React.component{
+class NationalGeographic extends React.Component{
 
   render () {
     return (
