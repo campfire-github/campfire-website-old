@@ -9,7 +9,7 @@ var masonryOptions = {
     transitionDuration: 10
 };
 
-class SectionPage extends React.components{
+class SectionPage extends React.component{
     constructor() {
       super() ;
       this.state = {
