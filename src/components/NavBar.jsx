@@ -23,7 +23,7 @@ class NavBar extends React.Component{
 
 
               <ul className="nav navbar-nav  navbar-right">
-
+                  <li ><Link to="/">Home</Link></li>
                   <li ><Link to="/world">World</Link></li>
                   <li ><Link to="/sport">Sport</Link></li>
                   <li ><Link to="/technology">Technology</Link></li>
