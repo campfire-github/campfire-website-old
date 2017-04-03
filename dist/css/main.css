@@ -13,11 +13,13 @@ header {
 .navbar-brand{
   font-family: threedventure;
   font-size: 30px;
+  padding-left: 50% ; 
 
 }
 
 .nav-li{
   font-family: threedventure;
+
 }
 
 header h1 {
