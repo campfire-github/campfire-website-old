@@ -3,12 +3,17 @@
   src: url(../fonts/3Dventure.ttf);
 }
 .ad{
-  padding-top: 5px ;
-  height : 90px ; 
+
 }
 
 header {
   text-align: center;
+}
+
+.navbar-brand{
+  font-family: threedventure;
+  font-size: 50px;
+  
 }
 
 header h1 {
