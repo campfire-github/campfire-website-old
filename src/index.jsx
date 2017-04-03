@@ -11,6 +11,10 @@ import Sport from './components/Sport.jsx'
 import NewsFeedFun from './components/NewsFeed_fun.jsx'
 import Gaming from './components/Gaming.jsx'
 import NationalGeographic from './components/NationalGeographic.jsx'
+import Time from './components/Time.jsx'
+import Mtv from './components/Mtv.jsx'
+import HackerNews from './components/HackerNews.jsx'
+
 import NotFound from './components/NotFound.jsx'
 
 
@@ -25,6 +29,9 @@ render((
     <Route path="/world" component={World} />
     <Route path="/gaming" component={Gaming}/>
     <Route path="/national-geographic" component={NationalGeographic}/>
+    <Route path="/time" component={Time}/>
+    <Route path="/hacker-news" component={HackerNews}/>
+    <Route path="/mtv" component={Mtv}/>
     <Route path="/newsfeedfun" component={NewsFeedFun} />
     <Route path="/*" component={NotFound} />
 
