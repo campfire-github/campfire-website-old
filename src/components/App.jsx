@@ -8,7 +8,10 @@ import FrontPage2 from './FrontPage2.jsx'
 
 const App = () => (
   <div className="container-fluid">
-    <Header />
+    <div>
+        <Header />
+    </div>
+
     <div className="container">
       <FrontPage2 className = "frontpage2"/>
     </div>
