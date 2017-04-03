@@ -1,6 +1,6 @@
 import React from 'react'  ;
 import Title from './Title.jsx'
-import { Link } from 'react-router'
+ 
 
 class Category extends React.Component{
   constructor(){

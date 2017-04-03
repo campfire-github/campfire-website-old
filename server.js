@@ -52,7 +52,7 @@ app.get('/api/v1/:news/:news1', function(req,res){
   var toreturn =  [] ; var query ;
 
   if(news === "newsnow"){
-    query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.publishedAt DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.publishedAt DESC ');
+    query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.insertDate DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.insertDate DESC ');
   }else {
     query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 ORDER BY insertDate DESC LIMIT 50', [news, news1]);
   }
