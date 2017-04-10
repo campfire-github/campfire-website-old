@@ -1,6 +1,7 @@
 import React from 'react';
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Grid from './Grid.jsx';
+import Masonry from 'react-masonry-component';
 class Form extends React.Component{
     constructor() {
       super()  ;
