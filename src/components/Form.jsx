@@ -63,10 +63,9 @@ class Form extends React.Component{
           <form className="form-horizontal">
             <input type="text"  onChange={this.updateInputValue.bind(this)}/>
             <button type="button" onClick={this.onSubmit.bind(this)} className="search-button">Search</button>
-          </form>
-          <div>
             {result}
-          </div>
+        </form>
+          
 
         </div>
 

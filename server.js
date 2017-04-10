@@ -49,7 +49,7 @@ app.get('/api/v1/memorynewsnow', function(req,res){
 app.get('/api/v1/search/:keyword',function(req,res){
   const keyword1 = "%"+req.params.keyword+"%";
   var toreturn =[];
-  var query = client.query('SELECT * FROM NEWSNOW WHERE title::text like $1',[keyword1]);
+  var query = client.query('SELECT * FROM NEWSNOW WHERE title::text like $1 ORDER BY insertDate limit 20',[keyword1]);
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
     res.status(404)
