@@ -22,14 +22,14 @@ class PopupModal extends React.Component{
 
   render(){
     console.log ("modalshow");
-    var modalclassname = "popupmodal-div-show" ;
+    var modalclassname = "popupmodal-div-show container-fluid" ;
     return (
       <div className={modalclassname}>
 
 
         <div className="modal-content">
           <span className="close" onClick = {this.props.onClick()} >&times;</span>
-          <p>Some text in the Modal..</p>
+          <p>Search</p>
           <Form></Form>
         </div>
 
