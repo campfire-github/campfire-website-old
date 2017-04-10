@@ -1,9 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PopupModal from './PopupModal.jsx';
 class NavBar extends React.Component{
 
+  constructor(){
+    super() ;
+    this.state ={
+      modalShow : false
+    }
+  }
+
+  showModalPopup() {
+    this.setState({modalShow:true});
+    console.log("click");
+  }
+
+  childCloseClick(e){
+    e.preventDefault()  ;
+    this.setState({modalShow:false});
+    console.log("close click");
+  }
+
+  getModal() {
+    if(this.state.modalShow){
+      console.log("TrueModal");
+      return (<PopupModal modalShow = {this.state.modalShow} onClick={(e) =>this.childCloseClick.bind(this)}></PopupModal>) ;
+    }
+  }
 
   render(){
+
+    var popupmodal = this.getModal() ;
+
     return (
 
       <nav className="navbar navbar-default navbar-fixed-top ">
@@ -23,6 +51,7 @@ class NavBar extends React.Component{
 
 
               <ul className="nav navbar-nav  navbar-right">
+                  <li><a href ="#"className="search" onClick = {this.showModalPopup.bind(this)} >search</a></li>
                   <li ><Link to="/">Home</Link></li>
                   <li ><Link to="/world">World</Link></li>
                   <li ><Link to="/sport">Sport</Link></li>
@@ -46,6 +75,7 @@ class NavBar extends React.Component{
 
 
         </div>
+        {popupmodal}
       </nav>
 
 
