@@ -22,7 +22,7 @@ class PopupModal extends React.Component{
 
   render(){
     console.log ("modalshow");
-    var modalclassname = "popupmodal-div-show" ;
+    var modalclassname = "popupmodal-div-show container-fluid" ;
     return (
       <div className={modalclassname}>
 
