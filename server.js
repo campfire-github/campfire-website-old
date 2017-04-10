@@ -46,6 +46,32 @@ app.get('/api/v1/memorynewsnow', function(req,res){
   }
 });
 
+app.get('/api/v1/search/:keyword',function(req,res){
+  const keyword1 = req.params.keyword;
+  var toreturn =[];
+  var query = client.query('SELECT * FROM NEWSNOW WHERE title::text like $1',[keyword1]);
+  query.on('err',function(err){
+    console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
+    res.status(404)
+       .write('NOT FOUND');
+  });
+  query.on('row', function(result){
+    toreturn.push(result);
+  });
+  query.on('end', function(){
+    if(toreturn.length == 0){
+      res.status(200)
+      .write("OK BUT NO NEWS");
+    }else {
+      var json = JSON.stringify(toreturn);
+    //  console.log ( json );
+      res.write(json);
+    }
+    res.end() ;
+  });
+
+});
+
 app.get('/api/v1/:news/:news1', function(req,res){
   const news = req.params.news ;
   const news1 = req.params.news1 ;

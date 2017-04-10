@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Form from './Form.jsx';
 
 
 class PopupModal extends React.Component{
@@ -30,6 +30,7 @@ class PopupModal extends React.Component{
         <div className="modal-content">
           <span className="close" onClick = {this.props.onClick()} >&times;</span>
           <p>Some text in the Modal..</p>
+          <Form></Form>
         </div>
 
       </div>
