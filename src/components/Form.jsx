@@ -59,13 +59,17 @@ class Form extends React.Component{
       var result = this._getAllResult()  ;
       return (
 
-        <div>
-          <form className="form-horizontal">
-            <input type="text"  onChange={this.updateInputValue.bind(this)}/>
+        <div className = "col-md-12 col-sm-12 col-xs-12">
+          <form className="form-horizontal col-md-12 col-sm-12 col-xs-12">
+            <input className = "col-md-9 col-sm-9 col-xs-9" type="text"  onChange={this.updateInputValue.bind(this)}/>
             <button type="button" onClick={this.onSubmit.bind(this)} className="search-button">Search</button>
-            {result}
-        </form>
-          
+
+          </form>
+          <div className = "col-md-12 col-sm-12 col-xs-12">
+            <Masonry className={'my-gallery-class'} >
+                  {result}
+            </Masonry>
+          </div>
 
         </div>
 
