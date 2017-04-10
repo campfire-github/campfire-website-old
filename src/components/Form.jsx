@@ -45,7 +45,7 @@ class Form extends React.Component{
         data:"{body}",
         success :(result)=>{
           console.log("result "+ result);
-          var json = result;
+          var json = JSON.parse(result);
           var array = [] ;
           for (var i = 0; i<json.length; i++){
             array.push(json[i]);

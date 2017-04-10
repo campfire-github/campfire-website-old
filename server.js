@@ -47,7 +47,7 @@ app.get('/api/v1/memorynewsnow', function(req,res){
 });
 
 app.get('/api/v1/search/:keyword',function(req,res){
-  const keyword1 = req.params.keyword;
+  const keyword1 = "%"+req.params.keyword+"%";
   var toreturn =[];
   var query = client.query('SELECT * FROM NEWSNOW WHERE title::text like $1',[keyword1]);
   query.on('err',function(err){
@@ -60,8 +60,9 @@ app.get('/api/v1/search/:keyword',function(req,res){
   });
   query.on('end', function(){
     if(toreturn.length == 0){
+      var json = JSON.stringify("OK BUT NO NEWS");
       res.status(200)
-      .write("OK BUT NO NEWS");
+      .write(json);
     }else {
       var json = JSON.stringify(toreturn);
     //  console.log ( json );
