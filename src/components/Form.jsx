@@ -67,10 +67,12 @@ class Form extends React.Component{
             <button type="button" onClick={this.onSubmit.bind(this)} className="search-button">Search</button>
           </form>
 
-          <div className = "container">
-            <Masonry className={'my-gallery-class'} >
-                  {result}
-            </Masonry>
+          <div className = "col-md-12 col-sm-12 col-xs-12">
+            <section className="row">
+              <Masonry className={'my-gallery-class'} >
+                    {result}
+              </Masonry>
+            </section>  
           </div>
 
         </div>
