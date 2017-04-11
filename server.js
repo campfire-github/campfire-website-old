@@ -93,13 +93,13 @@ app.get('/api/v1/:news/:news1', function(req,res){
   });
   query.on('end', function(){
     if(toreturn.length == 0){
-      res.status(200)
+      res.status(404)
       .write("OK BUT NO NEWS");
     }else {
       var json = JSON.stringify(toreturn);
     //  console.log ( json );
-      res.status(404)
-         .write(json);
+      res.status(200)
+          .write(json);
     }
     res.end() ;
   });
