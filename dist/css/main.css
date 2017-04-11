@@ -94,6 +94,11 @@ h2 a {
   color: black ;
 }
 
+.grid-img{
+  padding-left: 10%;
+  padding-right: 10%; 
+}
+
 iframe {
   border: none;
 }
@@ -142,7 +147,7 @@ footer p {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-    font-weight:  normal ; 
+    font-weight:  normal ;
 }
 
 /* The Close Button */
