@@ -32,8 +32,8 @@ class Form extends React.Component{
 
     checkSubmit(e) {
 
-      console.log(e.keyCode +"code");
-       if(e.keyCode == 0) {
+      console.log(e.key +"code");
+       if(e.key == 'Enter') {
           console.log("enter press");
           this.searching() ;
        }
