@@ -66,7 +66,7 @@ class Form extends React.Component{
             <button type="button" onClick={this.onSubmit.bind(this)} className="search-button">Search</button>
 
           </form>
-          <div className = "container col-md-12 col-sm-12 col-xs-12">
+          <div className = "col-md-12 col-sm-12 col-xs-12">
             <Masonry className={'my-gallery-class'} >
                   {result}
             </Masonry>

@@ -142,6 +142,7 @@ footer p {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    font-weight:  normal ; 
 }
 
 /* The Close Button */
@@ -149,7 +150,7 @@ footer p {
     color: #aaa;
     float: right;
     font-size: 28px;
-    
+    font-weight: bold;
 }
 
 .close:hover,
