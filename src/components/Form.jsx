@@ -31,6 +31,7 @@ class Form extends React.Component{
     }
 
     checkSubmit(e) {
+      e.preventDefault()  ; 
       console.log(e.keyCode +"code");
        if(e && e.keyCode == 13) {
           console.log("enter press");
