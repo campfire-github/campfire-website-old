@@ -61,12 +61,13 @@ class Form extends React.Component{
       return (
 
         <div className = "col-md-12 col-sm-12 col-xs-12">
+
           <form className="form-horizontal col-md-12 col-sm-12 col-xs-12">
             <input className = "col-md-9 col-sm-9 col-xs-9" type="text"  onChange={this.updateInputValue.bind(this)}/>
             <button type="button" onClick={this.onSubmit.bind(this)} className="search-button">Search</button>
-
           </form>
-          <div className = "col-md-12 col-sm-12 col-xs-12">
+
+          <div className = "container">
             <Masonry className={'my-gallery-class'} >
                   {result}
             </Masonry>
