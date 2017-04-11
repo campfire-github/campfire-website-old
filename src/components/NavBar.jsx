@@ -44,7 +44,7 @@ class NavBar extends React.Component{
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <button type="button" className="navbar-toggle collapsed glyphicon glyphicon-search" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" onClick = {this.showModalPopup.bind(this)}></button>
+            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" onClick = {this.showModalPopup.bind(this)}>&#1F50D;</button>
             <a className="navbar-brand" href="/"> CAMPFIRE NEWS</a>
           </div>
 
