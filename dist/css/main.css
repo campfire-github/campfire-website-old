@@ -67,11 +67,7 @@ h2 a {
   margin-bottom: 50px;
 }
 
-.Grid{
 
-  border-bottom: solid 1px #dce1ea ;
-  margin-top: 1px ;
-}
 
 .category {
   border-right: solid 2px grey ;
@@ -88,6 +84,21 @@ h2 a {
   color: black ;
 }
 
+.Grid{
+  border-bottom: solid 1px #dce1ea ;
+  margin-top: 1px ;
+}
+
+.grid-img{
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.grid-a{
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
 .grid-h4{
   margin-top: 0px ;
   text-decoration : none ;
@@ -96,10 +107,7 @@ h2 a {
   color: black ;
 }
 
-.grid-img{
-  padding-left: 1px;
-  padding-right: 1px;
-}
+
 
 iframe {
   border: none;
