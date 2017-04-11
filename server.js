@@ -49,7 +49,7 @@ app.get('/api/v1/memorynewsnow', function(req,res){
 app.get('/api/v1/search/:keyword',function(req,res){
   const keyword1 = "%"+req.params.keyword+"%";
   var toreturn =[];
-  var query = client.query('SELECT * FROM NEWSNOW WHERE title::text like $1 ORDER BY insertDate limit 20',[keyword1]);
+  var query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY insertDate limit 25',[keyword1]);
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
     res.status(404)
@@ -98,7 +98,8 @@ app.get('/api/v1/:news/:news1', function(req,res){
     }else {
       var json = JSON.stringify(toreturn);
     //  console.log ( json );
-      res.write(json);
+      res.status(404)
+         .write(json);
     }
     res.end() ;
   });
