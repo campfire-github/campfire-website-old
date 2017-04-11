@@ -9,6 +9,12 @@ header {
   text-align: center;
 }
 
+.button-search{
+  padding: 0;
+border: none;
+background: none;
+}
+
 .navbar-brand{
   font-family: threedventure;
   font-size: 30px;
