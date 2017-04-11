@@ -91,6 +91,8 @@ h2 a {
 .grid-h4{
   margin-top: 0px ;
   text-decoration : none ;
+  padding-left: 1px;
+  padding-right: 1px;
   color: black ;
 }
 
