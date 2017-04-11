@@ -33,7 +33,7 @@ class Form extends React.Component{
     checkSubmit(e) {
 
       console.log(e.keyCode +"code");
-       if(e && e.keyCode == 13) {
+       if(e.keyCode == 0) {
           console.log("enter press");
           this.searching() ;
        }
