@@ -30,6 +30,12 @@ class Form extends React.Component{
       this.setState({inputValue: e.target.value});
     }
 
+    checkSubmit(e) {
+       if(e && e.keyCode == 13) {
+          this.searching() ;
+       }
+    }
+
     onSubmit(e){
       this.searching()  ;
       console.log("submit "+this.state.inputValue);
@@ -63,7 +69,7 @@ class Form extends React.Component{
         <div className = "col-md-12 col-sm-12 col-xs-12">
 
           <form className="form-horizontal col-md-12 col-sm-12 col-xs-12">
-            <input className = "col-md-9 col-sm-9 col-xs-12" type="text"  onChange={this.updateInputValue.bind(this)}/>
+            <input className = "col-md-9 col-sm-9 col-xs-12" type="text"  onChange={this.updateInputValue.bind(this) onKeyPress={this.checkSubmit.bind(this)}}/>
             <button type="button" onClick={this.onSubmit.bind(this)} className="search-button">Search</button>
           </form>
 
