@@ -29,6 +29,7 @@ class SectionPage extends React.Component{
         },
         data:"{body}",
         success :(result)=>{
+          console.log(result);
           var json = JSON.parse(result);
           var array = [] ;
           for (var i = 0; i<json.length; i++){
@@ -59,7 +60,7 @@ class SectionPage extends React.Component{
 
     componentDidMount() {
       this._timer = setInterval(
-                    ()=>this._fetchNews(),
+                    ()=>this._fetchNews(this.props.url),
                     90000);
     }
 

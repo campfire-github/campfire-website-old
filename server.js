@@ -38,13 +38,7 @@ app.get('/api/v1/news', (req, res) => (
   request(url, (error, response, body) => (!error && response.statusCode === 200 ? res.json(JSON.parse(body)) : console.log(error)))
 ))
 
-app.get('/api/v1/memorynewsnow', function(req,res){
-  if(newsnow.length>0 ){
-    res.status(200).write(JSON.stringify(newsnow));
-  }else {
-    res.status(404).write('NO NEWS FOUND');
-  }
-});
+
 
 app.get('/api/v1/search/:keyword',function(req,res){
   const lowercase = req.params.keyword.toLowerCase()  ;
@@ -173,7 +167,7 @@ var weatherloop = setInterval( function(){
 
 
 var insertNewsnow = function(){
-  var temp =[] ;
+  //var temp =[] ;
    for (var index = 0 ; index < urls.length ;index++ ){
      var url1 = urls[index] + process.env.API_KEY  ;
      request(url1, (error, response, body) => {
@@ -189,7 +183,7 @@ var insertNewsnow = function(){
                 source:json.source,
                 description:json.articles[i].description
               }
-              temp.push(each);
+          //    temp.push(each);
               const today  = new Date () ;
               var query = client.query ('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate) SELECT $1,$2,$3,$4,$5,$6,$7,$8 WHERE NOT EXISTS (SELECT * FROM newsnow where url = $9 and source = $10)',
               [each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today,each.url, each.source]);
@@ -198,13 +192,13 @@ var insertNewsnow = function(){
               });
             }
         }else{
-            temp= [] ;
-            console.log('error' + response.statusCode);
+          //  temp= [] ;
+            //console.log('error' + response.statusCode);
         }
-        if(temp.length>0){
-          newsnow= [] ;
-          newsnow = temp ;
-        }
+//if(temp.length>0){
+  //        newsnow= [] ;
+    //      newsnow = temp ;
+      //  }
      })
    }
 }
