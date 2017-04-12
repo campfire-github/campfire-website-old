@@ -155,3 +155,12 @@ class Entertainment extends React.Component{
 }
 export default Entertainment  ;
 --
+
+
+app.get('/api/v1/memorynewsnow', function(req,res){
+  if(newsnow.length>0 ){
+    res.status(200).write(JSON.stringify(newsnow));
+  }else {
+    res.status(404).write('NO NEWS FOUND');
+  }
+});
