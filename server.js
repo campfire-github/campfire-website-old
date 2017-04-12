@@ -47,7 +47,8 @@ app.get('/api/v1/memorynewsnow', function(req,res){
 });
 
 app.get('/api/v1/search/:keyword',function(req,res){
-  const keyword1 = "%"+req.params.keyword+"%";
+  const lowercase = req.params.keyword.toLowerCase()  ;
+  const keyword1 = "%"+lowercase+"%";
   var toreturn =[];
   var query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY insertDate limit 25',[keyword1]);
   query.on('err',function(err){
@@ -61,11 +62,10 @@ app.get('/api/v1/search/:keyword',function(req,res){
   query.on('end', function(){
     if(toreturn.length == 0){
       var json = JSON.stringify("OK BUT NO NEWS");
-      res.status(200)
+      res.status(404)
       .write(json);
     }else {
       var json = JSON.stringify(toreturn);
-    //  console.log ( json );
       res.write(json);
     }
     res.end() ;

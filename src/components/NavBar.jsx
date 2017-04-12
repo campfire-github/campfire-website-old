@@ -52,7 +52,7 @@ class NavBar extends React.Component{
 
 
               <ul className="nav navbar-nav  navbar-right">
-                  <li><a href ="#"className="search" onClick = {this.showModalPopup.bind(this)} >search</a></li>
+                  <li><a href ="#"className="search" onClick = {this.showModalPopup.bind(this)}> &#128269; </a></li>
                   <li ><Link to="/">Home</Link></li>
                   <li ><Link to="/world">World</Link></li>
                   <li ><Link to="/sport">Sport</Link></li>

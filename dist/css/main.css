@@ -11,8 +11,9 @@ header {
 
 .button-search{
   padding: 0;
-border: none;
-background: none;
+  padding-top: 2px ; 
+  border: none;
+  background: none;
 }
 
 .navbar-brand{
