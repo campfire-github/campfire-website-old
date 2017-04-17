@@ -24,12 +24,12 @@ class SectionPage extends React.Component{
       console.log("c :"+ c);
       this.setState({count: c})
       console.log(this.state.count);
-      this._fetchNews(this.props.url);
+      this._fetchNews(this.props.url,c);
     }
 
-    _fetchNews(url){
+    _fetchNews(url,count){
       console.log('fetching news')
-      var urllink = url+"/"+this.state.count;
+      var urllink = url+"/"+count;
       jQuery.ajax({
         method:'GET',
         url: urllink,
@@ -64,13 +64,12 @@ class SectionPage extends React.Component{
 
     componentWillMount() {
       var url = this.props.url ;
-      this.setState({count:40});
       this._fetchNews(url) ;
     }
 
     componentDidMount() {
       this._timer = setInterval(
-                    ()=>this._fetchNews(this.props.url),
+                    ()=>this._fetchNews(this.props.url,this.state.count),
                     90000);
     }
 
