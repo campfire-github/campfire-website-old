@@ -85,7 +85,7 @@ class SectionPage extends React.Component{
           <div className="container">
             <h1>{this.props.pagename}</h1>
             <section className="row">
-              <Masonry className={'my-gallery-class'} >
+              <Masonry className={'my-gallery-class'} elementType={'ul'}  >
                     {allnews}
               </Masonry>
 
