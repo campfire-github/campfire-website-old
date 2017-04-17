@@ -90,9 +90,8 @@ class SectionPage extends React.Component{
               </Masonry>
 
             </section>
-
+            <button className = "col-md-12 col-sm-12 col-md-12" onClick= {this._getMore.bind(this)}>More</button>
           </div>
-          <button class = "col-md-12 col-sm-12 col-md-12" onClick= {this._getMore.bind(this)}>More</button>
           <Footer />
         </div>
       )
