@@ -21,6 +21,7 @@ class SectionPage extends React.Component{
 
     _getMore() {
       var c = this.state.count +40 ;
+      console.log(this.state.count)
       this.setState({count: c})
       this._fetchNews(this.props.url);
     }
