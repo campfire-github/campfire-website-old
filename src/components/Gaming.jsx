@@ -5,7 +5,7 @@ class Gaming extends React.Component{
   render () {
     return (
       <SectionPage pagename = "Gaming"
-                   url = "http://www.campfire.news/api/v1/ign/ign"
+                   url = "http://www.campfire.news/api/v1/ign/polygon"
       />
     )
   }

@@ -5,7 +5,7 @@ class HackerNews extends React.Component{
   render () {
     return (
       <SectionPage pagename = "Hacker-News"
-                   url = "http://www.campfire.news/api/v1/hacker-news/hacker-news"
+                   url = "http://www.campfire.news/api/v1/hacker-news/hacker-news/hacker-news"
       />
     )
   }

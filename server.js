@@ -18,10 +18,13 @@ const url = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKe
 var urls = ['https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=',
             'https://newsapi.org/v1/articles?source=recode&sortBy=top&apiKey=',
+            'https://newsapi.org/v1/articles?source=wired-de&sortBy=top&apiKey=',
+            'https://newsapi.org/v1/articles?source=abc-news-au&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' ,
             'https://newsapi.org/v1/articles?source=the-telegraph&sortBy=latest&apiKey=',
             'https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=',
+            'https://newsapi.org/v1/articles?source=polygon&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=ign&sortBy=latest&apiKey=',
             'https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=',
@@ -37,8 +40,6 @@ var newsnow = [];
 app.get('/api/v1/news', (req, res) => (
   request(url, (error, response, body) => (!error && response.statusCode === 200 ? res.json(JSON.parse(body)) : console.log(error)))
 ))
-
-
 
 app.get('/api/v1/search/:keyword',function(req,res){
   const lowercase = req.params.keyword.toLowerCase()  ;
@@ -67,15 +68,17 @@ app.get('/api/v1/search/:keyword',function(req,res){
 
 });
 
-app.get('/api/v1/:news/:news1', function(req,res){
+app.get('/api/v1/:news/:news1/:news2/:count', function(req,res){
   const news = req.params.news ;
   const news1 = req.params.news1 ;
+  const news2 = req.params.news2 ;
+  const count = req.params.count ;
   var toreturn =  [] ; var query ;
 
   if(news === "newsnow"){
     query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.insertDate DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.insertDate DESC ');
   }else {
-    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 ORDER BY insertDate DESC LIMIT 50', [news, news1]);
+    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 or source = $3 ORDER BY insertDate DESC LIMIT $4', [news, news1, news2,count]);
   }
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
@@ -167,7 +170,6 @@ var weatherloop = setInterval( function(){
 
 
 var insertNewsnow = function(){
-  //var temp =[] ;
    for (var index = 0 ; index < urls.length ;index++ ){
      var url1 = urls[index] + process.env.API_KEY  ;
      request(url1, (error, response, body) => {
@@ -183,7 +185,6 @@ var insertNewsnow = function(){
                 source:json.source,
                 description:json.articles[i].description
               }
-          //    temp.push(each);
               const today  = new Date () ;
               var query = client.query ('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate) SELECT $1,$2,$3,$4,$5,$6,$7,$8 WHERE NOT EXISTS (SELECT * FROM newsnow where url = $9 and source = $10)',
               [each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today,each.url, each.source]);
@@ -192,13 +193,9 @@ var insertNewsnow = function(){
               });
             }
         }else{
-          //  temp= [] ;
-            //console.log('error' + response.statusCode);
+
         }
-//if(temp.length>0){
-  //        newsnow= [] ;
-    //      newsnow = temp ;
-      //  }
+
      })
    }
 }

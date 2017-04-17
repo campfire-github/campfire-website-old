@@ -4,7 +4,7 @@ import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Masonry from 'react-masonry-component';
-
+var count = 40 ;
 var masonryOptions = {
     transitionDuration: 10
 };
@@ -18,9 +18,14 @@ class SectionPage extends React.Component{
       }
     }
 
+    _getMore() {
+      count = count +40  ;
+      this._fetchNews(this.props.url);
+    }
+
     _fetchNews(url){
       console.log('fetching news')
-      var urllink = url;
+      var urllink = url+"/"+count;
       jQuery.ajax({
         method:'GET',
         url: urllink,
@@ -81,6 +86,7 @@ class SectionPage extends React.Component{
               </Masonry>
 
             </section>
+            <button class = "col-md-12 col-sm-12 col-md-12"onClcik= this._getMore.bind(this)>More</button>
           </div>
           <Footer />
         </div>

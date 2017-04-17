@@ -5,7 +5,7 @@ class Mtv extends React.Component{
   render () {
     return (
       <SectionPage pagename = "MTV"
-                   url = "http://www.campfire.news/api/v1/mtv-news/mtv-news"
+                   url = "http://www.campfire.news/api/v1/mtv-news/mtv-news/mtv-news"
       />
     )
   }

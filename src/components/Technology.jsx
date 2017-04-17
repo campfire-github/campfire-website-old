@@ -5,7 +5,7 @@ class Technology extends React.Component{
   render () {
     return (
       <SectionPage pagename = "Technology"
-                   url = "http://www.campfire.news/api/v1/techcrunch/recode"
+                   url = "http://www.campfire.news/api/v1/techcrunch/recode/wired-de"
       />
     )
   }
