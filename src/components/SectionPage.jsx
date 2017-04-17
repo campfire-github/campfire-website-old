@@ -85,8 +85,9 @@ class SectionPage extends React.Component{
           <div className="container">
             <h1>{this.props.pagename}</h1>
             <section className="row">
+              <Masonry className={'my-gallery-class'}  >
                     {allnews}
-
+              </Masonry>
 
             </section>
             <button class = "col-md-12 col-sm-12 col-md-12" onClick= {this._getMore.bind(this)}>More</button>
