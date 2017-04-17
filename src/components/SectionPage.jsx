@@ -64,7 +64,7 @@ class SectionPage extends React.Component{
 
     componentWillMount() {
       var url = this.props.url ;
-      this._fetchNews(url) ;
+      this._fetchNews(url,this.state.count) ;
     }
 
     componentDidMount() {
