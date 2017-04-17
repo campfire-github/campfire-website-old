@@ -15,14 +15,15 @@ class SectionPage extends React.Component{
       this.state = {
         headline : [],
         all : [],
-        count:40
+        count: 40
       }
     }
 
     _getMore() {
       var c = this.state.count +40 ;
-      console.log(this.state.count)
+
       this.setState({count: c})
+      console.log(this.state.count)
       this._fetchNews(this.props.url);
     }
 
