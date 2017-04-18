@@ -11,7 +11,7 @@ header {
 
 .button-search{
   padding: 0;
-  padding-top: 2px ; 
+  padding-top: 2px ;
   border: none;
   background: none;
 }
@@ -82,7 +82,8 @@ h2 a {
 }
 
 .title-div{
-  margin-top:  0px ;
+  border-bottom: solid 1px #dce1ea ;
+  margin-top:  3px ;
 }
 
 .title-h4 {
@@ -93,7 +94,9 @@ h2 a {
 
 .Grid{
   border-bottom: solid 1px #dce1ea ;
-  margin-top: 1px ;
+  margin-top: 5px ;
+  padding-bottom: 5px ;
+
 }
 
 .grid-img{

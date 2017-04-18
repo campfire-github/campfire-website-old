@@ -5,12 +5,12 @@ const morgan = require('morgan')
 const request = require('request')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-///*
+/*
 const pg = require('pg')
 const connectionString = process.env.DATABASE_URL
 const client = new pg.Client(connectionString)
 client.connect()
-//*/
+*/
 const port = process.env.PORT || 8080
 const app = express()
 const corsOptions = { origin: '*' }
@@ -29,7 +29,8 @@ var urls = ['https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=
             'https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=',
             'https://newsapi.org/v1/articles?source=hacker-news&sortBy=latest&apiKey=',
-            'https://newsapi.org/v1/articles?source=mtv-news&sortBy=latest&apiKey='
+            'https://newsapi.org/v1/articles?source=mtv-news&sortBy=latest&apiKey=',
+            'https://newsapi.org/v1/articles?source=new-scientist&sortBy=latest&apiKey='
            ]
 app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -78,7 +79,7 @@ app.get('/api/v1/:news/:news1/:news2/:count', function(req,res){
   if(news === "newsnow"){
     query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.insertDate DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.insertDate DESC ');
   }else {
-    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 or source = $3 ORDER BY publishedAt, insertDate DESC LIMIT $4', [news, news1, news2,count]);
+    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 or source = $3 ORDER BY unixtime DESC LIMIT $4', [news, news1, news2,count]);
   }
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
