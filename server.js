@@ -45,7 +45,7 @@ app.get('/api/v1/search/:keyword',function(req,res){
   const lowercase = req.params.keyword.toLowerCase()  ;
   const keyword1 = "%"+lowercase+"%";
   var toreturn =[];
-  var query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY insertDate limit 25',[keyword1]);
+  var query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY insertDate DESC limit 25',[keyword1]);
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
     res.status(404)
@@ -78,7 +78,7 @@ app.get('/api/v1/:news/:news1/:news2/:count', function(req,res){
   if(news === "newsnow"){
     query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.insertDate DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.insertDate DESC ');
   }else {
-    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 or source = $3 ORDER BY insertDate DESC LIMIT $4', [news, news1, news2,count]);
+    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 or source = $3 ORDER BY publishedAt, insertDate DESC LIMIT $4', [news, news1, news2,count]);
   }
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
@@ -186,8 +186,9 @@ var insertNewsnow = function(){
                 description:json.articles[i].description
               }
               const today  = new Date () ;
-              var query = client.query ('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate) SELECT $1,$2,$3,$4,$5,$6,$7,$8 WHERE NOT EXISTS (SELECT * FROM newsnow where url = $9 and source = $10)',
-              [each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today,each.url, each.source]);
+              const unixtime = Date.parse(today)/1000;
+              var query = client.query ('INSERT INTO newsnow (author,title,url,urlToImage,publishedAt,source,description,insertDate,unixTime) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$11 WHERE NOT EXISTS (SELECT * FROM newsnow where url = $9 and source = $10)',
+              [each.author,each.title,each.url,each.urlToImage,each.publishedAt, each.source, each.description, today,each.url, each.source,unixtime]);
               query.on('err', function(err){
                 console.log("the error is + "+ err);
               });

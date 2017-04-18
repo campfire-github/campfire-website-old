@@ -69,7 +69,7 @@ class NavBar extends React.Component{
                       <li ><Link to="/hacker-news">Hacker-News</Link></li>
                     </ul>
                   </li>
-                  <li classname = "nav-li"><a href="#">Contact Us</a></li>
+                  <li className = "nav-li"><a href="#">Contact Us</a></li>
 
               </ul>
           </div>

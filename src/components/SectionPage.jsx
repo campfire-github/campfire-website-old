@@ -38,7 +38,7 @@ class SectionPage extends React.Component{
         },
         data:"{body}",
         success :(result)=>{
-          console.log(result);
+          //console.log(result);
           var json = JSON.parse(result);
           var array = [] ;
           for (var i = 0; i<json.length; i++){
@@ -55,6 +55,8 @@ class SectionPage extends React.Component{
     _getAllNews() {
       console.log("get all ");
       return this.state.all.map((each)=>{
+        var unixtime = Date.parse(each.insertdate)/1000 ;
+        console.log(unixtime +"-"+ each.insertdate )
         return(
           <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urltoimage} key={each.url}></Grid>
         );
