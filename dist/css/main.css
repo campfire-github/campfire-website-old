@@ -2,10 +2,7 @@
   font-family: threedventure;
   src: url(../fonts/3Dventure.ttf);
 }
-.ad{
-  width: 80%  ; 
 
-}
 
 header {
   text-align: center;
@@ -21,10 +18,13 @@ header {
 .navbar-brand{
   font-family: threedventure;
   font-size: 30px;
-  padding-left: 10% ;
+
 
 }
+.ad{
+  padding-top: 65px ;
 
+}
 .frontpage2{
   padding-top: 10px;
 
@@ -54,7 +54,7 @@ h2 a {
 }
 
 .container{
-  padding-top: 65px ;
+  padding-top: 60px ;
 }
 
 .container-fluid {
