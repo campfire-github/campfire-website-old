@@ -36,6 +36,11 @@ class Grid extends React.Component{
           <a className="grid-a col-md-9 col-sm-9 col-xs-9" href={this.props.url} target="_blank">
             <h4 className = "grid-h4">{this.props.title}</h4>
           </a>
+          <div className= "popup-description">
+            <img className="grid-img col-md-12 col-sm-12 col-xs-12" src={this.props.urlToImage}  ></img>
+            <p>{this.props.description}</p>
+
+          </div>
         </div>
 
 

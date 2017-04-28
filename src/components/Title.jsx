@@ -21,6 +21,7 @@ class Title extends React.Component{
         <a href = {this.props.url}>
           <h4 className= "title-h4">{this.props.title}</h4>
         </a>
+      
       </div>
     )
   }

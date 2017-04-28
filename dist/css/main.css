@@ -3,6 +3,8 @@
   src: url(../fonts/3Dventure.ttf);
 }
 .ad{
+  width: 80%  ; 
+
 }
 
 header {
@@ -98,6 +100,23 @@ h2 a {
   padding-bottom: 5px ;
 
 }
+
+.Grid .popup-description {
+  display: none;
+  position: absolute;
+  top: 95%;
+  left: 5%;
+  right: 5%;
+  background-color: #e6e8ed;
+  padding: .5em;
+  z-index: 50 ;
+}
+
+.Grid:hover .popup-description{
+  display :block;
+}
+
+
 
 .grid-img{
   padding-left: 2px;

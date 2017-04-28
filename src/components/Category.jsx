@@ -15,7 +15,7 @@ class Category extends React.Component{ //
   //  console.log("a" + a );
     return a.map((each)=>{
       return (
-        <Title title={each.title} url={each.url} key={each.url}></Title>
+        <Title title={each.title} url={each.url} key={each.url} urlToImage= {each.urltoimage} description={each.description}></Title>
       )
     });
   }
