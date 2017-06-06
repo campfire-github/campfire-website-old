@@ -6,6 +6,7 @@ class Time extends React.Component{
     return (
       <SectionPage pagename = "Time"
                    url = "http://www.campfire.news/api/v1/time/time/time"
+                      page1 = "http://www.campfire.news/time"
       />
     )
   }

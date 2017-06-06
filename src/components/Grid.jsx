@@ -1,5 +1,19 @@
 import React from 'react'
+import {
+  ShareButtons,
+  ShareCounts,
+  generateShareIcon,
+} from 'react-share';
 
+
+const {
+  FacebookShareButton,
+   TwitterShareButton
+} = ShareButtons;
+
+
+const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
 
 var isMobile = {
     Android: function() {
@@ -28,6 +42,7 @@ class Grid extends React.Component{
     var rand = Math.floor((Math.random() * 10) + 1);
     var mobile = isMobile.any() ;
     console.log(isMobile.any() + " Mobilee " + rand);
+    console.log ( this.props.page1 +" is page to go "+ this.props.url);
     if(mobile === null ){
       console.log("null < 4 ")
       return (
@@ -39,7 +54,30 @@ class Grid extends React.Component{
           <div className= "popup-description">
             <img className="grid-img col-md-12 col-sm-12 col-xs-12" src={this.props.urlToImage}  ></img>
             <p>{this.props.description}</p>
-
+            <div className ="share col-md-12">
+                <p className = "share-txt col-md-2">Share</p>
+                <div className = "col-md-2">
+                  <FacebookShareButton className = "share-icon col-md-2"
+                    url={this.props.url}
+                    title={this.props.title}
+                    picture={this.props.urlToImage}
+                    description ={this.props.description}
+                    className="Demo__some-network__share-button">
+                    <FacebookIcon size={32} round />
+                  </FacebookShareButton>
+                 </div>
+                 <div className = "col-md-2">
+                   <TwitterShareButton className = "share-icon col-md-2"
+                     url={this.props.url}
+                     title={this.props.title}
+                     picture={this.props.urlToImage}
+                     via ={"campfire.news"}
+                     hashtag = {"campfirenews"}
+                     className="Demo__some-network__share-button">
+                     <TwitterIcon size={32} round />
+                   </TwitterShareButton>
+                  </div>
+              </div>
           </div>
         </div>
 

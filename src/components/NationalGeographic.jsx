@@ -6,6 +6,7 @@ class NationalGeographic extends React.Component{
     return (
       <SectionPage pagename = "National-Geographic"
                    url = "http://www.campfire.news/api/v1/national-geographic/national-geographic/national-geographic"
+                      page1 = "http://www.campfire.news/national-geographic"
       />
     )
   }

@@ -4,6 +4,18 @@ import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Masonry from 'react-masonry-component';
+import {
+  ShareButtons,
+  ShareCounts,
+  generateShareIcon,
+} from 'react-share';
+
+
+const {
+  FacebookShareButton,
+} = ShareButtons;
+const FacebookIcon = generateShareIcon('facebook');
+
 
 var masonryOptions = {
     transitionDuration: 10
@@ -58,7 +70,7 @@ class SectionPage extends React.Component{
         var unixtime = Date.parse(each.insertdate)/1000 ;
         console.log(unixtime +"-"+ each.insertdate )
         return(
-          <Grid title={each.title} description={each.description} url={each.url} urlToImage={each.urltoimage} key={each.url}></Grid>
+          <Grid title={each.title} description={each.description} url={each.url} page1={this.props.page1} urlToImage={each.urltoimage} key={each.url} ></Grid>
         );
       });
     }
@@ -81,17 +93,24 @@ class SectionPage extends React.Component{
 
     render() {
       var allnews = this._getAllNews() ;
+
       return(
         <div className="container-fluid">
           <Header />
           <div className="container">
-            <h1>{this.props.pagename}</h1>
-            <section className="row">
+              <h1>{this.props.pagename}</h1>
+              <FacebookShareButton
+                url={this.props.page1}
+                title={"Get all latest news on Campfire.news"}
+                className="Demo__some-network__share-button">
+                <FacebookIcon size={32} round />
+               </FacebookShareButton>
+              <section className="row">
               <Masonry className={'my-gallery-class'}  >
                     {allnews}
               </Masonry>
 
-            </section>
+              </section>
             <button className = "col-md-12 col-sm-12 col-md-12" onClick= {this._getMore.bind(this)}>More</button>
           </div>
           <Footer />

@@ -6,6 +6,7 @@ class Technology extends React.Component{
     return (
       <SectionPage pagename = "Technology"
                    url = "http://www.campfire.news/api/v1/techcrunch/recode/wired-de"
+                      page1 = "http://www.campfire.news/technology"
       />
     )
   }
