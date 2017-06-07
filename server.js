@@ -205,8 +205,17 @@ var insertNewsnow = function(){
 }
 
 var shot = function(){
-  webshot('campfire.news/sport', '../img/google.png', function(err) {
+  webshot('campfire.news/sport', 'google1.png', function(err) {
  // screenshot now saved to google.png
+      if(err){
+        console.log(err) ;
+      }
+  });
+  webshot('google.com', 'google.png', function(err) {
+ // screenshot now saved to google.png
+      if(err){
+        console.log(err) ;
+      }
   });
 }
 var shotloop = setInterval( function(){
