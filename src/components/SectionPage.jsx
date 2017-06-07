@@ -103,7 +103,7 @@ class SectionPage extends React.Component{
               <h1>{this.props.pagename}</h1>
               <FacebookShareButton
                 url={this.props.page1}
-                picture={"www.campfire.news/img/google.png"}
+                picture={"../img/google.png"}
                 title={"Get all latest news on Campfire.news"}
 
                 className="Demo__some-network__share-button">
