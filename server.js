@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const request = require('request')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const webshot = require('webshot')
 ///*
 const pg = require('pg')
 const connectionString = process.env.DATABASE_URL
@@ -200,7 +201,17 @@ var insertNewsnow = function(){
 
      })
    }
+
 }
+
+var shot = function(){
+  webshot('campfire.news/sport', '../img/google.png', function(err) {
+ // screenshot now saved to google.png
+  });
+}
+var shotloop = setInterval( function(){
+  shot() ;
+}, 10000);
 
 var requestLoop = setInterval( function(){
   insertNewsnow() ;

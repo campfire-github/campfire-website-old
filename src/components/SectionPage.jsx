@@ -4,6 +4,7 @@ import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Masonry from 'react-masonry-component';
+
 import {
   ShareButtons,
   ShareCounts,
@@ -58,6 +59,7 @@ class SectionPage extends React.Component{
                 array.push(json[i]);
               //}
           }
+
           this.setState({all:array});
         }
       })
@@ -102,7 +104,9 @@ class SectionPage extends React.Component{
               <FacebookShareButton
                 url={this.props.page1}
                 title={"Get all latest news on Campfire.news"}
+                picture={"../img/google.png"}
                 className="Demo__some-network__share-button">
+
                 <FacebookIcon size={32} round />
                </FacebookShareButton>
               <section className="row">
