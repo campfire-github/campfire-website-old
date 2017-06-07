@@ -6,7 +6,7 @@ const request = require('request')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const webshot = require('webshot')
-/*
+///*
 const pg = require('pg')
 const connectionString = process.env.DATABASE_URL
 const client = new pg.Client(connectionString)
@@ -206,13 +206,11 @@ var insertNewsnow = function(){
 
 var shot = function(){
   webshot('campfire.news/sport', 'google1.png', function(err) {
- // screenshot now saved to google.png
       if(err){
         console.log(err) ;
       }
   });
   webshot('google.com', 'google.png', function(err) {
- // screenshot now saved to google.png
       if(err){
         console.log(err) ;
       }
