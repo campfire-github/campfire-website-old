@@ -47,7 +47,7 @@ app.get('/api/v1/search/:keyword',function(req,res){
   const lowercase = req.params.keyword.toLowerCase()  ;
   const keyword1 = "%"+lowercase+"%";
   var toreturn =[];
-  var query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY insertDate DESC limit 25',[keyword1]);
+  var query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY id DESC limit 25',[keyword1]);
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
     res.status(404)
@@ -78,9 +78,9 @@ app.get('/api/v1/:news/:news1/:news2/:count', function(req,res){
   var toreturn =  [] ; var query ;
 
   if(news === "newsnow"){
-    query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.insertDate DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.insertDate DESC ');
+    query = client.query('SELECT nn.* FROM (SELECT n.*, ROW_NUMBER() OVER (PARTITION BY n.source ORDER BY n.id DESC) rn FROM newsnow n) nn WHERE nn.rn <=10 ORDER BY nn.id DESC ');
   }else {
-    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 or source = $3 ORDER BY unixtime DESC LIMIT $4', [news, news1, news2,count]);
+    query = client.query('SELECT * FROM newsnow WHERE source = $1 or source = $2 or source = $3 ORDER BY id DESC LIMIT $4', [news, news1, news2,count]);
   }
   query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");

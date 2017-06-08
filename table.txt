@@ -5,9 +5,10 @@
     url TEXT ,
     urlToImage TEXT ,
     publishedAt DATE ,
-    unixTime Integer, 
+    unixTime Integer,
     source VARCHAR,
     insertDate DATE,
+    id SERIAL,
     PRIMARY KEY (url ,source )
 
   );
