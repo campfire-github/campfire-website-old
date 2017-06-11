@@ -8,12 +8,14 @@ import {
 
 const {
   FacebookShareButton,
-   TwitterShareButton
+   TwitterShareButton,
+   LinkedinShareButton
 } = ShareButtons;
 
 
 const FacebookIcon = generateShareIcon('facebook');
 const TwitterIcon = generateShareIcon('twitter');
+const LinkedinIcon = generateShareIcon('linkedin');
 
 var isMobile = {
     Android: function() {
@@ -59,7 +61,7 @@ class Grid extends React.Component{
                 <div className = "col-md-2">
                   <FacebookShareButton className = "share-icon col-md-2"
                     url={this.props.url}
-                    title={this.props.title}
+                    title={this.props.title + " ---shared by campfire.news"}
                     picture={this.props.urlToImage}
                     description ={this.props.description}
                     className="Demo__some-network__share-button">
@@ -77,6 +79,15 @@ class Grid extends React.Component{
                      <TwitterIcon size={32} round />
                    </TwitterShareButton>
                   </div>
+                  <div className = "col-md-2">
+                    <LinkedinShareButton className = "share-icon col-md-2"
+                      url={this.props.url}
+                      title={this.props.title}
+                      picture={this.props.urlToImage}
+                      className="Demo__some-network__share-button">
+                      <LinkedinIcon size={32} round />
+                    </LinkedinShareButton>
+                   </div>
               </div>
           </div>
         </div>
@@ -119,4 +130,4 @@ class Grid extends React.Component{
   }
 }
 
-export default Grid
+export default Grid;

@@ -2,6 +2,7 @@ import React from 'react';
 import Title from './Title.jsx';
 import Category from './Category.jsx';
 import Weather from './Weather.jsx';
+import Highlight from './Highlight.jsx'
 
 
 import jQuery from '../../dist/js/jquery-3.1.1.js';
@@ -92,8 +93,11 @@ class FrontPage2 extends React.Component{
   }
 
   render() {
+
+
     return (
       <div>
+
 
         <section className="row">
           <Category categoryname ="World" arrays={this.state.world} ></Category>
@@ -109,6 +113,10 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Time" arrays={this.state.time} ></Category>
           <Category categoryname ="Hacker-News" arrays={this.state.hackerNews} ></Category>
           <Category categoryname ="Mtv" arrays={this.state.mtvNews} ></Category>
+        </section>
+
+        <section className ="row">
+          
         </section>
       </div>
     )

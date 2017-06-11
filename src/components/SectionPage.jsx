@@ -5,6 +5,7 @@ import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Masonry from 'react-masonry-component';
 
+
 import {
   ShareButtons,
   ShareCounts,
@@ -14,8 +15,10 @@ import {
 
 const {
   FacebookShareButton,
+  TwitterShareButton
 } = ShareButtons;
 const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
 
 
 var masonryOptions = {
@@ -101,19 +104,39 @@ class SectionPage extends React.Component{
           <Header />
           <div className="container">
               <h1>{this.props.pagename}</h1>
-              <FacebookShareButton
-                url={this.props.page1}
-                picture={"../img/google.png"}
-                title={"Get all latest news on Campfire.news"}
+              <div className = "col-md-12 col-xs-12">
+                <div className = "col-md-1 col-xs-2">
+                <FacebookShareButton
+                  url={this.props.page1}
+                  picture={"google.png"}
+                  title={"Get all latest news on Campfire.news"}
 
-                className="Demo__some-network__share-button">
+                  className="Demo__some-network__share-button">
 
-                <FacebookIcon size={32} round />
-               </FacebookShareButton>
-              <section className="row">
-              <Masonry className={'my-gallery-class'}  >
-                    {allnews}
-              </Masonry>
+                  <FacebookIcon size={32} round />
+                 </FacebookShareButton>
+
+               </div>
+               <div className = "col-md-1 col-xs-2">
+                   <TwitterShareButton
+                     url={this.props.page1}
+                     picture={"google.png"}
+                     title={"Get all latest news on Campfire.news"}
+
+                     via ={"campfire.news"}
+                     hashtag = {"campfirenews"}
+                     className="Demo__some-network__share-button">
+                     <TwitterIcon size={32} round />
+                   </TwitterShareButton>
+                 </div>
+
+              </div>
+
+
+              <section className="row col-md-12 col-xs-12">
+                <Masonry className={'my-gallery-class'}  >
+                      {allnews}
+                </Masonry>
 
               </section>
             <button className = "col-md-12 col-sm-12 col-md-12" onClick= {this._getMore.bind(this)}>More</button>
