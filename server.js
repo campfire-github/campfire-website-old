@@ -72,7 +72,7 @@ app.get('/api/v1/search/:keyword',function(req,res){
 
 });
 
-app.post('api/headlineUpdate', function(req,res){
+app.post('/api/headlineUpdate', function(req,res){
   const id = req.body.id ;
   console.log("key" + Object.keys(req.body));
 
