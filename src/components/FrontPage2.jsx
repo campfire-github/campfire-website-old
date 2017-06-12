@@ -116,7 +116,7 @@ class FrontPage2 extends React.Component{
         </section>
 
         <section className ="row">
-          
+        
         </section>
       </div>
     )

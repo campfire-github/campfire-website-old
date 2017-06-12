@@ -75,7 +75,7 @@ class SectionPage extends React.Component{
         var unixtime = Date.parse(each.insertdate)/1000 ;
         console.log(unixtime +"-"+ each.insertdate )
         return(
-          <Grid title={each.title} description={each.description} url={each.url} page1={this.props.page1} urlToImage={each.urltoimage} key={each.url} ></Grid>
+          <Grid title={each.title} description={each.description} id={each.id} url={each.url} page1={this.props.page1} urlToImage={each.urltoimage} key={each.url} ></Grid>
         );
       });
     }
