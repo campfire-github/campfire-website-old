@@ -49,10 +49,10 @@ app.get('/api/v1/search/:keyword',function(req,res){
   const lowercase = req.params.keyword.toLowerCase()  ;
   const keyword1 = "%"+lowercase+"%";
   var toreturn =[]; var query ;
-  var today = new Date() ;
-  var yesterday =  today.setDate(today.getDate() - 1);
+  var date = new Date() ;
+  date.setDate(date.getDate() - 1);
   if(lowercase === "highlightnews"){//
-    query = client.query('SELECT * FROM NEWSNOW WHERE highlight = true AND insertDate = $1 ',[yesterday]);
+    query = client.query('SELECT * FROM NEWSNOW WHERE highlight = true AND insertDate = $1 ',[date]);
   }else {
     query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY id DESC limit 25',[keyword1]);
   }
