@@ -9,6 +9,7 @@
     source VARCHAR,
     insertDate DATE,
     id SERIAL,
+    highlight bool default false ,
     PRIMARY KEY (url ,source )
 
   );

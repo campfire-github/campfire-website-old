@@ -42,12 +42,9 @@ var isMobile = {
 class Grid extends React.Component{
 
   _headline(id ){
-
     var data1 ={
       'id': id
     };
-
-
     var urllink = "http://www.campfire.news/api/headline/"+id
     jQuery.ajax({
       method:'GET',
@@ -57,31 +54,22 @@ class Grid extends React.Component{
       },
       data:data1,
       success :(result)=>{
-        //console.log(result);
-
         console.log(result) ;
       }
     })
-
   }
 
   _headlineUpdate(id ){
-
-    var data1 ={
-      'id': id
-    };
-
-
     var urllink = "http://www.campfire.news/api/headlineUpdate"
     jQuery.ajax({
       method:'POST',
       url: urllink,
-      dataType: 'json',
-      data : JSON.stringify({ "id": id}),
-      contentType: "application/json",
-      success :(result)=>{
-        //console.log(result);
 
+      data : JSON.stringify({ "id": id}),
+      beforeSend: function (xhrObj) {
+         xhrObj.setRequestHeader("Content-Type", "application/json"); // this will accepte the reply from server in post request
+      },
+      success :(result)=>{
         console.log(result) ;
       }
     })
@@ -136,8 +124,7 @@ class Grid extends React.Component{
                       className="Demo__some-network__share-button">
                       <LinkedinIcon size={32} round />
                     </LinkedinShareButton>
-                    <button onClick={this._headline.bind(this,this.props.id)}>plus</button>
-                    <button onClick={this._headlineUpdate.bind(this,this.props.id)}>uPDATE</button>
+                    <button onClick={this._headlineUpdate.bind(this,this.props.id)}>headlineUpdate</button>
                    </div>
               </div>
           </div>
