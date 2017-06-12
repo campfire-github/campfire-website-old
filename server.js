@@ -46,7 +46,7 @@ app.get('/api/v1/news', (req, res) => (
 app.post('/api/highlight', function(req,res){
   const id = req.body.id ;
   console.log(id);
-  if(id > 200){
+  if(id < 200){
     res.status(400).write("NOT FOUND");
   }
   res.status(200).write("OK");
