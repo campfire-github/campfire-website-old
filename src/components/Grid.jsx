@@ -1,5 +1,5 @@
 import React from 'react';
-import jQuery from '../../dist/js/jquery-3.1.1.js';
+
 import {
   ShareButtons,
   ShareCounts,
@@ -41,7 +41,23 @@ var isMobile = {
 
 class Grid extends React.Component{
 
+  _headlind(id ){
+    var urllink = "http://www.campfire.news/api/headline/"+id
+    jQuery.ajax({
+      method:'GET',
+      url: urllink,
+      beforeSend: function (xhrObj) {
+         xhrObj.setRequestHeader("Content-Type", "application/json");
+      },
+      data:"{body}",
+      success :(result)=>{
+        //console.log(result);
+        var json = JSON.parse(result);
+        console.log(result) ; 
+      }
+    })
 
+  }
 
   _toRender() {
     var rand = Math.floor((Math.random() * 10) + 1);
@@ -81,7 +97,7 @@ class Grid extends React.Component{
                      className="Demo__some-network__share-button">
                      <TwitterIcon size={32} round />
                    </TwitterShareButton>
-                  
+
                   </div>
                   <div className = "col-md-2">
                     <LinkedinShareButton className = "share-icon col-md-2"
@@ -91,6 +107,7 @@ class Grid extends React.Component{
                       className="Demo__some-network__share-button">
                       <LinkedinIcon size={32} round />
                     </LinkedinShareButton>
+                    <button onClick={this._headline.bind(this,this.props.id)}>plus</button>
                    </div>
               </div>
           </div>
