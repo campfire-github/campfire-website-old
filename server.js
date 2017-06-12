@@ -48,9 +48,14 @@ app.get('/api/v1/news', (req, res) => (
 app.get('/api/v1/search/:keyword',function(req,res){
   const lowercase = req.params.keyword.toLowerCase()  ;
   const keyword1 = "%"+lowercase+"%";
-  var toreturn =[];
-  var query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY id DESC limit 25',[keyword1]);
-  query.on('err',function(err){
+  var toreturn =[]; var query ;
+  var today = new Date() ;
+  if(keyword === "highlight"){
+    query = client.query('SELECT * FROM NEWSNOW WHERE highlight = true AND insertDate = $1 ',[today]);
+  }else {
+    query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY id DESC limit 25',[keyword1]);
+  }
+    query.on('err',function(err){
     console.log("CAN NOT GET ANYTHING FROM NEWSNOW");
     res.status(404)
        .write('NOT FOUND');
@@ -69,24 +74,16 @@ app.get('/api/v1/search/:keyword',function(req,res){
     }
     res.end() ;
   });
-
 });
 
 app.post('/api/headlineUpdate', function(req,res){
   const id = req.body.id ;
   var error = 0 ;
   console.log("key" + Object.keys(req.body));
-/*
-  if (id < 2100){res.status(404).write('NOT FOUND');}
-  else {res.status(200).write('OK 2 '+ id);}
-  res.end()  ;
-*/
   var query = client.query('UPDATE newsnow SET highlight = true WHERE id =$1',[id]);
   query.on('err',function(err){
     error = -1 ;
     console.log("CAN NOT UPDATE highlight");
-
-
   });
   query.on('end', function(){
     if(error < 0){
