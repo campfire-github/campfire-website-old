@@ -76,8 +76,8 @@ app.post('api/headlineUpdate', function(req,res){
   const id = req.body.id ;
   console.log("key" + Object.keys(req.body));
 
-  if (id < 2100){res.status(404).write('NOT FOUND');}
-  else {res.status(200).write('OK 1 '+ id);}
+  if (id > 2100){res.status(404).write('NOT FOUND');}
+  else {res.status(200).write('OK 2 '+ id);}
   res.end()  ;
 
 });

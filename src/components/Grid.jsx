@@ -76,10 +76,9 @@ class Grid extends React.Component{
     jQuery.ajax({
       method:'POST',
       url: urllink,
-      beforeSend: function (xhrObj) {
-         xhrObj.setRequestHeader("Content-Type", "application/json");
-      },
-      data:data1,
+      dataType: 'json',
+      data : JSON.stringify({ "id": id}),
+      contentType: "application/json",
       success :(result)=>{
         //console.log(result);
 
