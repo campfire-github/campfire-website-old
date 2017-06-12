@@ -51,7 +51,7 @@ app.get('/api/v1/search/:keyword',function(req,res){
   var toreturn =[]; var query ;
   var today = new Date() ;
   var yesterday =  today.setDate(today.getDate() - 1);
-  if(keyword1 == "highlight"){
+  if(keyword1 == "highlight"){//
     query = client.query('SELECT * FROM NEWSNOW WHERE highlight = true AND insertDate = $1 ',[yesterday]);
   }else {
     query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY id DESC limit 25',[keyword1]);
