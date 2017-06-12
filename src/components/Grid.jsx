@@ -42,6 +42,10 @@ var isMobile = {
 class Grid extends React.Component{
 
   _headline(id ){
+
+    var data1 ={
+      'id': id
+    };
     var urllink = "http://www.campfire.news/api/headline/"+id
     jQuery.ajax({
       method:'GET',
@@ -49,10 +53,10 @@ class Grid extends React.Component{
       beforeSend: function (xhrObj) {
          xhrObj.setRequestHeader("Content-Type", "application/json");
       },
-      data:"{body}",
+      data:data1,
       success :(result)=>{
         //console.log(result);
-        
+
         console.log(result) ;
       }
     })
