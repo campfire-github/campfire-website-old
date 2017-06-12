@@ -75,9 +75,10 @@ app.get('/api/v1/search/:keyword',function(req,res){
 app.get('/api/headline/:id', function (req,res) {
   const id = req.params.id ;
   const idd = req.body.id ;
+  const iddd = req.data.id ;
 
   if (id < 2100){res.status(404).write('NOT FOUND');}
-  else {res.status(200).write('OK'+ idd);}
+  else {res.status(200).write('OK'+ idd + iddd);}
   res.end()  ;
 
 });
