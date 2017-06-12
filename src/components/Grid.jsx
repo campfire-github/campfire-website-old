@@ -52,7 +52,7 @@ class Grid extends React.Component{
       data:"{body}",
       success :(result)=>{
         //console.log(result);
-        var json = JSON.parse(result);
+        
         console.log(result) ;
       }
     })
