@@ -133,8 +133,8 @@ app.get('/api/v1/weather', function (req, res){
 
 
 app.get('/api/highlight', function(req,res){
-  //  var json = JSON.parse(body);
-  const id = req.body.id ;
+    var json = JSON.parse(body);
+  const id = json.id ;
   console.log(id);
   if(id > 200){
     res.status(400).write("NOT FOUND");
