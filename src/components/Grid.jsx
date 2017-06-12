@@ -44,7 +44,7 @@ class Grid extends React.Component{
   _highlightClick(id){
     console.log(id);
     var id1 = id ;
-    var urllink = "http://www.campfire.news/api/highlight"+id ;
+    var urllink = "http://www.campfire.news/api/highlight/"+id ;
 
 
     jQuery.ajax({
