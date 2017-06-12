@@ -43,8 +43,9 @@ class Grid extends React.Component{
 
   _highlightClick(id){
     console.log(id);
-    var urllink = "http://www.campfire.news/api/highlight" ;
-    var data1 = {id:id};
+    var id1 = id ;
+    var urllink = "http://www.campfire.news/api/highlight"+id ;
+
 
     jQuery.ajax({
       method:'GET',
@@ -52,7 +53,7 @@ class Grid extends React.Component{
       beforeSend: function (xhrObj) {
          xhrObj.setRequestHeader("Content-Type", "application/json");
       },
-      data:{'id':id},
+      data:{'data1'}
       success :(result)=>{
         //console.log(result);
       //  var json = JSON.parse(result);
