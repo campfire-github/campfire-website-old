@@ -76,11 +76,11 @@ app.post('/api/headlineUpdate', function(req,res){
   const id = req.body.id ;
   var error = 0 ;
   console.log("key" + Object.keys(req.body));
-
+/*
   if (id < 2100){res.status(404).write('NOT FOUND');}
   else {res.status(200).write('OK 2 '+ id);}
   res.end()  ;
-
+*/
   var query = client.query('UPDATE newsnow SET highlight = true WHERE id =$1',[id]);
   query.on('err',function(err){
     error = -1 ;
