@@ -55,8 +55,8 @@ class Grid extends React.Component{
       data:data1,
       success :(result)=>{
         //console.log(result);
-        var json = JSON.parse(result);
-        console.log(json);
+      //  var json = JSON.parse(result);
+        console.log(result);
       }
     })
 

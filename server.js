@@ -140,7 +140,7 @@ app.get('/api/highlight', function(req,res){
     res.status(400).write("NOT FOUND");
     res.end()  ;
   }
-  res.status(200).write("OK");
+  res.status(200).write(id+ "OK");
   res.end() ;
 });
 
