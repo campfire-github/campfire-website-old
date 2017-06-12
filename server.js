@@ -50,7 +50,7 @@ app.get('/api/v1/search/:keyword',function(req,res){
   const keyword1 = "%"+lowercase+"%";
   var toreturn =[]; var query ;
   var today = new Date() ;
-  if(keyword === "highlight"){
+  if(keyword1 === "highlight"){
     query = client.query('SELECT * FROM NEWSNOW WHERE highlight = true AND insertDate = $1 ',[today]);
   }else {
     query = client.query('SELECT * FROM NEWSNOW WHERE lower(title) like $1 ORDER BY id DESC limit 25',[keyword1]);
