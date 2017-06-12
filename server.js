@@ -6,7 +6,7 @@ const request = require('request')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const webshot = require('webshot')
-///*
+/*
 const pg = require('pg')
 const connectionString = process.env.DATABASE_URL
 const client = new pg.Client(connectionString)
@@ -43,9 +43,14 @@ app.get('/api/v1/news', (req, res) => (
   request(url, (error, response, body) => (!error && response.statusCode === 200 ? res.json(JSON.parse(body)) : console.log(error)))
 ))
 
-app.post('/api/highlight/:id', function(req,res){
-  const id = req.params.id ;
+app.post('/api/highlight', function(req,res){
+  const id = req.body.id ;
+  console.log(id);
+  if(id > 200){
+    res.status(400).write("NOT FOUND");
+  }
   res.status(200).write("OK");
+  res.end() ;
 });
 
 app.get('/api/v1/search/:keyword',function(req,res){
