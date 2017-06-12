@@ -52,7 +52,7 @@ class Grid extends React.Component{
       beforeSend: function (xhrObj) {
          xhrObj.setRequestHeader("Content-Type", "application/json");
       },
-      data:data1,
+      data:{'id':id},
       success :(result)=>{
         //console.log(result);
       //  var json = JSON.parse(result);
