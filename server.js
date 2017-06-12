@@ -33,11 +33,11 @@ var urls = ['https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=
             'https://newsapi.org/v1/articles?source=mtv-news&sortBy=latest&apiKey=',
             'https://newsapi.org/v1/articles?source=new-scientist&sortBy=top&apiKey='
            ]
-app.use(cors(corsOptions))
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(cors(corsOptions));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
-app.use(express.static('dist'))
+app.use(express.static('dist'));
 var newsnow = [];
 app.get('/api/v1/news', (req, res) => (
   request(url, (error, response, body) => (!error && response.statusCode === 200 ? res.json(JSON.parse(body)) : console.log(error)))
@@ -72,14 +72,25 @@ app.get('/api/v1/search/:keyword',function(req,res){
 
 });
 
+app.post('api/headlineUpdate', function(req,res){
+  const id = req.body.id ;
+  console.log("key" + Object.keys(req.body));
+
+  if (id < 2100){res.status(404).write('NOT FOUND');}
+  else {res.status(200).write('OK 1 '+ id);}
+  res.end()  ;
+
+});
+
 app.get('/api/headline/:id', function (req,res) {
   const id = req.params.id ;
   const idd = req.body.id ;
+
   console.log(Object.keys(req));
   console.log("key" + Object.keys(req.body));
 
   if (id < 2100){res.status(404).write('NOT FOUND');}
-  else {res.status(200).write('OK'+ idd);}
+  else {res.status(200).write('OK 1 '+ idd);}
   res.end()  ;
 
 });

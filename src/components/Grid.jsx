@@ -46,9 +46,35 @@ class Grid extends React.Component{
     var data1 ={
       'id': id
     };
+
+
     var urllink = "http://www.campfire.news/api/headline/"+id
     jQuery.ajax({
       method:'GET',
+      url: urllink,
+      beforeSend: function (xhrObj) {
+         xhrObj.setRequestHeader("Content-Type", "application/json");
+      },
+      data:data1,
+      success :(result)=>{
+        //console.log(result);
+
+        console.log(result) ;
+      }
+    })
+
+  }
+
+  _headlineUpdate(id ){
+
+    var data1 ={
+      'id': id
+    };
+
+
+    var urllink = "http://www.campfire.news/api/headlineUpdate"
+    jQuery.ajax({
+      method:'POST',
       url: urllink,
       beforeSend: function (xhrObj) {
          xhrObj.setRequestHeader("Content-Type", "application/json");
@@ -112,6 +138,7 @@ class Grid extends React.Component{
                       <LinkedinIcon size={32} round />
                     </LinkedinShareButton>
                     <button onClick={this._headline.bind(this,this.props.id)}>plus</button>
+                    <button onClick={this._headlineUpdate.bind(this,this.props.id)}>uPDATE</button>
                    </div>
               </div>
           </div>
