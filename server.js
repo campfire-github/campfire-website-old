@@ -132,17 +132,6 @@ app.get('/api/v1/weather', function (req, res){
 });
 
 
-app.get('/api/highlight/:id', function(req,res){
-
-  const id = req.params.id ;
-  console.log(id);
-  if(id > 200){
-    res.status(400).write("NOT FOUND");
-    res.end()  ;
-  }
-  res.status(200).write(id+ "OK");
-  res.end() ;
-});
 
 var weatherRequest = function(){
   var deletequery = client.query('DELETE FROM weather');
