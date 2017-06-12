@@ -44,18 +44,20 @@ class Grid extends React.Component{
   _highlightClick(id){
     console.log(id);
     var urllink = "http://www.campfire.news/api/highlight" ;
+    var data1 = {id:id};
+
     jQuery.ajax({
-      type:'POST',
+      method:'GET',
       url: urllink,
-      dataType: 'json',
-      cache: false,
-      data:{"id":id},
-      error: function(e){
-        console.log(e);
+      beforeSend: function (xhrObj) {
+         xhrObj.setRequestHeader("Content-Type", "application/json");
       },
-      contentType: "application/json"
-
-
+      data:data1,
+      success :(result)=>{
+        //console.log(result);
+        var json = JSON.parse(result);
+        console.log(json);
+      }
     })
 
 
