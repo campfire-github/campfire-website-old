@@ -98,7 +98,9 @@ class FrontPage2 extends React.Component{
     return (
       <div>
 
-
+        <section className ="row">
+          <Highlight></Highlight>
+        </section>
         <section className="row">
           <Category categoryname ="World" arrays={this.state.world} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
@@ -115,9 +117,7 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Mtv" arrays={this.state.mtvNews} ></Category>
         </section>
 
-        <section className ="row">
-        
-        </section>
+
       </div>
     )
   }
