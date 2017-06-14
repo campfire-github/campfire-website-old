@@ -9,8 +9,8 @@ class Todaynews extends React.Component(){
   constructor(){
       super() ;
       this.state ={
-        todaynewsArray = [],
-        data = []
+        todaynewsArray : [],
+        data : []
       }
 
     }
