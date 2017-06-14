@@ -17,7 +17,7 @@ class Todaynews extends React.Component{
     }
     componentDidMount(){
       this._timer = setInterval(
-                    ()=>this._getHighlightnews(),
+                    ()=>this._getTodaynews(),
                     1000000);
     }
 
@@ -67,22 +67,22 @@ class Todaynews extends React.Component{
 
     _getAllNews() {
       console.log("get all ");
-      return this.state.all.map((each)=>{
+      return this.state.todaynewsArray.map((each)=>{
 
         return(
-          <div className = "col-md-12">
+          <div className = "col-md-12 todaynews">
               <div className = "col-md-10">
-                <img className="col-md-3" src={each.props.urltoimage}></img>
-                <div className="col-md-7">
-                  <h3 className="col-md-12">{each.props.title}</h3>
-                  <p className="col-md-12">{each.props.description}</p>
+
+                <div className="col-md-10">
+                  <h3 className="col-md-12">{each.title}</h3>
+                  <p className="col-md-12">{each.description}</p>
                 </div>
                 <div className = "col-md-2">
-                  <p> {each.highlight}</p>
+                  <h3> {"highlight : "+ each.highlight}</h3>
                 </div>
               </div>
               <div className = "col-md-2">
-                <button onClick={this._headlineUpdate.bind(this,id)}>Update</button>
+                <button onClick={this._headlineUpdate.bind(this,each.id)}>Update</button>
               </div>
           </div>
         );
@@ -113,7 +113,7 @@ class Todaynews extends React.Component{
     }
 
     render(){
-      var news = this._getTodaynews() ;
+      var news = this._getAllNews() ;
       return(
           <div className = "col-md-12">
             {news}
