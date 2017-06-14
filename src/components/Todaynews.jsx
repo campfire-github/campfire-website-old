@@ -1,10 +1,7 @@
 import React from 'react' ;
 import jQuery from '../../dist/js/jquery-3.1.1.js';
 
-class Todaynews extends React.Component(){
-
-
-
+class Todaynews extends React.Component{
 
   constructor(){
       super() ;
@@ -123,7 +120,7 @@ class Todaynews extends React.Component(){
 
           </div>
 
-      );
+      )
 
 
     }
