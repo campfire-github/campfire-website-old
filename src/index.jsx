@@ -15,6 +15,7 @@ import Time from './components/Time.jsx'
 import Mtv from './components/Mtv.jsx'
 import HackerNews from './components/HackerNews.jsx'
 import NewScientist from './components/NewScientist.jsx'
+import Todaynews from './components/Todaynews.jsx'
 
 import NotFound from './components/NotFound.jsx'
 
@@ -35,6 +36,7 @@ render((
     <Route path="/mtv" component={Mtv}/>
     <Route path="/newsfeedfun" component={NewsFeedFun} />
     <Route path="/new-scientist" component= {NewScientist} />
+    <Route path="/todaynews" component= {Todaynews} />
     <Route path="/*" component={NotFound} />
 
   </Router>
