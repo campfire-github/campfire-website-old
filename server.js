@@ -52,7 +52,7 @@ app.get('/api/v1/search/:keyword',function(req,res){
   var date = new Date() ;
   date.setDate(date.getDate() - 2);
   if(lowercase === "highlightnews"){//
-    query = client.query('SELECT * FROM NEWSNOW WHERE highlight = true AND insertDate > $1 ',[date]);
+    query = client.query('SELECT * FROM NEWSNOW WHERE highlight = true AND insertDate > $1 ORDER BY id DESC LIMIT 15 ',[date]);
   }else if (lowercase === "todaynews"){
     query = client.query('SELECT * FROM NEWSNOW WHERE insertDate >$1 ORDER BY id DESC LIMIT 400' , [date]);
   }
