@@ -20,7 +20,7 @@ class GoogleAds extends React.Component{
 */
 render () {
     return (
-      <div className='ad'>
+      <div className='ad col-md-12'>
         <ins className='adsbygoogle'
           style={{ display: 'inline-block', width:'728px', height:'90px' }}
           data-ad-client='ca-pub-8666378670828451'
