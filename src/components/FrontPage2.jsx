@@ -2,8 +2,8 @@ import React from 'react';
 import Title from './Title.jsx';
 import Category from './Category.jsx';
 import Weather from './Weather.jsx';
-import Highlight from './Highlight.jsx'
-
+import Highlight from './Highlight.jsx';
+import GoogleAds from './GoogleAds.jsx';
 
 import jQuery from '../../dist/js/jquery-3.1.1.js';
 
@@ -101,6 +101,7 @@ class FrontPage2 extends React.Component{
         <section className ="row">
           <Highlight></Highlight>
         </section>
+        <GoogleAds></GoogleAds>
         <section className="row">
           <Category categoryname ="World" arrays={this.state.world} ></Category>
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
