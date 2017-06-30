@@ -4,6 +4,7 @@ import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import jQuery from '../../dist/js/jquery-3.1.1.js'
 import Masonry from 'react-masonry-component';
+import GoogleAds from './GoogleAds.jsx';
 
 
 import {
@@ -102,6 +103,10 @@ class SectionPage extends React.Component{
       return(
         <div className="container-fluid">
           <Header />
+          <div className="ad-container">
+            <GoogleAds></GoogleAds>
+          </div>
+
           <div className="container">
               <h1>{this.props.pagename}</h1>
               <div className = "col-md-12 col-xs-12">

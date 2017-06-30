@@ -57,6 +57,11 @@ h2 a {
   padding-top: 60px ;
 }
 
+.ad-container{
+  padding-top: 50px ;
+  padding-bottom: 5px ;
+}
+
 .container-fluid {
   padding: 0px;
 }

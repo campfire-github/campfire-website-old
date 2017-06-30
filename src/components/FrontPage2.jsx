@@ -97,7 +97,7 @@ class FrontPage2 extends React.Component{
 
     return (
       <div>
-
+        <GoogleAds></GoogleAds>
         <section className ="row">
           <Highlight></Highlight>
         </section>
@@ -107,19 +107,19 @@ class FrontPage2 extends React.Component{
           <Category categoryname ="Sport" arrays={this.state.sport} ></Category>
           <Category categoryname ="Technology" arrays={this.state.technology} ></Category>
         </section>
-        <GoogleAds></GoogleAds>
+
         <section className="row">
           <Category categoryname ="Entertainment" arrays={this.state.entertainment} ></Category>
           <Category categoryname ="Gaming" arrays={this.state.gaming} ></Category>
           <Category categoryname ="National-Geographic" arrays={this.state.nationalGeographic} ></Category>
         </section>
-        <GoogleAds></GoogleAds>
+
         <section className="row">
           <Category categoryname ="Time" arrays={this.state.time} ></Category>
           <Category categoryname ="Hacker-News" arrays={this.state.hackerNews} ></Category>
           <Category categoryname ="Mtv" arrays={this.state.mtvNews} ></Category>
         </section>
-
+      
 
       </div>
     )
